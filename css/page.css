@@ -1,0 +1,110 @@
+body {
+  font-family: Lato;
+  font-size: 1rem;
+  color: #222;
+  background-color: #f3f2ed; }
+
+body.page-civicrm {
+  padding-top: 3rem; }
+  body.page-civicrm h1.page-header {
+    display: none; }
+
+.crm-container .crm-form-block {
+  background-color: white; }
+
+#civicrm-menu, #root-menu-div ul,
+.ui-widget {
+  font-family: Lato; }
+
+.ui-widget {
+  font-size: 1em; }
+
+#crm-container div.crm-inline-edit,
+#crm-container .crm-edit-ready .crm-inline-edit,
+.crm-container .crm-editable-enabled {
+  border-width: 1px; }
+  #crm-container div.crm-inline-edit:hover,
+  #crm-container .crm-edit-ready .crm-inline-edit:hover,
+  .crm-container .crm-editable-enabled:hover {
+    border-width: 1px; }
+
+#crm-container div.crm-inline-edit.form {
+  border-width: 1px; }
+
+.ui-widget-header {
+  background: #f8f8f8;
+  border: none; }
+
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background: #f8f8f8;
+  border: none; }
+  .ui-state-default:hover, .ui-widget-content .ui-state-default:hover, .ui-widget-header .ui-state-default:hover {
+    background: #b9ddf9; }
+
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background: #2c98ed;
+  color: white; }
+  .ui-state-active:hover, .ui-widget-content .ui-state-active:hover, .ui-widget-header .ui-state-active:hover {
+    background: #2c98ed; }
+  .ui-state-active a:link, .ui-state-active a:visited, .ui-widget-content .ui-state-active a:link, .ui-widget-content .ui-state-active a:visited, .ui-widget-header .ui-state-active a:link, .ui-widget-header .ui-state-active a:visited {
+    color: white; }
+  .ui-state-active.disabled a.ui-tabs-anchor, .ui-state-active.crm-count-0 a.ui-tabs-anchor, .ui-state-active.crm-count-0 a.ui-tabs-anchor em, .ui-widget-content .ui-state-active.disabled a.ui-tabs-anchor, .ui-widget-content .ui-state-active.crm-count-0 a.ui-tabs-anchor, .ui-widget-content .ui-state-active.crm-count-0 a.ui-tabs-anchor em, .ui-widget-header .ui-state-active.disabled a.ui-tabs-anchor, .ui-widget-header .ui-state-active.crm-count-0 a.ui-tabs-anchor, .ui-widget-header .ui-state-active.crm-count-0 a.ui-tabs-anchor em {
+    color: white !important; }
+
+.crm-container a.button, .crm-container a.button:link, .crm-container a.button:visited, .crm-container input.crm-form-submit, .crm-container .ui-dialog-buttonset .ui-button, .crm-container input[type="button"], .crm-container .crm-button {
+  background: #2c98ed;
+  text-shadow: none;
+  border: none;
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
+  padding: 0.4em 1em; }
+  .crm-container a.button:hover, .crm-container a.button:link:hover, .crm-container a.button:visited:hover, .crm-container input.crm-form-submit:hover, .crm-container .ui-dialog-buttonset .ui-button:hover, .crm-container input[type="button"]:hover, .crm-container .crm-button:hover {
+    background-color: #127fd4; }
+
+#crm-container ul.wizard-bar {
+  border: none; }
+
+.ui-widget-content {
+  border-color: #e8e8e8; }
+
+.crmMailing .preview-popup, .crmMailing .preview-contact, .crmMailing .preview-group {
+  height: 6rem; }
+
+#crm-container .crm-edit-ready .crm-inline-edit:hover .crm-edit-help {
+  background-color: #ffeb99; }
+
+.crm-container .crm-accordion-header {
+  background-color: #88cafe;
+  color: #02477d; }
+  .crm-container .crm-accordion-header:hover {
+    background-color: #5ab1f6; }
+
+#crm-container #civicrm-dashboard .widget-controls,
+.crm-container .crm-accordion-header {
+  background-color: #88cafe; }
+
+.crm-container h3 {
+  background: #88cafe; }
+
+#crm-container #civicrm-dashboard h3.widget-header {
+  color: #222; }
+
+#civicrm-dashboard {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-wrap: wrap;
+      -ms-flex-wrap: wrap;
+          flex-wrap: wrap; }
+  #civicrm-dashboard #column-0 {
+    -webkit-flex: 1 0 40%;
+        -ms-flex: 1 0 40%;
+            flex: 1 0 40%; }
+  #civicrm-dashboard #column-1 {
+    -webkit-flex: 1 0 60%;
+        -ms-flex: 1 0 60%;
+            flex: 1 0 60%; }
+
+body {
+  padding: 0; }
+
+/*# sourceMappingURL=page.css.map */

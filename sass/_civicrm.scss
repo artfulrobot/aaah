@@ -1,0 +1,110 @@
+@import 'lib';
+
+body.page-civicrm {
+  padding-top:3rem; // Allow for CiviCRM's header menu
+
+  h1.page-header {
+    display:none; // CiviCRM seems to output this anyways.
+  }
+}
+
+// CiviCRM override default styles
+.crm-container .crm-form-block {
+  background-color: white;
+}
+#civicrm-menu, #root-menu-div ul,
+.ui-widget {
+  font-family: Lato;
+}
+.ui-widget {
+  font-size:1em; // disable 1.1
+}
+#crm-container div.crm-inline-edit,
+#crm-container .crm-edit-ready .crm-inline-edit,
+.crm-container .crm-editable-enabled {
+  border-width:1px;
+  &:hover {
+    border-width:1px;
+  }
+}
+#crm-container div.crm-inline-edit.form {
+  border-width:1px;
+}
+.ui-widget-header {
+  background:$colourWidgetBackground;
+  border:none;
+}
+.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+  background:$colourWidgetBackground;
+  border:none;
+  &:hover {
+    background: $colourWidgetCouldSelectBackground;
+  }
+}
+.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+  background: $colourWidgetSelectedBackground;
+  &:hover {
+    background: $colourWidgetSelectedBackground;
+  }
+  color: white;
+  a:link, a:visited {
+    color: white;
+  }
+
+  // When an active thing has a disabled something, just show it white.
+  &.disabled a.ui-tabs-anchor, &.crm-count-0 a.ui-tabs-anchor, &.crm-count-0 a.ui-tabs-anchor em {
+    color: white !important;
+  }
+}
+.crm-container a.button, .crm-container a.button:link, .crm-container a.button:visited, .crm-container input.crm-form-submit, .crm-container .ui-dialog-buttonset .ui-button, .crm-container input[type="button"], .crm-container .crm-button {
+  background: $colourArtfulBrightBlue;
+  text-shadow: none;
+  border:none;
+  box-shadow: 0 0 6px rgba(0,0,0,0.2);
+  padding:0.4em 1em;
+  &:hover {
+    background-color: darken($colourArtfulBrightBlue, 10%);
+  }
+}
+
+#crm-container ul.wizard-bar {
+  border:none;
+}
+.ui-widget-content {
+  border-color: $colourWidgetBorder;
+}
+.crmMailing .preview-popup, .crmMailing .preview-contact, .crmMailing .preview-group {
+  height:6rem;
+}
+#crm-container .crm-edit-ready .crm-inline-edit:hover .crm-edit-help {
+  background-color: $colourHighlight;
+}
+.crm-container .crm-accordion-header {
+  background-color: $colourArtfulBrightBlueHigh;
+  color: $colourArtfulDarkBlue;
+  &:hover {
+    background-color: mix($colourArtfulBrightBlueHigh, $colourArtfulBrightBlue, 50%);
+  }
+}
+#crm-container #civicrm-dashboard .widget-controls, // has own css, requires this specificity.
+.crm-container .crm-accordion-header {
+  background-color: $colourArtfulBrightBlueHigh;
+}
+.crm-container h3 {
+  background: $colourArtfulBrightBlueHigh;
+}
+#crm-container #civicrm-dashboard h3.widget-header {
+  color: $colourText;
+}
+
+#civicrm-dashboard {
+  display: flex;
+  flex-wrap: wrap;
+  #column-0 {
+    flex: 1 0 40%;
+  }
+  #column-1 {
+    flex: 1 0 60%;
+  }
+}
+
