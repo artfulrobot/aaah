@@ -30,6 +30,7 @@ body.page-civicrm {
 #crm-container div.crm-inline-edit.form {
   border-width:1px;
 }
+// jQuery UI {{{
 .ui-widget-header {
   background:$colourWidgetBackground;
   border:none;
@@ -56,7 +57,18 @@ body.page-civicrm {
     color: white !important;
   }
 }
-.crm-container a.button, .crm-container a.button:link, .crm-container a.button:visited, .crm-container input.crm-form-submit, .crm-container .ui-dialog-buttonset .ui-button, .crm-container input[type="button"], .crm-container .crm-button {
+// }}}
+.crm-container .ui-dialog-titlebar.ui-widget-header {
+  background: $colourDarkGrey;
+}
+.crm-container a.button,
+.crm-container a.button:link,
+.crm-container a.button:visited,
+.crm-container input.crm-form-submit,
+.crm-container .ui-dialog-buttonset .ui-button,
+.crm-container input[type="button"],
+.crm-container .crm-button
+{
   background: $colourArtfulBrightBlue;
   text-shadow: none;
   border:none;
@@ -82,13 +94,18 @@ body.page-civicrm {
 .crm-container .crm-accordion-header {
   background-color: $colourArtfulBrightBlueHigh;
   color: $colourArtfulDarkBlue;
-  &:hover {
+  &.active {
+    background-color: mix($colourArtfulBrightBlueHigh, $colourArtfulBrightBlue, 50%);
+    color: $colourArtfulDarkBlue;
+  }
+  &:hover, &.active:hover {
     background-color: mix($colourArtfulBrightBlueHigh, $colourArtfulBrightBlue, 50%);
   }
 }
 #crm-container #civicrm-dashboard .widget-controls, // has own css, requires this specificity.
 .crm-container .crm-accordion-header {
   background-color: $colourArtfulBrightBlueHigh;
+  transition: background-color 0.3s;
 }
 .crm-container h3 {
   background: $colourArtfulBrightBlueHigh;

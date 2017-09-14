@@ -1,6 +1,6 @@
 $colourArtfulBrightBlue:#2c98ed;
 $colourArtfulDarkBlue:#02477d;
-$colourArtfulBrightBlueHigh:#88cafe;
+$colourArtfulBrightBlueHigh:lighten($colourArtfulBrightBlue, 20%);
 $colourArtfulAmber:#ffcc00;
 $colourHighlight: lighten($colourArtfulAmber, 30%);
 $colourText: #222;
@@ -9,3 +9,4 @@ $colourWidgetBorder: #e8e8e8;
 $colourWidgetSelectedBackground: $colourArtfulBrightBlue;
 $colourWidgetCouldSelectBackground: lighten($colourWidgetSelectedBackground, 30%);
 $colourBackground: #f3f2ed;
+$colourDarkGrey: #333;

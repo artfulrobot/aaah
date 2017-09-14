@@ -4,4 +4,8 @@ body {
   color: #222;
   background-color: #f3f2ed; }
 
+p {
+  margin: 0 0 1rem;
+  line-height: 1.4; }
+
 /*# sourceMappingURL=content.css.map */
