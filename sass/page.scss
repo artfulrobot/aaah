@@ -6,3 +6,83 @@
 body {
   padding:0;
 }
+
+// DocNav
+.docnav-wrapper {
+  display:flex;
+  flex-wrap:wrap;
+  margin:0 -1rem;
+}
+.docnav__content {
+  flex: 1 1 60%;
+  padding:0 1rem;
+}
+.docnav__nav {
+  flex: 1 0 20em;
+  padding:0 1rem;
+
+  ul {
+    margin:0;
+    padding:0;
+    list-style:none;
+    &.depth-0 {
+      position:sticky;
+      top:3rem;
+    }
+  }
+  li {
+    margin:0;
+    padding:0;
+    &.selected-route>a{
+      font-weight: bold;
+    }
+    &.selected>a{
+      font-weight: bold;
+    }
+  }
+  // By default, sub-lists are not shown.
+  li ul {
+    display:none;
+  }
+  // Show children of selected.
+  li.selected-route>ul,
+  li.selected>ul {
+    display:block;
+  }
+
+  a {
+    display:block;
+    padding:0.5rem 1rem;
+  }
+  // Colours.
+  li a {
+    text-decoration: none;
+  }
+  li.depth-0 a {
+    background: #4444ee;
+    color:white;
+  }
+  li.depth-1 a {
+    background: #555;
+    color:white;
+  }
+  li.depth-2 a {
+    background: #f8f8f8;
+    color: #222;
+  }
+  @each $i in 0 1 2 3 4 5 6 {
+    li.depth-#{$i} a {
+      padding-left: (1rem + 1rem * $i);
+    }
+  }
+}
+@keyframes attn {
+  0% { transform:none; }
+  20% { transform:translate(0, -3px); }
+  50% { transform:translate(0, -5px); }
+  80% { transform:translate(0, -3px); }
+  100% { transform:none; }
+}
+.attention {
+  animation: attn 0.2s forwards linear;
+}
