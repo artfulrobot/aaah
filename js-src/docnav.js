@@ -6,10 +6,9 @@ function DocNav(outputElement, inputElements) {
   var l = this.headings.length;
   var baseLevel = parseInt(this.headings[0].tagName[1]);
   var currentLevel = 0;
-  var map = [];
+  var map = { title: 'No title', children: [], e:null, parent:null };
   var currentParent = map;
-  var stack = [];
-  var flatMap = [];
+  var flatMap = {};
   for (var i=0; i<l; i++) {
     var e = this.headings.eq(i);
     var headingDepth = e[0].tagName[1] - baseLevel;
@@ -22,70 +21,88 @@ function DocNav(outputElement, inputElements) {
       // Deal with skipped headers, h2...h4
       while (headingDepth > currentLevel) {
         // Add empty child.
-        var newChild = { title: 'No title', children: [], e:null };
-        currentParent.push(newChild);
+        var newChild = { title: 'No title', children: [], e:null, parent:currentParent };
+        currentParent.children.push(newChild);
         currentLevel++;
-        stack.push(currentParent);
-        currentParent = newChild.children;
+        currentParent = newChild;
       }
     }
     else if (headingDepth < currentLevel) {
       while (headingDepth < currentLevel && currentLevel>0) {
         // This is an ancestor.
-        currentParent = stack.pop();
+        currentParent = currentParent.parent;
         currentLevel--;
       }
     }
 
     // Got current Parent, create the element now and set that as the currentParent.
-    var newChild = { title: e.text(), children: [], e:e };
-    currentParent.push(newChild);
-    // Save the current parent as we'll need to go back to it.
-    stack.push(currentParent);
+    var newChild = { title: e.text(), children: [], e:e, parent: currentParent };
+    console.log(e[0].tagName, "currentParent: ", currentParent);
+    currentParent.children.push(newChild);
     currentLevel++;
-    currentParent = newChild.children;
+    currentParent = newChild;
     flatMap[e[0].id] = newChild;
   }
   this.map = map;
   console.log("map ", map, "output ele", this.outputElement);
   // Create Vue app.
-  new Vue({
+  var selected = [map.children[0]];
+  var docnavVue = new Vue({
     el: this.outputElement[0],
-    data: {theMap: map, flatMap: flatMap, selected : [map[0]]},
-    template: '<docnav v-bind:items="theMap" :flatMap="flatMap" :selected="selected" v-on:itemclicked="setSelected" depth="0" />',
-    methods: {
-      setSelected: function(obj) {
-        console.log("setSelected", obj);
-        this.selected = obj;
-      }
-    }
+    data: {theMap: map, selected : selected},
+    template: `<docnav
+      :item="theMap"
+      :selected="selected"
+      depth="0" />`
   });
+
+  for (var i=0; i<l; i++) {
+    var e = this.headings.eq(i);
+    var li = flatMap[e[0].id];
+    console.log("setting up waypoint on ", li);
+    // Set up a waypoint for this element.
+    li.e.docnavWaypoint = new Waypoint({
+      element: li.e[0],
+      handler: function() {
+        console.log("handler firing ", li);
+        // Find corresponding Vue element and trigger it's clicked method?
+        // selected.splice(0, selected.length-1, li);
+      }
+    });
+  }
 }
 
 Vue.component('docnav', {
-  props: ['items', 'depth', 'selected'],
+  props: ['item', 'depth', 'selected'],
   template: `<ul :class="\'depth-\' + depth">
-    <li v-for="li in items" :selected="selected" :class="getClasses(li)">
+    <li v-for="li in item.children"
+      :class="getClasses(li)"
+      >
       <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>
       <docnav
         :selected="selected"
-        v-bind:items="li.children" v-bind:depth="parseInt(depth) + 1"
-        v-on:itemclicked="bubbleclick(li, $event)"
-        v-if="li.children.length>0" />
+        :item="li"
+        :depth="parseInt(depth) + 1"
+        v-if="li.children.length>0"
+        />
     </li></ul>`,
   methods: {
     focus: function(li, e) {
       console.log("focus", li, e);
       if (e) e.preventDefault();
+      // Create a new selected array at the same ref.
+      this.selected.splice(0, this.selected.length-1, li);
+      var ptr = li.parent;
+      while (ptr.parent) {
+        this.selected.push(ptr);
+        ptr = ptr.parent;
+      }
+      return;
       li.e.addClass('attention')[0].scrollIntoView();
       this.$emit('itemclicked', [li]);
     },
-    bubbleclick: function(li, obj) {
-      console.log("bubbleclick ", obj, li);
-      obj.push(li);
-      this.$emit('itemclicked', obj);
-    },
     getClasses: function(li) {
+      console.log("getClasses selected:", this.selected, " this li: ", li);
       var c = {
         selected: (li.e == this.selected[0].e)
       };
