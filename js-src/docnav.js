@@ -1,4 +1,5 @@
 function DocNav(outputElement, inputElements) {
+  this.disableWaypoints = true;
   this.outputElement = outputElement;
   this.inputElements = inputElements;
   this.headings = this.inputElements.find('h1, h2, h3, h4, h5, h6');
@@ -37,43 +38,60 @@ function DocNav(outputElement, inputElements) {
 
     // Got current Parent, create the element now and set that as the currentParent.
     var newChild = { title: e.text(), children: [], e:e, parent: currentParent };
-    console.log(e[0].tagName, "currentParent: ", currentParent);
+    //console.log(e[0].tagName, "currentParent: ", currentParent);
     currentParent.children.push(newChild);
     currentLevel++;
     currentParent = newChild;
     flatMap[e[0].id] = newChild;
   }
   this.map = map;
-  console.log("map ", map, "output ele", this.outputElement);
+  //console.log("map ", map, "output ele", this.outputElement);
   // Create Vue app.
-  var selected = [map.children[0]];
+  this.selected = [map.children[0]];
+  var thisDocNav = this;
   var docnavVue = new Vue({
     el: this.outputElement[0],
-    data: {theMap: map, selected : selected},
+    data: {theMap: map, selected : this.selected, docNav: thisDocNav },
     template: `<docnav
+      :doc-nav="docNav"
       :item="theMap"
       :selected="selected"
-      depth="0" />`
+      depth="0" />`,
   });
 
   for (var i=0; i<l; i++) {
     var e = this.headings.eq(i);
     var li = flatMap[e[0].id];
-    console.log("setting up waypoint on ", li);
     // Set up a waypoint for this element.
-    li.e.docnavWaypoint = new Waypoint({
-      element: li.e[0],
-      handler: function() {
-        console.log("handler firing ", li);
-        // Find corresponding Vue element and trigger it's clicked method?
-        // selected.splice(0, selected.length-1, li);
-      }
-    });
+    (function(li){
+      li.e.docnavWaypoint = new Waypoint({
+        element: li.e[0],
+        offset: 'bottom-in-view',
+        handler: function() {
+          if (!thisDocNav.disableWaypoints) {
+            // console.log("handler firing ", li.title, thisDocNav.disableWaypoints);
+            // Find corresponding Vue element and trigger it's clicked method?
+            thisDocNav.selectItem(li);
+          }
+        }
+      });
+    })(li);
   }
+
+  this.disableWaypoints = false;
 }
+DocNav.prototype.selectItem = function(li) {
+  this.selected.splice(0, this.selected.length, li);
+  //console.log("NEW SELECTION1:", this.selected.map(x => { return x.title; }));
+  var ptr = li.parent;
+  while (ptr.parent) {
+    this.selected.push(ptr);
+    ptr = ptr.parent;
+  }
+};
 
 Vue.component('docnav', {
-  props: ['item', 'depth', 'selected'],
+  props: ['item', 'depth', 'selected', 'docNav'],
   template: `<ul :class="\'depth-\' + depth">
     <li v-for="li in item.children"
       :class="getClasses(li)"
@@ -82,27 +100,24 @@ Vue.component('docnav', {
       <docnav
         :selected="selected"
         :item="li"
+        :doc-nav="docNav"
         :depth="parseInt(depth) + 1"
         v-if="li.children.length>0"
         />
     </li></ul>`,
   methods: {
     focus: function(li, e) {
-      console.log("focus", li, e);
+      // console.log("focus", li, e);
       if (e) e.preventDefault();
-      // Create a new selected array at the same ref.
-      this.selected.splice(0, this.selected.length-1, li);
-      var ptr = li.parent;
-      while (ptr.parent) {
-        this.selected.push(ptr);
-        ptr = ptr.parent;
-      }
-      return;
+      this.docNav.disableWaypoints = true;
       li.e.addClass('attention')[0].scrollIntoView();
-      this.$emit('itemclicked', [li]);
+      this.docNav.selectItem(li);
+      window.setTimeout(function() { li.e.removeClass('attention');}, 1000);
+      var docNav = this.docNav;
+      window.setTimeout(function() { docNav.disableWaypoints = false; }, 300);
     },
     getClasses: function(li) {
-      console.log("getClasses selected:", this.selected, " this li: ", li);
+      //console.log("getClasses selected:", this.selected, " this li: ", li);
       var c = {
         selected: (li.e == this.selected[0].e)
       };
@@ -127,7 +142,6 @@ jQuery(function(){
   var i = jQuery('.field-name-body .field-item');
   var o = jQuery('<div/>');
   i = i.wrap('<div class="docnav__content"/>').parent();
-  console.log("i now ", i);
   i.wrap('<div class="docnav-wrapper"></div>').parent().append(jQuery('<div class="docnav__nav"/>').append(o));
   o.docNav = new DocNav(o, i);
 });

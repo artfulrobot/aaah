@@ -1,6 +1,7 @@
 ;;
 
 function DocNav(outputElement, inputElements) {
+  this.disableWaypoints = true;
   this.outputElement = outputElement;
   this.inputElements = inputElements;
   this.headings = this.inputElements.find('h1, h2, h3, h4, h5, h6');
@@ -8,10 +9,9 @@ function DocNav(outputElement, inputElements) {
   var l = this.headings.length;
   var baseLevel = parseInt(this.headings[0].tagName[1]);
   var currentLevel = 0;
-  var map = [];
+  var map = { title: 'No title', children: [], e: null, parent: null };
   var currentParent = map;
-  var stack = [];
-  var flatMap = [];
+  var flatMap = {};
   for (var i = 0; i < l; i++) {
     var e = this.headings.eq(i);
     var headingDepth = e[0].tagName[1] - baseLevel;
@@ -24,61 +24,89 @@ function DocNav(outputElement, inputElements) {
       // Deal with skipped headers, h2...h4
       while (headingDepth > currentLevel) {
         // Add empty child.
-        var newChild = { title: 'No title', children: [], e: null };
-        currentParent.push(newChild);
+        var newChild = { title: 'No title', children: [], e: null, parent: currentParent };
+        currentParent.children.push(newChild);
         currentLevel++;
-        stack.push(currentParent);
-        currentParent = newChild.children;
+        currentParent = newChild;
       }
     } else if (headingDepth < currentLevel) {
       while (headingDepth < currentLevel && currentLevel > 0) {
         // This is an ancestor.
-        currentParent = stack.pop();
+        currentParent = currentParent.parent;
         currentLevel--;
       }
     }
 
     // Got current Parent, create the element now and set that as the currentParent.
-    var newChild = { title: e.text(), children: [], e: e };
-    currentParent.push(newChild);
-    // Save the current parent as we'll need to go back to it.
-    stack.push(currentParent);
+    var newChild = { title: e.text(), children: [], e: e, parent: currentParent };
+    //console.log(e[0].tagName, "currentParent: ", currentParent);
+    currentParent.children.push(newChild);
     currentLevel++;
-    currentParent = newChild.children;
+    currentParent = newChild;
     flatMap[e[0].id] = newChild;
   }
   this.map = map;
-  console.log("map ", map, "output ele", this.outputElement);
+  //console.log("map ", map, "output ele", this.outputElement);
   // Create Vue app.
-  new Vue({
+  this.selected = [map.children[0]];
+  var thisDocNav = this;
+  var docnavVue = new Vue({
     el: this.outputElement[0],
-    data: { theMap: map, flatMap: flatMap, selected: [map[0]] },
-    template: '<docnav v-bind:items="theMap" :flatMap="flatMap" :selected="selected" v-on:itemclicked="setSelected" depth="0" />',
-    methods: {
-      setSelected: function setSelected(obj) {
-        console.log("setSelected", obj);
-        this.selected = obj;
-      }
-    }
+    data: { theMap: map, selected: this.selected, docNav: thisDocNav },
+    template: '<docnav\n      :doc-nav="docNav"\n      :item="theMap"\n      :selected="selected"\n      depth="0" />'
   });
+
+  for (var i = 0; i < l; i++) {
+    var e = this.headings.eq(i);
+    var li = flatMap[e[0].id];
+    // Set up a waypoint for this element.
+    (function (li) {
+      li.e.docnavWaypoint = new Waypoint({
+        element: li.e[0],
+        offset: 'bottom-in-view',
+        handler: function handler() {
+          if (!thisDocNav.disableWaypoints) {
+            // console.log("handler firing ", li.title, thisDocNav.disableWaypoints);
+            // Find corresponding Vue element and trigger it's clicked method?
+            thisDocNav.selectItem(li);
+          }
+        }
+      });
+    })(li);
+  }
+
+  this.disableWaypoints = false;
 }
+DocNav.prototype.selectItem = function (li) {
+  this.selected.splice(0, this.selected.length, li);
+  //console.log("NEW SELECTION1:", this.selected.map(x => { return x.title; }));
+  var ptr = li.parent;
+  while (ptr.parent) {
+    this.selected.push(ptr);
+    ptr = ptr.parent;
+  }
+};
 
 Vue.component('docnav', {
-  props: ['items', 'depth', 'selected'],
-  template: '<ul :class="\'depth-\' + depth">\n    <li v-for="li in items" :selected="selected" :class="getClasses(li)">\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        v-bind:items="li.children" v-bind:depth="parseInt(depth) + 1"\n        v-on:itemclicked="bubbleclick(li, $event)"\n        v-if="li.children.length>0" />\n    </li></ul>',
+  props: ['item', 'depth', 'selected', 'docNav'],
+  template: '<ul :class="\'depth-\' + depth">\n    <li v-for="li in item.children"\n      :class="getClasses(li)"\n      >\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        :item="li"\n        :doc-nav="docNav"\n        :depth="parseInt(depth) + 1"\n        v-if="li.children.length>0"\n        />\n    </li></ul>',
   methods: {
     focus: function focus(li, e) {
-      console.log("focus", li, e);
+      // console.log("focus", li, e);
       if (e) e.preventDefault();
+      this.docNav.disableWaypoints = true;
       li.e.addClass('attention')[0].scrollIntoView();
-      this.$emit('itemclicked', [li]);
-    },
-    bubbleclick: function bubbleclick(li, obj) {
-      console.log("bubbleclick ", obj, li);
-      obj.push(li);
-      this.$emit('itemclicked', obj);
+      this.docNav.selectItem(li);
+      window.setTimeout(function () {
+        li.e.removeClass('attention');
+      }, 1000);
+      var docNav = this.docNav;
+      window.setTimeout(function () {
+        docNav.disableWaypoints = false;
+      }, 300);
     },
     getClasses: function getClasses(li) {
+      //console.log("getClasses selected:", this.selected, " this li: ", li);
       var c = {
         selected: li.e == this.selected[0].e
       };
@@ -103,7 +131,6 @@ jQuery(function () {
   var i = jQuery('.field-name-body .field-item');
   var o = jQuery('<div/>');
   i = i.wrap('<div class="docnav__content"/>').parent();
-  console.log("i now ", i);
   i.wrap('<div class="docnav-wrapper"></div>').parent().append(jQuery('<div class="docnav__nav"/>').append(o));
   o.docNav = new DocNav(o, i);
 });
