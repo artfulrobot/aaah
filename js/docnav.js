@@ -1,10 +1,9 @@
 ;;
 
-function DocNav(outputElement, inputElements) {
+function DocNav(outputElement, headings) {
   this.disableWaypoints = true;
   this.outputElement = outputElement;
-  this.inputElements = inputElements;
-  this.headings = this.inputElements.find('h1, h2, h3, h4, h5, h6');
+  this.headings = headings;
   var last = 0;
   var l = this.headings.length;
   var baseLevel = parseInt(this.headings[0].tagName[1]);
@@ -14,6 +13,7 @@ function DocNav(outputElement, inputElements) {
   var flatMap = {};
   for (var i = 0; i < l; i++) {
     var e = this.headings.eq(i);
+    e.before('<span class="docnav__fakeanchor"/>');
     var headingDepth = e[0].tagName[1] - baseLevel;
     if (!e[0].id) {
       e[0].id = 'docnav' + i;
@@ -53,7 +53,7 @@ function DocNav(outputElement, inputElements) {
   var docnavVue = new Vue({
     el: this.outputElement[0],
     data: { theMap: map, selected: this.selected, docNav: thisDocNav },
-    template: '<docnav\n      :doc-nav="docNav"\n      :item="theMap"\n      :selected="selected"\n      depth="0" />'
+    template: '<div class="docnav-wrapper"><docnav\n      :doc-nav="docNav"\n      :item="theMap"\n      :selected="selected"\n      depth="0" /></div>'
   });
 
   for (var i = 0; i < l; i++) {
@@ -63,11 +63,20 @@ function DocNav(outputElement, inputElements) {
     (function (li) {
       li.e.docnavWaypoint = new Waypoint({
         element: li.e[0],
-        offset: 'bottom-in-view',
-        handler: function handler() {
-          if (!thisDocNav.disableWaypoints) {
-            // console.log("handler firing ", li.title, thisDocNav.disableWaypoints);
-            // Find corresponding Vue element and trigger it's clicked method?
+        offset: '60%',
+        handler: function handler(direction) {
+          if (!thisDocNav.disableWaypoints && direction == 'down') {
+            console.log(direction, "bottom in view ", li.e[0]);
+            thisDocNav.selectItem(li);
+          }
+        }
+      });
+      li.e.docnavWaypoint = new Waypoint({
+        element: li.e[0],
+        offset: '20%',
+        handler: function handler(direction) {
+          if (!thisDocNav.disableWaypoints && direction == 'up') {
+            console.log(direction, "top in view ", li.e[0]);
             thisDocNav.selectItem(li);
           }
         }
@@ -89,13 +98,13 @@ DocNav.prototype.selectItem = function (li) {
 
 Vue.component('docnav', {
   props: ['item', 'depth', 'selected', 'docNav'],
-  template: '<ul :class="\'depth-\' + depth">\n    <li v-for="li in item.children"\n      :class="getClasses(li)"\n      >\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        :item="li"\n        :doc-nav="docNav"\n        :depth="parseInt(depth) + 1"\n        v-if="li.children.length>0"\n        />\n    </li></ul>',
+  template: '<ul :class="\'docnav depth-\' + depth">\n    <li v-for="li in item.children"\n      :class="getClasses(li)"\n      >\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        :item="li"\n        :doc-nav="docNav"\n        :depth="parseInt(depth) + 1"\n        v-if="li.children.length>0"\n        />\n    </li></ul>',
   methods: {
     focus: function focus(li, e) {
       // console.log("focus", li, e);
       if (e) e.preventDefault();
       this.docNav.disableWaypoints = true;
-      li.e.addClass('attention')[0].scrollIntoView();
+      li.e.addClass('attention').prev()[0].scrollIntoView();
       this.docNav.selectItem(li);
       window.setTimeout(function () {
         li.e.removeClass('attention');
@@ -127,11 +136,9 @@ Vue.component('docnav', {
 });
 
 jQuery(function () {
-  // Sort out the wrapper stuff.
-  var i = jQuery('.field-name-body .field-item');
+  var i = jQuery('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
   var o = jQuery('<div/>');
-  i = i.wrap('<div class="docnav__content"/>').parent();
-  i.wrap('<div class="docnav-wrapper"></div>').parent().append(jQuery('<div class="docnav__nav"/>').append(o));
+  jQuery('aside.sidebar .menu-block-1 li.active').append(o);
   o.docNav = new DocNav(o, i);
 });
 //# sourceMappingURL=docnav.js.map

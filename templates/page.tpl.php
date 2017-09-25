@@ -9,17 +9,20 @@
 ?>
 
 <div id="page">
-  <header class="header" id="header" role="banner">
-      <?php print render($title_prefix); ?>
-      <?php if (empty($suppress_title)): ?>
-        <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
-      <?php endif; ?>
-    <?php unset($page['header']['#theme_wrappers']); print render($page['header']); ?>
-  </header>
+  <?php // Render the sidebars to see if there's anything in them.
+    $sidebar= render($page['sidebar']);
+  ?>
 
-  <div id="main">
+    <div id="main" class="<?php print $sidebar ? 'has-sidebar' : 'no-sidebar' ?>">
 
     <div id="content" class="column" role="main">
+      <header class="header" id="header" role="banner">
+          <?php print render($title_prefix); ?>
+          <?php if (empty($suppress_title)): ?>
+            <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
+          <?php endif; ?>
+        <?php unset($page['header']['#theme_wrappers']); print render($page['header']); ?>
+      </header>
       <?php print render($page['highlighted']); ?>
       <a id="main-content"></a>
       <?php print render($title_suffix); ?>
@@ -36,16 +39,9 @@
       <?php print render($page['navigation']); ?>
     </div>
 
-    <?php
-      // Render the sidebars to see if there's anything in them.
-      $sidebar_first  = render($page['sidebar_first']);
-      $sidebar_second = render($page['sidebar_second']);
-    ?>
-
-    <?php if ($sidebar_first || $sidebar_second): ?>
-      <aside class="sidebars">
-        <?php print $sidebar_first; ?>
-        <?php print $sidebar_second; ?>
+    <?php if ($sidebar): ?>
+      <aside class="sidebar">
+        <?php print $sidebar; ?>
       </aside>
     <?php endif; ?>
 

@@ -9,7 +9,72 @@ body {
   background-color: $colourBackground;
 }
 
+h1, h2 {
+  font-weight: light;
+  margin:2rem 0 1rem;
+  line-height:1.3;
+  color:black;
+}
+h1 {
+  font-size:2.4rem;
+}
+h2 {
+  font-size:2rem;
+}
+
+h3, h4, h5 {
+  max-width:65em;
+}
 p {
   margin:0 0 1rem;
   line-height:1.4;
+  max-width:55em;
+}
+// Set max width since we often get <li> without <p> inside...
+li {
+  max-width:55em;
+}
+
+ul {
+  margin:1rem 0;
+}
+
+table {
+  border-collapse: collapse;
+}
+tbody {
+  border:none;
+}
+td {
+  padding: 0.5rem 1rem;
+  border:solid 1px #d8d8d8;
+}
+th {
+  padding: 0.5rem 1rem;
+  background-color: white;
+  border:solid 1px #d8d8d8;
+}
+
+
+aside.box {
+  margin:1rem 0;
+  padding:0.5rem;
+  border:solid 1px rgba(0,0,0,0.1);
+  max-width:65em;
+  h1 {
+    margin:-0.5rem -0.5rem 0.5rem;
+    padding:0.5rem;
+    font-size:1rem;
+    color:white;
+  }
+}
+aside.box--info {
+  background-color: $colourGreenHint;
+  border-color: $colourGreenStrongBg;
+  h1 { background-color: $colourGreenStrongBg; }
+}
+aside.box--warning {
+  background-color: $colourAmberHint;
+  border-color:$colourAmberStrongBg;
+  h1 { background-color: $colourAmberStrongBg;}
 }

@@ -1,0 +1,5 @@
+@import 'content';
+
+@each $selector in box box--info box--warning {
+  div.#{$selector} { @extend aside.#{$selector} }
+}

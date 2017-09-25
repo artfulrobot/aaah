@@ -7,28 +7,69 @@ body {
   padding:0;
 }
 
-// DocNav
-.docnav-wrapper {
-  display:flex;
-  flex-wrap:wrap;
-  margin:0 -1rem;
-}
-.docnav__content {
-  flex: 1 1 60%;
-  padding:0 1rem;
-}
-.docnav__nav {
-  flex: 1 0 20em;
-  padding:0 1rem;
+// Layout when sidebar present. {{{
+$sidebar_width  : 20rem;
+$sidebar_gutter : 2rem;
+.has-sidebar {
 
-  ul {
+  #content {
+    margin-left:($sidebar_width + $sidebar_gutter);
+  }
+  aside.sidebar {
+    position:fixed;
+    top:0;
+    left:0;
+    width: $sidebar_width;
+    bottom:0;
+    background-color: $colourDarkGrey;
+    // Allow for menu bar at top.
+    padding:3rem 0 0;
+    overflow-y: auto;
+  }
+}
+//}}}
+
+// Main menu block.
+.menu-block-1 {
+  ul.menu {
+    padding:0;
+    margin:0;
+
+    // We need to overcome specificity of drupal system's ul.menu li
+    li {
+      margin:0;
+      list-style:none;
+    }
+  }
+  li, li.leaf {
+    padding:0;
+  }
+  li>a {
+    display:block;
+    padding:0.5rem 1rem;
+    text-decoration: none;
+    color: white;
+    &.active-trail {
+      background-color:$colourMidGrey;
+      font-weight: bold;
+    }
+    &.active {
+      background-color: $colourBackground;
+      color: $colourText;
+    }
+  }
+}
+
+// DocNav
+.docnav__fakeanchor {
+  position:absolute;
+  margin-top:-3rem;
+}
+.docnav-wrapper {
+  ul.docnav {
     margin:0;
     padding:0;
     list-style:none;
-    &.depth-0 {
-      position:sticky;
-      top:3rem;
-    }
   }
   li {
     margin:0;
@@ -38,6 +79,7 @@ body {
     }
     &.selected>a{
       font-weight: bold;
+      // transform:translateX(1rem);
     }
   }
   // By default, sub-lists are not shown.
@@ -53,14 +95,15 @@ body {
   a {
     display:block;
     padding:0.5rem 1rem;
+    transition: all 0.3s;
   }
   // Colours.
   li a {
     text-decoration: none;
   }
   li.depth-0 a {
-    background: #4444ee;
-    color:white;
+    background: $colourBackgroundShade;
+    color:$colourText;
   }
   li.depth-1 a {
     background: #555;
@@ -86,3 +129,6 @@ body {
 .attention {
   animation: attn 0.2s forwards linear;
 }
+
+// Local overrides.
+@import 'feast';
