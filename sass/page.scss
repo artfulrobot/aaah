@@ -7,33 +7,59 @@ body {
   padding:0;
 }
 
-// Layout when sidebar present. {{{
+// Forms {{{
+input[type="text"], input[type="password"], textarea {
+  background: white;
+  border:solid 1px $colourMidGrey;
+  color:$colourText;
+  border-radius: 3px;
+  width:100%;
+  padding:0.5rem;
+}
+label {
+  font-weight: normal;
+}
+// }}}
+// Sidebar layout. {{{
 $sidebar_width  : 20rem;
 $sidebar_gutter : 2rem;
 .has-sidebar {
-
   #content {
     margin-left:($sidebar_width + $sidebar_gutter);
   }
-  aside.sidebar {
-    position:fixed;
-    top:0;
-    left:0;
-    width: $sidebar_width;
-    bottom:0;
-    background-color: $colourDarkGrey;
-    // Allow for menu bar at top.
-    padding:3rem 0 0;
-    overflow-y: auto;
+}
+aside.sidebar {
+  position:fixed;
+  top:0;
+  left:0;
+  width: $sidebar_width;
+  bottom:0;
+  // Allow for menu bar at top.
+  padding:3rem 1rem 0;
+  overflow-y: auto;
+
+  // Colour the sidebar.
+  background-color: $colourDarkGrey;
+  color: $colourWhitishText;
+  h1, h2, h3, h4 {
+    color: $colourWhitishText;
+  }
+  a:link, a:visited {
+    color: $colourWhitishText;
+  }
+  input[type="text"], input[type="password"], textarea {
+    background: $colourMidGrey;
+    border-color:$colourDarkGrey;
   }
 }
 //}}}
 
-// Main menu block.
+// Main menu block. {{{
 .menu-block-1 {
   ul.menu {
     padding:0;
-    margin:0;
+    // escape the padding of the sidebar.
+    margin:0 -1rem;
 
     // We need to overcome specificity of drupal system's ul.menu li
     li {
@@ -52,12 +78,17 @@ $sidebar_gutter : 2rem;
     &.active-trail {
       background-color:$colourMidGrey;
       font-weight: bold;
+      color: $colourText;
     }
     &.active {
       background-color: $colourBackground;
       color: $colourText;
     }
   }
+} // }}}
+// Hide the Drupal tabs if we have the adminimal menu.
+body.adminimal-menu #content ul.tabs.primary {
+  display:none;
 }
 
 // DocNav
@@ -129,6 +160,3 @@ $sidebar_gutter : 2rem;
 .attention {
   animation: attn 0.2s forwards linear;
 }
-
-// Local overrides.
-@import 'feast';

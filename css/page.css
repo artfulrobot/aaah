@@ -1,3 +1,9 @@
+html {
+  box-sizing: border-box; }
+
+*, *:before, *:after {
+  box-sizing: inherit; }
+
 body {
   font-family: Lato;
   font-size: 1rem;
@@ -101,19 +107,27 @@ body.page-civicrm {
 
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
   background: #f8f8f8;
-  border: none; }
+  border: none;
+  border-radius: 0;
+  border-bottom: solid 4px transparent; }
   .ui-state-default:hover, .ui-widget-content .ui-state-default:hover, .ui-widget-header .ui-state-default:hover {
     background: #b9ddf9; }
 
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  background: #2c98ed;
-  color: white; }
+  background: #f8f8f8;
+  border: none;
+  border-radius: 0;
+  border-bottom: solid 4px #2c98ed;
+  color: #2c98ed; }
   .ui-state-active:hover, .ui-widget-content .ui-state-active:hover, .ui-widget-header .ui-state-active:hover {
-    background: #2c98ed; }
+    border-bottom-color: #2c98ed; }
   .ui-state-active a:link, .ui-state-active a:visited, .ui-widget-content .ui-state-active a:link, .ui-widget-content .ui-state-active a:visited, .ui-widget-header .ui-state-active a:link, .ui-widget-header .ui-state-active a:visited {
-    color: white; }
-  .ui-state-active.disabled a.ui-tabs-anchor, .ui-state-active.crm-count-0 a.ui-tabs-anchor, .ui-state-active.crm-count-0 a.ui-tabs-anchor em, .ui-widget-content .ui-state-active.disabled a.ui-tabs-anchor, .ui-widget-content .ui-state-active.crm-count-0 a.ui-tabs-anchor, .ui-widget-content .ui-state-active.crm-count-0 a.ui-tabs-anchor em, .ui-widget-header .ui-state-active.disabled a.ui-tabs-anchor, .ui-widget-header .ui-state-active.crm-count-0 a.ui-tabs-anchor, .ui-widget-header .ui-state-active.crm-count-0 a.ui-tabs-anchor em {
-    color: white !important; }
+    color: #2c98ed; }
+
+.crm-container ul li.crm-tab-button {
+  border-bottom: solid 3px transparent; }
+  .crm-container ul li.crm-tab-button.ui-state-active {
+    border-bottom-color: #2c98ed; }
 
 .crm-container .ui-dialog-titlebar.ui-widget-header {
   background: #333; }
@@ -187,25 +201,50 @@ body.page-civicrm {
         -ms-flex: 1 0 60%;
             flex: 1 0 60%; }
 
+.crm-tag-item {
+  line-height: 1.25; }
+
+.crm-container div.crm-clear {
+  font-size: inherit; }
+
 body {
   padding: 0; }
+
+input[type="text"], input[type="password"], textarea {
+  background: white;
+  border: solid 1px #555;
+  color: #222;
+  border-radius: 3px;
+  width: 100%;
+  padding: 0.5rem; }
+
+label {
+  font-weight: normal; }
 
 .has-sidebar #content {
   margin-left: 22rem; }
 
-.has-sidebar aside.sidebar {
+aside.sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 20rem;
   bottom: 0;
+  padding: 3rem 1rem 0;
+  overflow-y: auto;
   background-color: #333;
-  padding: 3rem 0 0;
-  overflow-y: auto; }
+  color: #eee; }
+  aside.sidebar h1, aside.sidebar h2, aside.sidebar h3, aside.sidebar h4 {
+    color: #eee; }
+  aside.sidebar a:link, aside.sidebar a:visited {
+    color: #eee; }
+  aside.sidebar input[type="text"], aside.sidebar input[type="password"], aside.sidebar textarea {
+    background: #555;
+    border-color: #333; }
 
 .menu-block-1 ul.menu {
   padding: 0;
-  margin: 0; }
+  margin: 0 -1rem; }
   .menu-block-1 ul.menu li {
     margin: 0;
     list-style: none; }
@@ -220,10 +259,14 @@ body {
   color: white; }
   .menu-block-1 li > a.active-trail {
     background-color: #555;
-    font-weight: bold; }
+    font-weight: bold;
+    color: #222; }
   .menu-block-1 li > a.active {
     background-color: #f3f2ed;
     color: #222; }
+
+body.adminimal-menu #content ul.tabs.primary {
+  display: none; }
 
 .docnav__fakeanchor {
   position: absolute;
@@ -327,41 +370,5 @@ body {
 .attention {
   -webkit-animation: attn 0.2s forwards linear;
           animation: attn 0.2s forwards linear; }
-
-#block-block-1 img {
-  height: auto;
-  width: 3rem;
-  display: block;
-  margin: 0 auto; }
-
-h1, h2, h3, h4, h5 {
-  font-family: Oswald, sans-serif;
-  font-weight: 300;
-  text-transform: uppercase;
-  color: #0a508d; }
-
-body {
-  font-family: "Helvetica Nue", Helvetica, Arial; }
-
-a:link,
-a:visited {
-  color: #0a508d; }
-
-a:hover, a:active {
-  color: #0eb6cb; }
-
-.menu-block-1 li > a.active {
-  color: #0a508d; }
-
-.docnav-wrapper li.selected-route > a {
-  background-color: #0a508d;
-  color: white; }
-
-.docnav-wrapper li.selected > a {
-  background-color: #0eb6cb;
-  color: white; }
-
-body.page-civicrm #admin-menu {
-  display: none; }
 
 /*# sourceMappingURL=page.css.map */

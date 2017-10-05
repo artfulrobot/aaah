@@ -38,23 +38,34 @@ body.page-civicrm {
 .ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
   background:$colourWidgetBackground;
   border:none;
+  border-radius: 0;
+  border-bottom: solid 4px transparent;
   &:hover {
     background: $colourWidgetCouldSelectBackground;
   }
 }
 .ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
-  background: $colourWidgetSelectedBackground;
+  background:$colourWidgetBackground;
+  border:none;
+  border-radius: 0;
+  border-bottom: solid 4px $colourArtfulBrightBlue;
+  //background: $colourWidgetSelectedBackground;
   &:hover {
-    background: $colourWidgetSelectedBackground;
+    border-bottom-color:$colourArtfulBrightBlue;
   }
-  color: white;
+  color: $colourArtfulBrightBlue;
   a:link, a:visited {
-    color: white;
+    color: $colourArtfulBrightBlue;
   }
 
   // When an active thing has a disabled something, just show it white.
   &.disabled a.ui-tabs-anchor, &.crm-count-0 a.ui-tabs-anchor, &.crm-count-0 a.ui-tabs-anchor em {
-    color: white !important;
+  }
+}
+.crm-container ul li.crm-tab-button {
+  border-bottom: solid 3px transparent;
+  &.ui-state-active {
+    border-bottom-color: $colourArtfulBrightBlue;
   }
 }
 // }}}
@@ -125,3 +136,11 @@ body.page-civicrm {
   }
 }
 
+.crm-tag-item {
+  line-height:1.25;
+}
+
+// The default font size for data on contact screens etc. is 11px!
+.crm-container div.crm-clear {
+  font-size:inherit;
+}
