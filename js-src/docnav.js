@@ -99,6 +99,7 @@ DocNav.prototype.selectItem = function(li) {
   }
 };
 
+if (window.Vue) {
 Vue.component('docnav', {
   props: ['item', 'depth', 'selected', 'docNav'],
   template: `<ul :class="\'docnav depth-\' + depth">
@@ -145,10 +146,19 @@ Vue.component('docnav', {
     }
   }
 });
-
+}
 jQuery(function(){
   var i = jQuery('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
   var o = jQuery('<div/>');
-  jQuery('aside.sidebar .menu-block-1 li.active').append(o);
-  o.docNav = new DocNav(o, i);
+  if (i.length>0 && o.length>0) {
+    jQuery('aside.sidebar .menu-block-1 li.active').append(o);
+    o.docNav = new DocNav(o, i);
+  }
+
+  // xxx move this
+  jQuery('#sidebar-toggle').on('click', function(e) {
+    console.log(jQuery('#main.has-sidebar'));
+    jQuery('#main.has-sidebar').toggleClass('sidebar-closed');
+
+  });
 });

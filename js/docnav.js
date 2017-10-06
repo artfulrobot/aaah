@@ -96,49 +96,58 @@ DocNav.prototype.selectItem = function (li) {
   }
 };
 
-Vue.component('docnav', {
-  props: ['item', 'depth', 'selected', 'docNav'],
-  template: '<ul :class="\'docnav depth-\' + depth">\n    <li v-for="li in item.children"\n      :class="getClasses(li)"\n      >\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        :item="li"\n        :doc-nav="docNav"\n        :depth="parseInt(depth) + 1"\n        v-if="li.children.length>0"\n        />\n    </li></ul>',
-  methods: {
-    focus: function focus(li, e) {
-      // console.log("focus", li, e);
-      if (e) e.preventDefault();
-      this.docNav.disableWaypoints = true;
-      li.e.addClass('attention').prev()[0].scrollIntoView();
-      this.docNav.selectItem(li);
-      window.setTimeout(function () {
-        li.e.removeClass('attention');
-      }, 1000);
-      var docNav = this.docNav;
-      window.setTimeout(function () {
-        docNav.disableWaypoints = false;
-      }, 300);
-    },
-    getClasses: function getClasses(li) {
-      //console.log("getClasses selected:", this.selected, " this li: ", li);
-      var c = {
-        selected: li.e == this.selected[0].e
-      };
-      c['depth-' + this.depth] = true;
-      var l = this.selected.length;
-      for (var i = 1; i < l; i++) {
-        if (this.selected[i].e == li.e) {
+if (window.Vue) {
+  Vue.component('docnav', {
+    props: ['item', 'depth', 'selected', 'docNav'],
+    template: '<ul :class="\'docnav depth-\' + depth">\n    <li v-for="li in item.children"\n      :class="getClasses(li)"\n      >\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        :item="li"\n        :doc-nav="docNav"\n        :depth="parseInt(depth) + 1"\n        v-if="li.children.length>0"\n        />\n    </li></ul>',
+    methods: {
+      focus: function focus(li, e) {
+        // console.log("focus", li, e);
+        if (e) e.preventDefault();
+        this.docNav.disableWaypoints = true;
+        li.e.addClass('attention').prev()[0].scrollIntoView();
+        this.docNav.selectItem(li);
+        window.setTimeout(function () {
+          li.e.removeClass('attention');
+        }, 1000);
+        var docNav = this.docNav;
+        window.setTimeout(function () {
+          docNav.disableWaypoints = false;
+        }, 300);
+      },
+      getClasses: function getClasses(li) {
+        //console.log("getClasses selected:", this.selected, " this li: ", li);
+        var c = {
+          selected: li.e == this.selected[0].e
+        };
+        c['depth-' + this.depth] = true;
+        var l = this.selected.length;
+        for (var i = 1; i < l; i++) {
+          if (this.selected[i].e == li.e) {
+            c['selected-route'] = true;
+          }
+        }
+        if (li.e === null) {
+          // Inaccessible empty layers show as open.
           c['selected-route'] = true;
         }
+        return c;
       }
-      if (li.e === null) {
-        // Inaccessible empty layers show as open.
-        c['selected-route'] = true;
-      }
-      return c;
     }
-  }
-});
-
+  });
+}
 jQuery(function () {
   var i = jQuery('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
   var o = jQuery('<div/>');
-  jQuery('aside.sidebar .menu-block-1 li.active').append(o);
-  o.docNav = new DocNav(o, i);
+  if (i.length > 0 && o.length > 0) {
+    jQuery('aside.sidebar .menu-block-1 li.active').append(o);
+    o.docNav = new DocNav(o, i);
+  }
+
+  // xxx move this
+  jQuery('#sidebar-toggle').on('click', function (e) {
+    console.log(jQuery('#main.has-sidebar'));
+    jQuery('#main.has-sidebar').toggleClass('sidebar-closed');
+  });
 });
 //# sourceMappingURL=docnav.js.map
