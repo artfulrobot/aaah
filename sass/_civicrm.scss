@@ -88,6 +88,9 @@ body.page-civicrm {
   &:hover {
     background-color: darken($colourArtfulBrightBlue, 10%);
   }
+
+  float:none;
+  display:inline-block;
 }
 
 #crm-container ul.wizard-bar {
