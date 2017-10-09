@@ -26,6 +26,22 @@ $sidebar_gutter : 2rem;
 .has-sidebar {
   #content {
     margin-left:($sidebar_width + $sidebar_gutter);
+    transition: margin-left 0.2s;
+  }
+  &.sidebar-closed {
+
+    #content {
+      margin-left:$sidebar_gutter;
+    }
+    aside.sidebar {
+      transform:translateX(-$sidebar_width);
+    }
+  }
+  #sidebar-toggle {
+    position:fixed;
+    bottom:0;
+    left:0;
+
   }
 }
 aside.sidebar {
@@ -33,6 +49,7 @@ aside.sidebar {
   top:0;
   left:0;
   width: $sidebar_width;
+  transition: transform 0.2s;
   bottom:0;
   // Allow for menu bar at top.
   padding:3rem 1rem 0;

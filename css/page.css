@@ -143,7 +143,9 @@ body.page-civicrm {
   text-shadow: none;
   border: none;
   box-shadow: 0 0 6px rgba(0, 0, 0, 0.2);
-  padding: 0.4em 1em; }
+  padding: 0.4em 1em;
+  float: none;
+  display: inline-block; }
   .crm-container a.button:hover,
   .crm-container a.button:link:hover,
   .crm-container a.button:visited:hover,
@@ -222,13 +224,29 @@ label {
   font-weight: normal; }
 
 .has-sidebar #content {
-  margin-left: 22rem; }
+  margin-left: 22rem;
+  transition: margin-left 0.2s; }
+
+.has-sidebar.sidebar-closed #content {
+  margin-left: 2rem; }
+
+.has-sidebar.sidebar-closed aside.sidebar {
+  -webkit-transform: translateX(-20rem);
+          transform: translateX(-20rem); }
+
+.has-sidebar #sidebar-toggle {
+  position: fixed;
+  bottom: 0;
+  left: 0; }
 
 aside.sidebar {
   position: fixed;
   top: 0;
   left: 0;
   width: 20rem;
+  transition: -webkit-transform 0.2s;
+  transition: transform 0.2s;
+  transition: transform 0.2s, -webkit-transform 0.2s;
   bottom: 0;
   padding: 3rem 1rem 0;
   overflow-y: auto;

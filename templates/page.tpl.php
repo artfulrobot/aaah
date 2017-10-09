@@ -43,6 +43,7 @@
       <aside class="sidebar">
         <?php print $sidebar; ?>
       </aside>
+      <div id='sidebar-toggle'>Toggle sidebar</div>
     <?php endif; ?>
 
   </div>
