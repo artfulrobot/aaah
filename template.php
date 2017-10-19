@@ -5,6 +5,7 @@ function aaah_preprocess_html(&$variables) {
 }
 function aaah_preprocess_page(&$variables) {
   $variables['page']['content']['#attached']['css']['https://fonts.googleapis.com/css?family=Oswald:300']  = ['type' => 'external'];
+  $variables['hideSidebar'] = !empty($_COOKIE['hideSidebar']) ? ' sidebar-closed' : '';
 }
 function aaah_preprocess_node(&$variables) {
   $variables['content']['#attached']['js']['https://unpkg.com/vue']  = ['type' => 'external'];

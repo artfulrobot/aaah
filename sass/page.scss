@@ -28,7 +28,30 @@ $sidebar_gutter : 2rem;
     margin-left:($sidebar_width + $sidebar_gutter);
     transition: margin-left 0.2s;
   }
+  #sidebar-toggle {
+    position:fixed;
+    bottom:0;
+    left:0;
+    width: $sidebar_width;
+    height:1.5rem;
+    line-height:1;
+    background-color: $colourDarkGrey;
+    padding:0 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s;
+    transform-origin: bottom left;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
   &.sidebar-closed {
+
+    #sidebar-toggle {
+      transform:translate(1.5rem, 0rem) rotate(-90deg);
+      width:9rem;
+    }
 
     #content {
       margin-left:$sidebar_gutter;
@@ -36,12 +59,6 @@ $sidebar_gutter : 2rem;
     aside.sidebar {
       transform:translateX(-$sidebar_width);
     }
-  }
-  #sidebar-toggle {
-    position:fixed;
-    bottom:0;
-    left:0;
-
   }
 }
 aside.sidebar {
@@ -71,6 +88,15 @@ aside.sidebar {
   }
 }
 //}}}
+
+// Images {{{
+.field-name-body {
+  img {
+    max-width: 100%;
+    height:auto;
+  }
+}
+// }}}
 
 // Main menu block. {{{
 .menu-block-1 {
@@ -104,12 +130,12 @@ aside.sidebar {
     }
   }
 } // }}}
-// Hide the Drupal tabs if we have the adminimal menu.
+// Hide the Drupal tabs if we have the adminimal menu. {{{
 body.adminimal-menu #content ul.tabs.primary {
   display:none;
-}
+} // }}}
 
-// DocNav
+// DocNav {{{
 .docnav__fakeanchor {
   position:absolute;
   margin-top:-3rem;
@@ -178,3 +204,4 @@ body.adminimal-menu #content ul.tabs.primary {
 .attention {
   animation: attn 0.2s forwards linear;
 }
+// }}}

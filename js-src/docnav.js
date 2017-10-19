@@ -156,9 +156,26 @@ jQuery(function(){
   }
 
   // xxx move this
-  jQuery('#sidebar-toggle').on('click', function(e) {
-    console.log(jQuery('#main.has-sidebar'));
-    jQuery('#main.has-sidebar').toggleClass('sidebar-closed');
 
+  var $sidebarContainer = jQuery('#main.has-sidebar');
+
+  jQuery('#sidebar-toggle').on('click', function(e) {
+    if ($sidebarContainer.hasClass('sidebar-closed')) {
+      // show sidebar.
+      var yesterday = (new Date()).toUTCString();
+      document.cookie = 'hideSidebar=; expires=' + yesterday;
+    }
+    else {
+      // hide sidebar now.
+      var ages_away = new Date();
+      ages_away.setFullYear((new Date()).getFullYear() + 1)
+      ages_away = ages_away.toUTCString();
+      document.cookie = 'hideSidebar=true; expires=' + ages_away;
+    }
+    $sidebarContainer.toggleClass('sidebar-closed');
   });
+
+  if (document.cookie.replace(/(?:(?:^|.*;\s*)hideSidebar\s*\=\s*([^;]*).*$)|^.*$/, "$1") === 'true') {
+    $sidebarContainer.addClass('sidebar-closed');
+  }
 });

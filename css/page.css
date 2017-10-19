@@ -227,17 +227,35 @@ label {
   margin-left: 22rem;
   transition: margin-left 0.2s; }
 
+.has-sidebar #sidebar-toggle {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 20rem;
+  height: 1.5rem;
+  line-height: 1;
+  background-color: #333;
+  padding: 0 0.5rem;
+  color: rgba(255, 255, 255, 0.6);
+  transition: all 0.2s;
+  -webkit-transform-origin: bottom left;
+          transform-origin: bottom left;
+  text-align: center;
+  cursor: pointer; }
+  .has-sidebar #sidebar-toggle:hover {
+    color: white; }
+
+.has-sidebar.sidebar-closed #sidebar-toggle {
+  -webkit-transform: translate(1.5rem, 0rem) rotate(-90deg);
+          transform: translate(1.5rem, 0rem) rotate(-90deg);
+  width: 9rem; }
+
 .has-sidebar.sidebar-closed #content {
   margin-left: 2rem; }
 
 .has-sidebar.sidebar-closed aside.sidebar {
   -webkit-transform: translateX(-20rem);
           transform: translateX(-20rem); }
-
-.has-sidebar #sidebar-toggle {
-  position: fixed;
-  bottom: 0;
-  left: 0; }
 
 aside.sidebar {
   position: fixed;
@@ -258,7 +276,12 @@ aside.sidebar {
     color: #eee; }
   aside.sidebar input[type="text"], aside.sidebar input[type="password"], aside.sidebar textarea {
     background: #555;
-    border-color: #333; }
+    border-color: #333;
+    color: white; }
+
+.field-name-body img {
+  max-width: 100%;
+  height: auto; }
 
 .menu-block-1 ul.menu {
   padding: 0;
