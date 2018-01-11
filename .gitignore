@@ -1,2 +1,4 @@
 .npm
 *.swp
+*.js.map
+*.css.map
