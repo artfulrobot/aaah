@@ -147,3 +147,34 @@ body.page-civicrm {
 .crm-container div.crm-clear {
   font-size:inherit;
 }
+
+
+// Calm bootstrap a bit.
+body#bootstrap-theme, #bootstrap-theme {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+#bootstrap-theme {
+  @each $h in h1 h2 h3 h4 h5 h6 {
+    #{$h} {
+      small, .small {
+        color:inherit;
+      }
+    }
+  }
+}
+
+#printer-friendly {
+  display:none; // It's never really printer friendly...
+}
+@media print {
+  #civicrm-footer,
+  #access,
+  #civicrm-menu
+  { display:none; }
+  body.page-civicrm {
+    padding-top:0;
+  }
+}

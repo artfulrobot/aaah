@@ -3,3 +3,8 @@
 @each $selector in box box--info box--warning {
   div.#{$selector} { @extend aside.#{$selector} }
 }
+.image-wrapper {
+  border: 1px dashed #444;
+  min-width:50%; // just so we can see it if the image is deletd.
+  min-height:4rem;
+}

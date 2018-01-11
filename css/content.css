@@ -25,6 +25,9 @@ h2 {
 h3, h4, h5 {
   max-width: 65em; }
 
+.crm-block h3, .crm-block h4, .crm-block h5 {
+  max-width: none; }
+
 p {
   margin: 0 0 1rem;
   line-height: 1.4;
@@ -53,9 +56,9 @@ th {
 
 aside.box {
   margin: 1rem 0;
-  padding: 0.5rem;
+  padding: 1rem;
   border: solid 1px rgba(0, 0, 0, 0.1);
-  max-width: 65em; }
+  max-width: 55em; }
   aside.box h1 {
     margin: -0.5rem -0.5rem 0.5rem;
     padding: 0.5rem;
@@ -64,7 +67,7 @@ aside.box {
 
 aside.box--info {
   background-color: #e9f9db;
-  border-color: #97d462; }
+  border-color: #c0e79f; }
   aside.box--info h1 {
     background-color: #97d462; }
 
@@ -73,5 +76,28 @@ aside.box--warning {
   border-color: #eaa75c; }
   aside.box--warning h1 {
     background-color: #eaa75c; }
+
+div.image-container {
+  background-color: rgba(0, 0, 0, 0.1);
+  padding: 1rem;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex; }
+
+.image-caption {
+  -webkit-flex: 1 1 auto;
+      -ms-flex: 1 1 auto;
+          flex: 1 1 auto;
+  padding-right: 1rem; }
+
+.image-wrapper {
+  -webkit-flex: 0 0 auto;
+      -ms-flex: 0 0 auto;
+          flex: 0 0 auto;
+  max-width: 80%; }
+  .image-wrapper img {
+    width: 100%;
+    height: auto;
+    display: block; }
 
 /*# sourceMappingURL=content.css.map */

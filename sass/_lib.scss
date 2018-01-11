@@ -15,7 +15,10 @@ $colourWidgetSelectedBackground : $colourArtfulBrightBlue;
 $colourWidgetCouldSelectBackground : lighten($colourWidgetSelectedBackground, 30%);
 $colourBackground : #f3f2ed;
 $colourBackgroundShade : darken(#f3f2ed, 10%);
+
 $colourGreenStrongBg: #97d462;
 $colourGreenHint: #e9f9db;
+$colourGreen2: mix($colourGreenStrongBg, $colourGreenHint, 50%);
+
 $colourAmberStrongBg: #eaa75c;
 $colourAmberHint: #ffedcc;

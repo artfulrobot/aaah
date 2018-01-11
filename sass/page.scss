@@ -205,3 +205,18 @@ body.adminimal-menu #content ul.tabs.primary {
   animation: attn 0.2s forwards linear;
 }
 // }}}
+
+@media print {
+  .no-print,
+  #sidebar-toggle,
+  body.admin-menu.adminimal-menu::before
+  { display:none; }
+
+  .has-sidebar #content,
+  .has-sidebar.sidebar-open   #content {
+    margin-left:0;
+  }
+  aside.sidebar {
+    display:none;
+  }
+}
