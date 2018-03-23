@@ -136,35 +136,40 @@ if (window.Vue) {
     }
   });
 }
-jQuery(function () {
-  var i = jQuery('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
-  var o = jQuery('<div/>');
-  if (i.length > 0 && o.length > 0) {
-    jQuery('aside.sidebar .menu-block-1 li.active').append(o);
-    o.docNav = new DocNav(o, i);
-  }
+if (CRM && CRM.$) {
+  (function ($) {
+    console.log("dollar ", $);
+    $(function () {
+      var i = $('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
+      var o = $('<div/>');
+      if (i.length > 0 && o.length > 0) {
+        $('aside.sidebar .menu-block-1 li.active').append(o);
+        o.docNav = new DocNav(o, i);
+      }
 
-  // xxx move this
+      // xxx move this
 
-  var $sidebarContainer = jQuery('#main.has-sidebar');
+      var $sidebarContainer = $('#main.has-sidebar');
 
-  jQuery('#sidebar-toggle').on('click', function (e) {
-    if ($sidebarContainer.hasClass('sidebar-closed')) {
-      // show sidebar.
-      var yesterday = new Date().toUTCString();
-      document.cookie = 'hideSidebar=; expires=' + yesterday;
-    } else {
-      // hide sidebar now.
-      var ages_away = new Date();
-      ages_away.setFullYear(new Date().getFullYear() + 1);
-      ages_away = ages_away.toUTCString();
-      document.cookie = 'hideSidebar=true; expires=' + ages_away;
-    }
-    $sidebarContainer.toggleClass('sidebar-closed');
-  });
+      $('#sidebar-toggle').on('click', function (e) {
+        if ($sidebarContainer.hasClass('sidebar-closed')) {
+          // show sidebar.
+          var yesterday = new Date().toUTCString();
+          document.cookie = 'hideSidebar=; expires=' + yesterday;
+        } else {
+          // hide sidebar now.
+          var ages_away = new Date();
+          ages_away.setFullYear(new Date().getFullYear() + 1);
+          ages_away = ages_away.toUTCString();
+          document.cookie = 'hideSidebar=true; expires=' + ages_away;
+        }
+        $sidebarContainer.toggleClass('sidebar-closed');
+      });
 
-  if (document.cookie.replace(/(?:(?:^|.*;\s*)hideSidebar\s*\=\s*([^;]*).*$)|^.*$/, "$1") === 'true') {
-    $sidebarContainer.addClass('sidebar-closed');
-  }
-});
+      if (document.cookie.replace(/(?:(?:^|.*;\s*)hideSidebar\s*\=\s*([^;]*).*$)|^.*$/, "$1") === 'true') {
+        $sidebarContainer.addClass('sidebar-closed');
+      }
+    });
+  })(CRM.$);
+}
 //# sourceMappingURL=docnav.js.map

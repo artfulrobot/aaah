@@ -147,19 +147,22 @@ Vue.component('docnav', {
   }
 });
 }
-jQuery(function(){
-  var i = jQuery('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
-  var o = jQuery('<div/>');
+if (CRM && CRM.$) {
+(function($){
+  console.log("dollar ", $);
+$(function(){
+  var i = $('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
+  var o = $('<div/>');
   if (i.length>0 && o.length>0) {
-    jQuery('aside.sidebar .menu-block-1 li.active').append(o);
+    $('aside.sidebar .menu-block-1 li.active').append(o);
     o.docNav = new DocNav(o, i);
   }
 
   // xxx move this
 
-  var $sidebarContainer = jQuery('#main.has-sidebar');
+  var $sidebarContainer = $('#main.has-sidebar');
 
-  jQuery('#sidebar-toggle').on('click', function(e) {
+  $('#sidebar-toggle').on('click', function(e) {
     if ($sidebarContainer.hasClass('sidebar-closed')) {
       // show sidebar.
       var yesterday = (new Date()).toUTCString();
@@ -179,3 +182,6 @@ jQuery(function(){
     $sidebarContainer.addClass('sidebar-closed');
   }
 });
+
+})(CRM.$);
+}
