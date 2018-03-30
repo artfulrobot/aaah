@@ -147,7 +147,6 @@ Vue.component('docnav', {
   }
 });
 }
-if (CRM && CRM.$) {
 (function($){
   console.log("dollar ", $);
 $(function(){
@@ -183,5 +182,4 @@ $(function(){
   }
 });
 
-})(CRM.$);
-}
+})( ('CRM' in window) ? CRM.$ : jQuery);
