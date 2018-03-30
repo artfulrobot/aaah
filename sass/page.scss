@@ -23,54 +23,11 @@ label {
 // Sidebar layout. {{{
 $sidebar_width  : 20rem;
 $sidebar_gutter : 2rem;
-.has-sidebar {
-  #content {
-    margin-left:($sidebar_width + $sidebar_gutter);
-    transition: margin-left 0.2s;
-  }
-  #sidebar-toggle {
-    position:fixed;
-    bottom:0;
-    left:0;
-    width: $sidebar_width;
-    height:1.5rem;
-    line-height:1;
-    background-color: $colourDarkGrey;
-    padding:0 0.5rem;
-    color: rgba(255, 255, 255, 0.6);
-    transition: all 0.2s;
-    transform-origin: bottom left;
-    text-align: center;
-    cursor: pointer;
-    &:hover {
-      color: white;
-    }
-  }
-  &.sidebar-closed {
 
-    #sidebar-toggle {
-      transform:translate(1.5rem, 0rem) rotate(-90deg);
-      width:9rem;
-    }
-
-    #content {
-      margin-left:$sidebar_gutter;
-    }
-    aside.sidebar {
-      transform:translateX(-$sidebar_width);
-    }
-  }
-}
+#sidebar-toggle { display:none; }
 aside.sidebar {
-  position:fixed;
-  top:0;
-  left:0;
-  width: $sidebar_width;
-  transition: transform 0.2s;
-  bottom:0;
   // Allow for menu bar at top.
   padding:3rem 1rem 0;
-  overflow-y: auto;
 
   // Colour the sidebar.
   background-color: $colourDarkGrey;
@@ -88,6 +45,57 @@ aside.sidebar {
   }
 }
 //}}}
+// Slidey sidebar for non mobiles.
+@media screen and (min-width: 850px) {
+  #content {
+    margin-left:($sidebar_width + $sidebar_gutter);
+    transition: margin-left 0.2s;
+  }
+  &.sidebar-closed {
+
+    #sidebar-toggle {
+      transform:translate(1.5rem, 0rem) rotate(-90deg);
+      width:9rem;
+    }
+
+    #content {
+      margin-left:$sidebar_gutter;
+    }
+    aside.sidebar {
+      transform:translateX(-$sidebar_width);
+    }
+  }
+  #sidebar-toggle {
+    display:block;
+    position:fixed;
+    bottom:0;
+    left:0;
+    width: $sidebar_width;
+    height:1.5rem;
+    line-height:1;
+    background-color: $colourDarkGrey;
+    padding:0 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s;
+    transform-origin: bottom left;
+    text-align: center;
+    cursor: pointer;
+    &:hover {
+      color: white;
+    }
+  }
+
+  aside.sidebar {
+    position:fixed;
+    top:0;
+    left:0;
+    width: $sidebar_width;
+    transition: transform 0.2s;
+    bottom:0;
+    overflow-y: auto;
+  }
+}
+
 
 // Images {{{
 .field-name-body {

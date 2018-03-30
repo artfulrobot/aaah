@@ -284,51 +284,11 @@ input[type="text"], input[type="password"], textarea {
 label {
   font-weight: normal; }
 
-.has-sidebar #content {
-  margin-left: 22rem;
-  transition: margin-left 0.2s; }
-
-.has-sidebar #sidebar-toggle {
-  position: fixed;
-  bottom: 0;
-  left: 0;
-  width: 20rem;
-  height: 1.5rem;
-  line-height: 1;
-  background-color: #333;
-  padding: 0 0.5rem;
-  color: rgba(255, 255, 255, 0.6);
-  transition: all 0.2s;
-  -webkit-transform-origin: bottom left;
-          transform-origin: bottom left;
-  text-align: center;
-  cursor: pointer; }
-  .has-sidebar #sidebar-toggle:hover {
-    color: white; }
-
-.has-sidebar.sidebar-closed #sidebar-toggle {
-  -webkit-transform: translate(1.5rem, 0rem) rotate(-90deg);
-          transform: translate(1.5rem, 0rem) rotate(-90deg);
-  width: 9rem; }
-
-.has-sidebar.sidebar-closed #content {
-  margin-left: 2rem; }
-
-.has-sidebar.sidebar-closed aside.sidebar {
-  -webkit-transform: translateX(-20rem);
-          transform: translateX(-20rem); }
+#sidebar-toggle {
+  display: none; }
 
 aside.sidebar {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 20rem;
-  transition: -webkit-transform 0.2s;
-  transition: transform 0.2s;
-  transition: transform 0.2s, -webkit-transform 0.2s;
-  bottom: 0;
   padding: 3rem 1rem 0;
-  overflow-y: auto;
   background-color: #333;
   color: #eee; }
   aside.sidebar h1, aside.sidebar h2, aside.sidebar h3, aside.sidebar h4 {
@@ -339,6 +299,48 @@ aside.sidebar {
     background: #555;
     border-color: #333;
     color: white; }
+
+@media screen and (min-width: 850px) {
+  #content {
+    margin-left: 22rem;
+    transition: margin-left 0.2s; }
+  .sidebar-closed #sidebar-toggle {
+    -webkit-transform: translate(1.5rem, 0rem) rotate(-90deg);
+            transform: translate(1.5rem, 0rem) rotate(-90deg);
+    width: 9rem; }
+  .sidebar-closed #content {
+    margin-left: 2rem; }
+  .sidebar-closed aside.sidebar {
+    -webkit-transform: translateX(-20rem);
+            transform: translateX(-20rem); }
+  #sidebar-toggle {
+    display: block;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 20rem;
+    height: 1.5rem;
+    line-height: 1;
+    background-color: #333;
+    padding: 0 0.5rem;
+    color: rgba(255, 255, 255, 0.6);
+    transition: all 0.2s;
+    -webkit-transform-origin: bottom left;
+            transform-origin: bottom left;
+    text-align: center;
+    cursor: pointer; }
+    #sidebar-toggle:hover {
+      color: white; }
+  aside.sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 20rem;
+    transition: -webkit-transform 0.2s;
+    transition: transform 0.2s;
+    transition: transform 0.2s, -webkit-transform 0.2s;
+    bottom: 0;
+    overflow-y: auto; } }
 
 .field-name-body img {
   max-width: 100%;
