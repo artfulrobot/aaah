@@ -12,6 +12,9 @@ body.page-civicrm {
 .crm-container .crm-form-block {
   background-color: white;
 }
+.crm-container input, #civicrm-menu input {
+  box-sizing: border-box;
+}
 #civicrm-menu, #root-menu-div ul,
 .ui-widget {
   font-family: Lato;
