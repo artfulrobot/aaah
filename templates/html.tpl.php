@@ -7,7 +7,7 @@
  * @see https://drupal.org/node/1728208
  */
 ?><!DOCTYPE html>
-<html <?php print $html_attributes . $rdf_namespaces; ?>
+<html <?php print $html_attributes . $rdf_namespaces; ?>>
 <head>
   <?php print $head; ?>
   <title><?php print $head_title; ?></title>
