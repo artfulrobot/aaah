@@ -181,3 +181,6 @@ body#bootstrap-theme, #bootstrap-theme {
     padding-top:0;
   }
 }
+// My Quickform patch for radios.
+.crm-profile .radio-wrapper { display:block; }
+

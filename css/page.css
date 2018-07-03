@@ -273,6 +273,9 @@ body#bootstrap-theme, #bootstrap-theme {
   body.page-civicrm {
     padding-top: 0; } }
 
+.crm-profile .radio-wrapper {
+  display: block; }
+
 body {
   padding: 0; }
 
