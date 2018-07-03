@@ -307,16 +307,16 @@ aside.sidebar {
     color: white; }
 
 @media screen and (min-width: 850px) {
-  #content {
+  #main.has-sidebar #content {
     margin-left: 22rem;
     transition: margin-left 0.2s; }
-  .sidebar-closed #sidebar-toggle {
+  #main.sidebar-closed #sidebar-toggle {
     -webkit-transform: translate(1.5rem, 0rem) rotate(-90deg);
             transform: translate(1.5rem, 0rem) rotate(-90deg);
     width: 9rem; }
-  .sidebar-closed #content {
+  #main.sidebar-closed #content {
     margin-left: 2rem; }
-  .sidebar-closed aside.sidebar {
+  #main.sidebar-closed aside.sidebar {
     -webkit-transform: translateX(-20rem);
             transform: translateX(-20rem); }
   #sidebar-toggle {

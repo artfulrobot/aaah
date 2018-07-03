@@ -47,11 +47,11 @@ aside.sidebar {
 //}}}
 // Slidey sidebar for non mobiles.
 @media screen and (min-width: 850px) {
-  #content {
+  #main.has-sidebar #content {
     margin-left:($sidebar_width + $sidebar_gutter);
     transition: margin-left 0.2s;
   }
-  &.sidebar-closed {
+  #main.sidebar-closed {
 
     #sidebar-toggle {
       transform:translate(1.5rem, 0rem) rotate(-90deg);
