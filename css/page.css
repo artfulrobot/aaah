@@ -294,7 +294,8 @@ body#bootstrap-theme, #bootstrap-theme {
           flex: 0 0 160px; }
 
 body {
-  padding: 0; }
+  padding: 0;
+  margin: 0; }
 
 input[type="text"], input[type="password"], textarea {
   background: white;
