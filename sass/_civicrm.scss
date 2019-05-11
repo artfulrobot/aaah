@@ -12,9 +12,7 @@ body.page-civicrm {
 .crm-container .crm-form-block {
   background-color: white;
 }
-.crm-container input, #civicrm-menu input {
-  box-sizing: border-box;
-}
+.crm-container input { box-sizing: border-box; }
 #civicrm-menu, #root-menu-div ul,
 .ui-widget {
   font-family: Lato;
@@ -181,6 +179,19 @@ body#bootstrap-theme, #bootstrap-theme {
     padding-top:0;
   }
 }
+
 // My Quickform patch for radios.
 .crm-profile .radio-wrapper { display:block; }
 
+// Override Mosaico.
+#bootstrap-theme .crm-mosaico-template-item {
+  display:flex;
+  width:100%;
+}
+#bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-title-wrapper {
+  height:unset;
+  flex: 1 0 160px;
+}
+#bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-image-wrapper {
+  flex: 0 0 160px;
+}

@@ -108,7 +108,7 @@ body.page-civicrm {
 .crm-container .crm-form-block {
   background-color: white; }
 
-.crm-container input, #civicrm-menu input {
+.crm-container input {
   box-sizing: border-box; }
 
 #civicrm-menu, #root-menu-div ul,
@@ -275,6 +275,23 @@ body#bootstrap-theme, #bootstrap-theme {
 
 .crm-profile .radio-wrapper {
   display: block; }
+
+#bootstrap-theme .crm-mosaico-template-item {
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  width: 100%; }
+
+#bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-title-wrapper {
+  height: unset;
+  -webkit-flex: 1 0 160px;
+      -ms-flex: 1 0 160px;
+          flex: 1 0 160px; }
+
+#bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-image-wrapper {
+  -webkit-flex: 0 0 160px;
+      -ms-flex: 0 0 160px;
+          flex: 0 0 160px; }
 
 body {
   padding: 0; }
