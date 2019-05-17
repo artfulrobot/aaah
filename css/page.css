@@ -158,9 +158,6 @@ body.page-civicrm {
   .crm-container ul li.crm-tab-button.ui-state-active {
     border-bottom-color: #2c98ed; }
 
-.crm-container .ui-dialog-titlebar.ui-widget-header {
-  background: #333; }
-
 .crm-container a.button,
 .crm-container a.button:link,
 .crm-container a.button:visited,
