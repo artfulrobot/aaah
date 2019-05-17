@@ -70,9 +70,10 @@ body.page-civicrm {
   }
 }
 // }}}
-.crm-container .ui-dialog-titlebar.ui-widget-header {
-  background: $colourDarkGrey;
-}
+// Shoreditch colours this and this doesn't improve things!
+//.crm-container .ui-dialog-titlebar.ui-widget-header {
+//  background: $colourDarkGrey;
+//}
 .crm-container a.button,
 .crm-container a.button:link,
 .crm-container a.button:visited,
