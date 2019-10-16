@@ -30,10 +30,6 @@ h2 {
 }
 
 h3, h4, h5 { max-width:65em; }
-// Don't limit width in CiviCRM since it uses background-color on some headings which then look odd.
-.crm-block {
-  h3, h4, h5 { max-width:none; }
-}
 
 p {
   margin:0 0 1rem;

@@ -25,9 +25,6 @@ h2 {
 h3, h4, h5 {
   max-width: 65em; }
 
-.crm-block h3, .crm-block h4, .crm-block h5 {
-  max-width: none; }
-
 p {
   margin: 0 0 1rem;
   line-height: 1.4;

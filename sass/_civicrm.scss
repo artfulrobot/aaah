@@ -6,6 +6,18 @@ body.page-civicrm {
   h1.page-header {
     display:none; // CiviCRM seems to output this anyways.
   }
+
+  // Don't limit width in CiviCRM since it uses background-color on some headings which then look odd.
+  h3, h4, h5 { max-width:none; }
+}
+
+// Provide some space at sides on angular pages at least.
+body.page-civicrm-a #content {
+  max-width: 1200px;
+  margin-left:auto;
+  margin-right:auto;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
 // CiviCRM override default styles

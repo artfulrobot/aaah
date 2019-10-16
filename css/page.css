@@ -25,9 +25,6 @@ h2 {
 h3, h4, h5 {
   max-width: 65em; }
 
-.crm-block h3, .crm-block h4, .crm-block h5 {
-  max-width: none; }
-
 p {
   margin: 0 0 1rem;
   line-height: 1.4;
@@ -104,6 +101,15 @@ body.page-civicrm {
   padding-top: 3rem; }
   body.page-civicrm h1.page-header {
     display: none; }
+  body.page-civicrm h3, body.page-civicrm h4, body.page-civicrm h5 {
+    max-width: none; }
+
+body.page-civicrm-a #content {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1rem;
+  padding-right: 1rem; }
 
 .crm-container .crm-form-block {
   background-color: white; }
