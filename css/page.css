@@ -97,12 +97,48 @@ div.image-container {
     height: auto;
     display: block; }
 
-body.page-civicrm {
-  padding-top: 3rem; }
-  body.page-civicrm h1.page-header {
-    display: none; }
-  body.page-civicrm h3, body.page-civicrm h4, body.page-civicrm h5 {
-    max-width: none; }
+body.page-civicrm h1.page-header {
+  display: none; }
+
+body.page-civicrm h3, body.page-civicrm h4, body.page-civicrm h5 {
+  max-width: none; }
+
+body.page-civicrm #page {
+  padding-top: 1rem;
+  padding-left: 1rem;
+  padding-right: 1rem; }
+
+#mainTabContainer {
+  display: -ms-grid;
+  display: grid;
+  -ms-grid-columns: 12rem auto;
+      grid-template-columns: 12rem auto; }
+  #mainTabContainer .crm-contact-tabs-list li {
+    display: block;
+    float: none;
+    margin-bottom: 0.5rem; }
+    #mainTabContainer .crm-contact-tabs-list li a {
+      float: none; }
+  #mainTabContainer .crm-contact-tabs-list .ui-tabs-anchor {
+    display: -webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-align-items: center;
+        -ms-flex-align: center;
+            align-items: center; }
+    #mainTabContainer .crm-contact-tabs-list .ui-tabs-anchor i {
+      -webkit-flex: 0 0 auto;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto; }
+    #mainTabContainer .crm-contact-tabs-list .ui-tabs-anchor span {
+      -webkit-flex: 1 1 auto;
+          -ms-flex: 1 1 auto;
+              flex: 1 1 auto;
+      padding-left: 1em; }
+    #mainTabContainer .crm-contact-tabs-list .ui-tabs-anchor em {
+      -webkit-flex: 0 0 auto;
+          -ms-flex: 0 0 auto;
+              flex: 0 0 auto; }
 
 body.page-civicrm-a #content {
   max-width: 1200px;
