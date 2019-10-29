@@ -11,8 +11,10 @@ $colourWhitishText : #eee;
 
 $colourWidgetBackground : #f8f8f8;
 $colourWidgetBorder : #e8e8e8;
-$colourWidgetSelectedBackground : $colourArtfulBrightBlue;
-$colourWidgetCouldSelectBackground : lighten($colourWidgetSelectedBackground, 30%);
+$colourTabsBg: #eaeaea;
+  
+$colourWidgetSelectedBackground : lighten($colourArtfulBrightBlue, 25%);
+$colourWidgetCouldSelectBackground : lighten($colourArtfulBrightBlue, 30%);
 $colourBackground : #f3f2ed;
 $colourBackgroundShade : darken(#f3f2ed, 10%);
 
