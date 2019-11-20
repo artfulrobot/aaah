@@ -1,3 +1,12 @@
+// These styles apply to CiviCRM whether Shoreditch is enabled or not.
+// Note that there are some styles which refer to bootstrap, because as of 5.19
+// Bootstrap is in use in various places, but this is separate to whether
+// Shoreditch is used for the custom CSS (in Resource URLs settings page)
+//
+// There are other CSS which are loaded based on the Aaah theme's setting option:
+//
+// - aaah-civicrm-no-shoreditch.scss
+// - aaah-civicrm-shoreditch.scss
 @import 'lib';
 
 body.page-civicrm {
@@ -49,4 +58,21 @@ body.page-civicrm-a #content {
 }
 #bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-image-wrapper {
   flex: 0 0 160px;
+}
+
+// Calm bootstrap a bit.
+body#bootstrap-theme, #bootstrap-theme {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: inherit;
+}
+#bootstrap-theme {
+  @each $h in h1 h2 h3 h4 h5 h6 {
+    #{$h} {
+      small, .small {
+        color:inherit;
+      }
+    }
+  }
 }

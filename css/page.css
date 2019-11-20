@@ -146,6 +146,30 @@ body.page-civicrm-a #content {
       -ms-flex: 0 0 160px;
           flex: 0 0 160px; }
 
+body#bootstrap-theme, #bootstrap-theme {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background-color: inherit; }
+
+#bootstrap-theme h1 small, #bootstrap-theme h1 .small {
+  color: inherit; }
+
+#bootstrap-theme h2 small, #bootstrap-theme h2 .small {
+  color: inherit; }
+
+#bootstrap-theme h3 small, #bootstrap-theme h3 .small {
+  color: inherit; }
+
+#bootstrap-theme h4 small, #bootstrap-theme h4 .small {
+  color: inherit; }
+
+#bootstrap-theme h5 small, #bootstrap-theme h5 .small {
+  color: inherit; }
+
+#bootstrap-theme h6 small, #bootstrap-theme h6 .small {
+  color: inherit; }
+
 body {
   padding: 0;
   margin: 0; }

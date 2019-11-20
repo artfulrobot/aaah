@@ -24,7 +24,9 @@
   background:$colourWidgetBackground;
   border:none;
 }
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
   background:$colourWidgetBackground;
   border:none;
   border-radius: 0;
@@ -32,7 +34,9 @@
     background: $colourWidgetCouldSelectBackground;
   }
 }
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
   background:$colourWidgetBackground;
   border:none;
   border-radius: 0;
@@ -45,11 +49,6 @@
     color: $colourArtfulBrightBlue;
   }
 
-}
-.crm-container ul li.crm-tab-button {
-  &.ui-state-active {
-    background: $colourWidgetSelectedBackground;
-  }
 }
 // }}}
 // Shoreditch colours this and this doesn't improve things!
@@ -82,7 +81,39 @@
 }
 .ui-widget-content {
   border-color: $colourWidgetBorder;
+  background: $colourWidgetBackground;
 }
+// This affects things like the fields on the contact summary page
+#crm-container div.crm-summary-row {
+  background: white;
+  border-top: none;
+  margin-bottom: (5rem/16);
+}
+// Make the dividing line sharper and more subtle.
+#crm-container .separator {
+  border-bottom: solid 1px rgba(0,0,0,0.2);
+}
+// More whitespace under collapsible titles.
+.crm-container .crm-collapsible .collapsible-title {
+  margin-bottom: 0.5rem;
+}
+
+// I don't know why but CiviCRM sets a -10px margin on this that we have to undo.
+#crm-container div.crm-summary-contactname-block {
+  margin-top:0;
+}
+
+// h3s are used throughout
+.crm-container h3 {
+  background: transparent;
+  margin: 2.5rem 0 0.5rem;
+  font-size: (20rem/16);
+}
+#crm-container #civicrm-dashboard h3.widget-header {
+  color: $colourText;
+}
+
+
 .crmMailing .preview-popup, .crmMailing .preview-contact, .crmMailing .preview-group {
   height:6rem;
 }
@@ -105,12 +136,6 @@
   background-color: $colourArtfulBrightBlueHigh;
   transition: background-color 0.3s;
 }
-.crm-container h3 {
-  background: $colourArtfulBrightBlueHigh;
-}
-#crm-container #civicrm-dashboard h3.widget-header {
-  color: $colourText;
-}
 
 #civicrm-dashboard {
   display: flex;
@@ -132,21 +157,21 @@
   font-size:inherit;
 }
 
-
-// Calm bootstrap a bit.
-body#bootstrap-theme, #bootstrap-theme {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background-color: inherit;
+// Improve spacing around tabs (e.g. Contributions/Recurring Contributions)
+.crm-container .crm-tab-button a,
+.crm-container .ui-tabs .ui-tabs-nav li a
+{
+  padding: 0.5rem 1rem !important; // we have to use important because we're overriding another !important(!)
 }
-#bootstrap-theme {
-  @each $h in h1 h2 h3 h4 h5 h6 {
-    #{$h} {
-      small, .small {
-        color:inherit;
-      }
-    }
+.crm-container ul li.crm-tab-button {
+  &.ui-state-active {
+    background: white;
+    border: solid 1px $colourWidgetSelectedBackground;
+  }
+  // Bit of spacing before the count number.
+  em {
+    margin-left: 1rem;
+    display: inline-block;
   }
 }
 

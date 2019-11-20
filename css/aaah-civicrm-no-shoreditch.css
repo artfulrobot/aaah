@@ -21,26 +21,35 @@
   background: #f8f8f8;
   border: none; }
 
-.ui-state-default, .ui-widget-content .ui-state-default, .ui-widget-header .ui-state-default {
+.ui-state-default,
+.ui-widget-content .ui-state-default,
+.ui-widget-header .ui-state-default {
   background: #f8f8f8;
   border: none;
   border-radius: 0; }
-  .ui-state-default:hover, .ui-widget-content .ui-state-default:hover, .ui-widget-header .ui-state-default:hover {
+  .ui-state-default:hover,
+  .ui-widget-content .ui-state-default:hover,
+  .ui-widget-header .ui-state-default:hover {
     background: #b9ddf9; }
 
-.ui-state-active, .ui-widget-content .ui-state-active, .ui-widget-header .ui-state-active {
+.ui-state-active,
+.ui-widget-content .ui-state-active,
+.ui-widget-header .ui-state-active {
   background: #f8f8f8;
   border: none;
   border-radius: 0;
   background: #a1d1f7;
   color: #2c98ed; }
-  .ui-state-active:hover, .ui-widget-content .ui-state-active:hover, .ui-widget-header .ui-state-active:hover {
+  .ui-state-active:hover,
+  .ui-widget-content .ui-state-active:hover,
+  .ui-widget-header .ui-state-active:hover {
     background: #b9ddf9; }
-  .ui-state-active a:link, .ui-state-active a:visited, .ui-widget-content .ui-state-active a:link, .ui-widget-content .ui-state-active a:visited, .ui-widget-header .ui-state-active a:link, .ui-widget-header .ui-state-active a:visited {
+  .ui-state-active a:link, .ui-state-active a:visited,
+  .ui-widget-content .ui-state-active a:link,
+  .ui-widget-content .ui-state-active a:visited,
+  .ui-widget-header .ui-state-active a:link,
+  .ui-widget-header .ui-state-active a:visited {
     color: #2c98ed; }
-
-.crm-container ul li.crm-tab-button.ui-state-active {
-  background: #a1d1f7; }
 
 .crm-container a.button,
 .crm-container a.button:link,
@@ -69,7 +78,30 @@
   border: none; }
 
 .ui-widget-content {
-  border-color: #e8e8e8; }
+  border-color: #e8e8e8;
+  background: #f8f8f8; }
+
+#crm-container div.crm-summary-row {
+  background: white;
+  border-top: none;
+  margin-bottom: 0.3125rem; }
+
+#crm-container .separator {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.2); }
+
+.crm-container .crm-collapsible .collapsible-title {
+  margin-bottom: 0.5rem; }
+
+#crm-container div.crm-summary-contactname-block {
+  margin-top: 0; }
+
+.crm-container h3 {
+  background: transparent;
+  margin: 2.5rem 0 0.5rem;
+  font-size: 1.25rem; }
+
+#crm-container #civicrm-dashboard h3.widget-header {
+  color: #222; }
 
 .crmMailing .preview-popup, .crmMailing .preview-contact, .crmMailing .preview-group {
   height: 6rem; }
@@ -90,12 +122,6 @@
 .crm-container .crm-accordion-header {
   background-color: #8ac6f5;
   transition: background-color 0.3s; }
-
-.crm-container h3 {
-  background: #8ac6f5; }
-
-#crm-container #civicrm-dashboard h3.widget-header {
-  color: #222; }
 
 #civicrm-dashboard {
   display: -webkit-flex;
@@ -119,29 +145,17 @@
 .crm-container div.crm-clear {
   font-size: inherit; }
 
-body#bootstrap-theme, #bootstrap-theme {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
-  background-color: inherit; }
+.crm-container .crm-tab-button a,
+.crm-container .ui-tabs .ui-tabs-nav li a {
+  padding: 0.5rem 1rem !important; }
 
-#bootstrap-theme h1 small, #bootstrap-theme h1 .small {
-  color: inherit; }
+.crm-container ul li.crm-tab-button.ui-state-active {
+  background: white;
+  border: solid 1px #a1d1f7; }
 
-#bootstrap-theme h2 small, #bootstrap-theme h2 .small {
-  color: inherit; }
-
-#bootstrap-theme h3 small, #bootstrap-theme h3 .small {
-  color: inherit; }
-
-#bootstrap-theme h4 small, #bootstrap-theme h4 .small {
-  color: inherit; }
-
-#bootstrap-theme h5 small, #bootstrap-theme h5 .small {
-  color: inherit; }
-
-#bootstrap-theme h6 small, #bootstrap-theme h6 .small {
-  color: inherit; }
+.crm-container ul li.crm-tab-button em {
+  margin-left: 1rem;
+  display: inline-block; }
 
 .crm-container .crm-form-block {
   background-color: white; }
