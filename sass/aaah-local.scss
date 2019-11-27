@@ -1,0 +1,73 @@
+@import 'lib';
+
+body.page-civicrm {
+
+  // oD CiviCRM unsubscribe pages.
+  &.page-civicrm-mailing-unsubscribe {
+    padding-top:0;
+    #civicrm-footer,
+    .crm-public-footer { display: none; }
+
+    #page {
+      display: block;
+      margin: 0 auto;
+      max-width: 1230px;
+      padding: 0 0.5rem;
+    }
+    &.od-unsubscribe-successful {
+      #Unsubscribe { display: none; }
+    }
+  }
+}
+// Unsubscribe page {{{
+#Unsubscribe {
+  max-width: 46.3rem;
+  margin: 0 auto;
+  .messages.status {
+    background: none;
+    border:medium none;
+    padding:0;
+    color:black;
+  }
+
+  table.selector {display:none;}
+  h3 {
+    background: none;
+    font-family: 'Libre Baskerville';
+    line-height: 1.47;
+  }
+  table.form-layout {
+    td, th { border: medium none; padding:0;}
+    td.content {
+      width: 70%;
+      input { width: 100%; }
+    }
+  }
+  .crm-submit-buttons {
+    margin-top:2rem;
+    span {
+      padding: 0;
+      margin-right:2rem;
+      box-shadow: none;
+    }
+    i { display:none; }
+    input {
+      padding: 0.5rem 2rem;
+      margin-right: 2rem;
+      width:100%;
+      box-shadow: none;
+      color:white;
+      text-transform: uppercase;
+      background-color: #0061bf;
+      border: solid 1px #0061bf;
+    }
+  }
+  .crm-button-type-cancel input {
+    border: solid 1px #888;
+    background: white;
+    color: #888;
+  }
+
+}
+// }}}
+
