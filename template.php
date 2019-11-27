@@ -21,9 +21,33 @@ function aaah_preprocess_page(&$variables) {
   ];
 
   $variables['hideSidebar'] = !empty($_COOKIE['hideSidebar']) ? ' sidebar-closed' : '';
+
+  // oD custom stuff {{{
+  $path = request_path();
+  if ($path === 'civicrm/mailing/unsubscribe') {
+    $variables['page']['content']['#attached']['js'][] =
+      drupal_get_path('theme', 'aaah') . '/js/od-mailing-unsubscribe.js';
+  }
+  elseif ($path === '') {
+    // We don't have a homepage, redirect people to the website.
+    drupal_goto('https://opendemocracy.net');
+  }
+  // }}}
 }
 function aaah_preprocess_node(&$variables) {
   $variables['content']['#attached']['js']['https://unpkg.com/vue']  = ['type' => 'external'];
   $variables['content']['#attached']['js'][drupal_get_path('theme', 'aaah') . '/js/vendor/waypoints/lib/noframework.waypoints.min.js'] = [];
   $variables['published'] = (isset($variables['node']->status) ? $variables['node']->status == 1 : TRUE);
+}
+function aaah_css_alter(&$css) {
+  $path = request_path();
+  if ($path === 'civicrm/mailing/unsubscribe') {
+
+    // Remove all CiviCRM css!
+    foreach ($css as $key=>$details) {
+      if (preg_match('@/civicrm/css/|/civicrm_extensions/@', $key)) {
+        unset($css[$key]);
+      }
+    }
+  }
 }
