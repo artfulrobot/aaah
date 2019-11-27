@@ -11,6 +11,10 @@ function aaah_preprocess_page(&$variables) {
   }
   $aaah_path = drupal_get_path('theme', 'aaah');
 
+  $variables['page']['content']['#attached']['css']['theme'] = [
+    'data' => $aaah_path . "/css/page.css",
+    'weight' => 999,
+  ];
   $variables['page']['content']['#attached']['css']['aaah_local'] = [
     'data' => $aaah_path . "/css/aaah-local.css",
     'weight' => 1001,
