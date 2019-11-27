@@ -37,6 +37,7 @@ a:hover {
 // General Pages {{{
 #header {
   margin-bottom: 2rem;
+  padding-top: 1rem !important;
 }
 #header__logo {
   width: 200px;
@@ -53,32 +54,46 @@ a:hover {
     font-weight: normal;
   }
 }
+// CiviCRM staff view {{{
+// Civi menu
+body.crm-menubar-visible.crm-menubar-over-cms-menu,
+body.admin-menu:not(.crm-menubar-visible) {
+ #header {
+	//	padding-top: 1rem !important;
+	}
+}
+
+body.page-civicrm-contact-view {
+	#header__logo { padding-left: 1rem; }
+}
+//}}}
 
 @media screen and (min-width: 400px) {
   #page {
     padding: 0 1rem;
   }
   #header {
-    display:flex;
+    display:grid;
     align-items: flex-end;
-    margin-top:1rem;
+    grid-template-columns: 14rem 1fr;
+    grid-column-gap: 1rem;
+    // margin-top:1rem;
   }
   #header__logo {
-    flex: 0 0 200px;
+    margin:0;
   }
   #header__title {
-    flex: 1 1 45rem;
-    padding-left:2rem;
   }
   .region-content {
-    margin-top: 60px;
+    // margin-top: 60px;
   }
 }
 
 // }}}
 // CiviCRM pages (public, private) {{{
 body.page-civicrm {
-
+  // Set white background, important necessary because of shoreditch
+  background:white !important;
 }
 // }}}
 
@@ -90,9 +105,17 @@ html body:not(.toolbar).page-civicrm-profile {
   background:white !important;
 }
 */
+// Override Shoreditch's top margin
+html {
+  body.page-civicrm-mailing-unsubscribe,
+  body.page-civicrm-update-giving,
+  body.page-civicrm-profile {
+    margin-top:0 !important;
+  }
+}
 body.page-civicrm-mailing-unsubscribe,
+body.page-civicrm-update-giving,
 body.page-civicrm-profile {
-  padding-top:0;
 
   // Hide footer.
   #civicrm-footer,
@@ -126,7 +149,16 @@ body.page-civicrm-profile {
       width: 100%;
     }
   }
-
+}
+@media screen and (min-width: 400px) {
+  body.page-civicrm-mailing-unsubscribe,
+  body.page-civicrm-update-giving,
+  body.page-civicrm-profile {
+    #crm-main-content-wrapper {
+      margin: 0 0 0 15rem;
+      padding:0;
+    }
+  }
 }
 
 // }}}
@@ -139,7 +171,6 @@ body.page-civicrm-mailing-unsubscribe {
 }
 #Unsubscribe {
   max-width: 46.3rem;
-  margin: 0 auto;
   .messages.status {
     background: none;
     border:medium none;

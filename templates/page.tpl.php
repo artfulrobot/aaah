@@ -16,13 +16,19 @@
   <div id="main" class="<?php print $sidebar ? 'has-sidebar' : 'no-sidebar' ?><?php print $hideSidebar ?>">
 
     <div id="content" class="column" role="main">
+      <?php /* oD replaced header {{{ */ ?>
       <header class="header" id="header" role="banner">
+        <a href="https://www.opendemocracy.net"><img id="header__logo" src="/sites/all/themes/aaah/images/oD_logo.svg" alt="openDemocracy" /></a>
+        <div id="header__title">
           <?php print render($title_prefix); ?>
           <?php if (empty($suppress_title)): ?>
-            <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
+          <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
           <?php endif; ?>
+        </div>
         <?php unset($page['header']['#theme_wrappers']); print render($page['header']); ?>
       </header>
+      <?php /* }}} */ ?>
+
       <?php print render($page['highlighted']); ?>
       <a id="main-content"></a>
       <?php print render($title_suffix); ?>
