@@ -80,19 +80,16 @@ aside.box--warning {
 div.image-container {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex; }
 
 .image-caption {
-  -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
+  -webkit-box-flex: 1;
           flex: 1 1 auto;
   padding-right: 1rem; }
 
 .image-wrapper {
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
+  -webkit-box-flex: 0;
           flex: 0 0 auto;
   max-width: 80%; }
   .image-wrapper img {
@@ -133,20 +130,17 @@ body.page-civicrm-a #content {
   display: block; }
 
 #bootstrap-theme .crm-mosaico-template-item {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
   width: 100%; }
 
 #bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-title-wrapper {
   height: unset;
-  -webkit-flex: 1 0 160px;
-      -ms-flex: 1 0 160px;
+  -webkit-box-flex: 1;
           flex: 1 0 160px; }
 
 #bootstrap-theme .crm-mosaico-template-item .crm-mosaico-template-image-wrapper {
-  -webkit-flex: 0 0 160px;
-      -ms-flex: 0 0 160px;
+  -webkit-box-flex: 0;
           flex: 0 0 160px; }
 
 body#bootstrap-theme, #bootstrap-theme {
@@ -207,6 +201,7 @@ aside.sidebar {
 @media screen and (min-width: 850px) {
   #main.has-sidebar #content {
     margin-left: 22rem;
+    -webkit-transition: margin-left 0.2s;
     transition: margin-left 0.2s; }
   #main.sidebar-closed #sidebar-toggle {
     -webkit-transform: translate(1.5rem, 0rem) rotate(-90deg);
@@ -228,6 +223,7 @@ aside.sidebar {
     background-color: #333;
     padding: 0 0.5rem;
     color: rgba(255, 255, 255, 0.6);
+    -webkit-transition: all 0.2s;
     transition: all 0.2s;
     -webkit-transform-origin: bottom left;
             transform-origin: bottom left;
@@ -240,6 +236,7 @@ aside.sidebar {
     top: 0;
     left: 0;
     width: 20rem;
+    -webkit-transition: -webkit-transform 0.2s;
     transition: -webkit-transform 0.2s;
     transition: transform 0.2s;
     transition: transform 0.2s, -webkit-transform 0.2s;
@@ -303,6 +300,7 @@ body.adminimal-menu #content ul.tabs.primary {
 .docnav-wrapper a {
   display: block;
   padding: 0.5rem 1rem;
+  -webkit-transition: all 0.3s;
   transition: all 0.3s; }
 
 .docnav-wrapper li a {

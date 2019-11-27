@@ -22,7 +22,8 @@ a:hover {
   text-decoration: underline; }
 
 #header {
-  margin-bottom: 2rem; }
+  margin-bottom: 2rem;
+  padding-top: 1rem !important; }
 
 #header__logo {
   width: 200px;
@@ -37,28 +38,23 @@ a:hover {
   font-size: 1.5rem;
   font-weight: normal; }
 
+body.page-civicrm-contact-view #header__logo {
+  padding-left: 1rem; }
+
 @media screen and (min-width: 400px) {
   #page {
     padding: 0 1rem; }
   #header {
-    display: -webkit-flex;
-    display: -ms-flexbox;
-    display: flex;
-    -webkit-align-items: flex-end;
-        -ms-flex-align: end;
+    display: grid;
+    -webkit-box-align: end;
             align-items: flex-end;
-    margin-top: 1rem; }
+    grid-template-columns: 14rem 1fr;
+    grid-column-gap: 1rem; }
   #header__logo {
-    -webkit-flex: 0 0 200px;
-        -ms-flex: 0 0 200px;
-            flex: 0 0 200px; }
-  #header__title {
-    -webkit-flex: 1 1 45rem;
-        -ms-flex: 1 1 45rem;
-            flex: 1 1 45rem;
-    padding-left: 2rem; }
-  .region-content {
-    margin-top: 60px; } }
+    margin: 0; } }
+
+body.page-civicrm {
+  background: white !important; }
 
 /*
 html body:not(.toolbar).page-civicrm-profile {
@@ -66,46 +62,65 @@ html body:not(.toolbar).page-civicrm-profile {
   background:white !important;
 }
 */
-body.page-civicrm-mailing-unsubscribe,
-body.page-civicrm-profile {
-  padding-top: 0; }
-  body.page-civicrm-mailing-unsubscribe #civicrm-footer,
-  body.page-civicrm-mailing-unsubscribe .crm-public-footer,
-  body.page-civicrm-profile #civicrm-footer,
-  body.page-civicrm-profile .crm-public-footer {
-    display: none; }
-  body.page-civicrm-mailing-unsubscribe #page,
-  body.page-civicrm-profile #page {
-    display: block;
-    margin: 0 auto;
-    max-width: 1230px;
-    padding: 0 0.5rem;
-    background: white !important; }
+html body.page-civicrm-mailing-unsubscribe,
+html body.page-civicrm-update-giving,
+html body.page-civicrm-profile {
+  margin-top: 0 !important; }
+
+body.page-civicrm-mailing-unsubscribe #civicrm-footer,
+body.page-civicrm-mailing-unsubscribe .crm-public-footer,
+body.page-civicrm-update-giving #civicrm-footer,
+body.page-civicrm-update-giving .crm-public-footer,
+body.page-civicrm-profile #civicrm-footer,
+body.page-civicrm-profile .crm-public-footer {
+  display: none; }
+
+body.page-civicrm-mailing-unsubscribe #page,
+body.page-civicrm-update-giving #page,
+body.page-civicrm-profile #page {
+  display: block;
+  margin: 0 auto;
+  max-width: 1230px;
+  padding: 0 0.5rem;
+  background: white !important; }
+
+body.page-civicrm-mailing-unsubscribe #crm-main-content-wrapper,
+body.page-civicrm-update-giving #crm-main-content-wrapper,
+body.page-civicrm-profile #crm-main-content-wrapper {
+  max-width: 50rem;
+  margin: 0 auto;
+  min-height: calc(100vh - 5rem);
+  padding: 0 1rem; }
+
+body.page-civicrm-mailing-unsubscribe .crm-section .label,
+body.page-civicrm-update-giving .crm-section .label,
+body.page-civicrm-profile .crm-section .label {
+  display: block;
+  float: none;
+  width: auto;
+  text-align: left; }
+
+body.page-civicrm-mailing-unsubscribe .crm-section .content,
+body.page-civicrm-update-giving .crm-section .content,
+body.page-civicrm-profile .crm-section .content {
+  margin-left: 0; }
+  body.page-civicrm-mailing-unsubscribe .crm-section .content input[type="text"],
+  body.page-civicrm-update-giving .crm-section .content input[type="text"],
+  body.page-civicrm-profile .crm-section .content input[type="text"] {
+    width: 100%; }
+
+@media screen and (min-width: 400px) {
   body.page-civicrm-mailing-unsubscribe #crm-main-content-wrapper,
+  body.page-civicrm-update-giving #crm-main-content-wrapper,
   body.page-civicrm-profile #crm-main-content-wrapper {
-    max-width: 50rem;
-    margin: 0 auto;
-    min-height: calc(100vh - 5rem);
-    padding: 0 1rem; }
-  body.page-civicrm-mailing-unsubscribe .crm-section .label,
-  body.page-civicrm-profile .crm-section .label {
-    display: block;
-    float: none;
-    width: auto;
-    text-align: left; }
-  body.page-civicrm-mailing-unsubscribe .crm-section .content,
-  body.page-civicrm-profile .crm-section .content {
-    margin-left: 0; }
-    body.page-civicrm-mailing-unsubscribe .crm-section .content input[type="text"],
-    body.page-civicrm-profile .crm-section .content input[type="text"] {
-      width: 100%; }
+    margin: 0 0 0 15rem;
+    padding: 0; } }
 
 body.page-civicrm-mailing-unsubscribe .od-unsubscribe-successful #Unsubscribe {
   display: none; }
 
 #Unsubscribe {
-  max-width: 46.3rem;
-  margin: 0 auto; }
+  max-width: 46.3rem; }
   #Unsubscribe .messages.status {
     background: none;
     border: medium none;
@@ -153,11 +168,9 @@ body.page-civicrm-mailing-unsubscribe .od-unsubscribe-successful #Unsubscribe {
   padding: 0 0.5rem; }
 
 .CRM_Profile_Form_Edit .crm-submit-buttons {
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex;
-  -ms-grid-column-align: flex-start;
-      justify-items: flex-start;
+  justify-items: flex-start;
   padding-left: 0;
   padding-right: 0; }
   .CRM_Profile_Form_Edit .crm-submit-buttons input.crm-form-submit:not(.cancel) {
