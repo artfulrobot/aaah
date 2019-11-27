@@ -18,6 +18,19 @@
 
   <?php print $styles; ?>
   <?php print $scripts; ?>
+
+  <?php /* oD {{{ */ ?>
+  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-379949-2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+
+    gtag('config', 'UA-379949-2', { 'optimize_id': 'GTM-KW33TL8'});
+  </script>
+  <?php /* oD }}} */ ?>
+
 </head>
 <body class="<?php print $classes; ?>" <?php print $attributes;?>>
   <?php print $page_top; ?>
