@@ -114,12 +114,15 @@
 }
 
 
+// @todo comments
 .crmMailing .preview-popup, .crmMailing .preview-contact, .crmMailing .preview-group {
   height:6rem;
 }
 #crm-container .crm-edit-ready .crm-inline-edit:hover .crm-edit-help {
   background-color: $colourHighlight;
 }
+
+// Accordians. {{{
 .crm-container .crm-accordion-header {
   background-color: $colourArtfulBrightBlueHigh;
   color: $colourArtfulDarkBlue;
@@ -131,12 +134,15 @@
     background-color: mix($colourArtfulBrightBlueHigh, $colourArtfulBrightBlue, 50%);
   }
 }
+
 #crm-container #civicrm-dashboard .widget-controls, // has own css, requires this specificity.
 .crm-container .crm-accordion-header {
   background-color: $colourArtfulBrightBlueHigh;
   transition: background-color 0.3s;
 }
+// }}}
 
+// Fix dashboard layout {{{
 #civicrm-dashboard {
   display: flex;
   flex-wrap: wrap;
@@ -147,6 +153,7 @@
     flex: 1 0 60%;
   }
 }
+// }}}
 
 .crm-tag-item {
   line-height:1.25;
@@ -157,7 +164,7 @@
   font-size:inherit;
 }
 
-// Improve spacing around tabs (e.g. Contributions/Recurring Contributions)
+// Tabs (e.g. Contributions/Recurring Contributions) {{{
 .crm-container .crm-tab-button a,
 .crm-container .ui-tabs .ui-tabs-nav li a
 {
@@ -174,11 +181,16 @@
     display: inline-block;
   }
 }
+// }}}
 
 .crm-container .crm-form-block {
   background-color: white;
 }
+
 .crm-container input { box-sizing: border-box; }
+
+
+// Main tabs (make 'em vertical) {{{
 #mainTabContainer {
   display: grid;
   grid-template-columns: 12rem auto;
@@ -194,7 +206,15 @@
       display:block;
       float:none;
       margin-right:0;
-      border-bottom: solid 1px rgba(0,0,0,0.05);
+
+      // This would be an accessibility fail, but as it happens you can't tab through the tabs anyway...
+      &:focus {
+        outline: none;
+      }
+
+      &:not(.ui-tabs-active) {
+        border-bottom: solid 1px rgba(0,0,0,0.05);
+      }
       a { float:none; }
     }
     .ui-tabs-anchor {
@@ -209,8 +229,13 @@
       background: white;
       color: black;
     }
+    li.ui-tabs-active {
+      // Remove the -1px margin bottom added by jQueryUI
+      margin-bottom:0;
+    }
   }
 }
+// }}}
 #secondaryTabContainer {
   border:none;
   padding:0;
