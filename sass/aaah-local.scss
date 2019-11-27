@@ -1,25 +1,142 @@
 @import 'lib';
+// openDemocracy styles.
+$light_blue: #F1F6FB;
+$light_blue_darkened: darken(#F1F6FB, 10%);
+$dark_blue: #0061bf;
+$dark_blue_lightened: #408BC5; // From new site.
+$grey_4: #444;
+$grey_6: #888;
 
-body.page-civicrm {
+// General styles {{{
+body {
+  background:white;
+  font-family: 'Open Sans', sans-serif;
+  font-weight: 400;
+  color:black;
+}
 
-  // oD CiviCRM unsubscribe pages.
-  &.page-civicrm-mailing-unsubscribe {
-    padding-top:0;
-    #civicrm-footer,
-    .crm-public-footer { display: none; }
+h2 {
+  font-size: 2.13333rem;
+  color: #000000;
+  font-weight: 700;
+  text-transform: none;
+  text-underline-position: auto;
+  letter-spacing: 0;
+  font-family: 'Libre Baskerville';
+  line-height:1.47;
+}
 
-    #page {
-      display: block;
-      margin: 0 auto;
-      max-width: 1230px;
-      padding: 0 0.5rem;
-    }
-    &.od-unsubscribe-successful {
-      #Unsubscribe { display: none; }
-    }
+a:link, a:visited {
+  color: $dark_blue;
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+// }}}
+// General Pages {{{
+#header {
+  margin-bottom: 2rem;
+}
+#header__logo {
+  width: 200px;
+  height: auto;
+  display:block;
+  margin:0 auto;
+}
+#header__title {
+  h1 {
+    margin:0;
+    padding:0;
+    font-family: 'Open Sans', sans-serif;
+    font-size: (24rem/16);
+    font-weight: normal;
   }
 }
-// Unsubscribe page {{{
+
+@media screen and (min-width: 400px) {
+  #page {
+    padding: 0 1rem;
+  }
+  #header {
+    display:flex;
+    align-items: flex-end;
+    margin-top:1rem;
+  }
+  #header__logo {
+    flex: 0 0 200px;
+  }
+  #header__title {
+    flex: 1 1 45rem;
+    padding-left:2rem;
+  }
+  .region-content {
+    margin-top: 60px;
+  }
+}
+
+// }}}
+// CiviCRM pages (public, private) {{{
+body.page-civicrm {
+
+}
+// }}}
+
+// CiviCRM public facing pages, incl. unsubscribe and profile {{{
+
+/*
+html body:not(.toolbar).page-civicrm-profile {
+  margin-top: 8px !important;
+  background:white !important;
+}
+*/
+body.page-civicrm-mailing-unsubscribe,
+body.page-civicrm-profile {
+  padding-top:0;
+
+  // Hide footer.
+  #civicrm-footer,
+  .crm-public-footer { display: none; }
+
+  // Set white background, page margins.
+  #page {
+    display: block;
+    margin: 0 auto;
+    max-width: 1230px;
+    padding: 0 0.5rem;
+    background:white !important;
+  }
+
+  // Align to center of page, limit width.
+  #crm-main-content-wrapper {
+    max-width: 50rem;
+    margin: 0 auto;
+    min-height: calc(100vh - 5rem);
+    padding: 0 1rem;
+  }
+  .crm-section .label {
+    display: block;
+    float:none;
+    width: auto;
+    text-align: left;
+  }
+  .crm-section .content {
+    margin-left:0;
+    input[type="text"] {
+      width: 100%;
+    }
+  }
+
+}
+
+// }}}
+
+// Unsubscribe pages {{{
+body.page-civicrm-mailing-unsubscribe {
+  .od-unsubscribe-successful {
+    #Unsubscribe { display: none; }
+  }
+}
 #Unsubscribe {
   max-width: 46.3rem;
   margin: 0 auto;
@@ -66,6 +183,38 @@ body.page-civicrm {
     border: solid 1px #888;
     background: white;
     color: #888;
+  }
+
+}
+// }}}
+// Donation Pages {{{
+.node-type-donation-page {
+  #page {
+    display: block;
+    margin: 0 auto;
+    max-width: 1230px; // copied from other site.
+    padding: 0 0.5rem;
+  }
+}
+// }}}
+// Profile pages {{{
+.CRM_Profile_Form_Edit {
+
+  // These buttons do not align properly without this for some reason.
+  .crm-submit-buttons {
+    display:flex;
+    justify-items: flex-start;
+    padding-left:0;
+    padding-right:0;
+
+    input.crm-form-submit:not(.cancel) {
+      padding: 8px 2rem;
+    }
+
+    a.button {
+      line-height:2;
+      i { margin-right: 0.5rem; }
+    }
   }
 
 }
