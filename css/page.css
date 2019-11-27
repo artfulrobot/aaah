@@ -170,46 +170,6 @@ body#bootstrap-theme, #bootstrap-theme {
 #bootstrap-theme h6 small, #bootstrap-theme h6 .small {
   color: inherit; }
 
-html body:not(.toolbar).page-civicrm-profile {
-  margin-top: 8px !important;
-  padding-top: 0;
-  background: white !important; }
-
-body.page-civicrm-profile #page {
-  background: white !important; }
-
-body.page-civicrm-profile #crm-main-content-wrapper {
-  max-width: 50rem;
-  margin: 0 auto;
-  min-height: calc(100vh - 5rem);
-  padding: 0 1rem; }
-
-body.page-civicrm-profile .crm-section .label {
-  display: block;
-  float: none;
-  width: auto;
-  text-align: left; }
-
-body.page-civicrm-profile .crm-section .content {
-  margin-left: 0; }
-  body.page-civicrm-profile .crm-section .content input[type="text"] {
-    width: 100%; }
-
-.CRM_Profile_Form_Edit .crm-submit-buttons {
-  display: -webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  -ms-grid-column-align: flex-start;
-      justify-items: flex-start;
-  padding-left: 0;
-  padding-right: 0; }
-  .CRM_Profile_Form_Edit .crm-submit-buttons input.crm-form-submit:not(.cancel) {
-    padding: 8px 2rem; }
-  .CRM_Profile_Form_Edit .crm-submit-buttons a.button {
-    line-height: 2; }
-    .CRM_Profile_Form_Edit .crm-submit-buttons a.button i {
-      margin-right: 0.5rem; }
-
 body {
   padding: 0;
   margin: 0; }
