@@ -1,4 +1,4 @@
-'use strict';
+;;
 
 function DocNav(outputElement, headings) {
   this.disableWaypoints = true;

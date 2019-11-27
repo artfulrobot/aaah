@@ -15,6 +15,7 @@ function aaah_preprocess_page(&$variables) {
     ];
   }
   $aaah_path = drupal_get_path('theme', 'aaah');
+
   if (theme_get_setting('shoreditch_enabled')) {
     $variables['page']['content']['#attached']['css']['civicrm'] = [
       'data' => $aaah_path . "/css/aaah-civicrm-shoreditch.css",
@@ -27,6 +28,12 @@ function aaah_preprocess_page(&$variables) {
       'weight' => 1000,
     ];
   }
+
+  $variables['page']['content']['#attached']['css']['civicrm'] = [
+    'data' => $aaah_path . "/css/aaah-local.css",
+    'weight' => 1001,
+  ];
+
   $variables['hideSidebar'] = !empty($_COOKIE['hideSidebar']) ? ' sidebar-closed' : '';
 }
 function aaah_preprocess_node(&$variables) {
