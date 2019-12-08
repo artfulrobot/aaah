@@ -12,12 +12,15 @@ $colourWhitishText : #eee;
 
 $colourWidgetBackground : #f8f8f8;
 $colourWidgetBorder : #e8e8e8;
+$colourWidgetBackgroundLightest : #fcfcfc;
+$colourSubtleHoverLightBlueGrey: #e6edf2;
 $colourTabsBg: #eae9e4;
 
 $colourWidgetSelectedBackground : lighten($colourArtfulBrightBlue, 25%);
 $colourWidgetCouldSelectBackground : lighten($colourArtfulBrightBlue, 30%);
 $colourBackground : #f3f2ed;
 $colourBackgroundShade : darken(#f3f2ed, 10%);
+$colourBlueGrey: mix($colourBackground, $colourArtfulBrightBlue, 65%);
 
 $colourGreenStrongBg: #97d462;
 $colourGreenHint: #e9f9db;
@@ -25,3 +28,4 @@ $colourGreen2: mix($colourGreenStrongBg, $colourGreenHint, 50%);
 
 $colourAmberStrongBg: #eaa75c;
 $colourAmberHint: #ffedcc;
+// #e8c6a2
