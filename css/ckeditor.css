@@ -77,19 +77,16 @@ aside.box--warning, div.box--warning {
 div.image-container {
   background-color: rgba(0, 0, 0, 0.1);
   padding: 1rem;
-  display: -webkit-flex;
-  display: -ms-flexbox;
+  display: -webkit-box;
   display: flex; }
 
 .image-caption {
-  -webkit-flex: 1 1 auto;
-      -ms-flex: 1 1 auto;
+  -webkit-box-flex: 1;
           flex: 1 1 auto;
   padding-right: 1rem; }
 
 .image-wrapper {
-  -webkit-flex: 0 0 auto;
-      -ms-flex: 0 0 auto;
+  -webkit-box-flex: 0;
           flex: 0 0 auto;
   max-width: 80%; }
   .image-wrapper img {

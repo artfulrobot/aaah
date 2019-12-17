@@ -1,5 +1,3 @@
-'use strict';
-
 function DocNav(outputElement, headings) {
   this.disableWaypoints = true;
   this.outputElement = outputElement;
@@ -53,7 +51,11 @@ function DocNav(outputElement, headings) {
   var docnavVue = new Vue({
     el: this.outputElement[0],
     data: { theMap: map, selected: this.selected, docNav: thisDocNav },
-    template: '<div class="docnav-wrapper"><docnav\n      :doc-nav="docNav"\n      :item="theMap"\n      :selected="selected"\n      depth="0" /></div>'
+    template: `<div class="docnav-wrapper"><docnav
+      :doc-nav="docNav"
+      :item="theMap"
+      :selected="selected"
+      depth="0" /></div>`
   });
 
   for (var i = 0; i < l; i++) {
@@ -64,7 +66,7 @@ function DocNav(outputElement, headings) {
       li.e.docnavWaypoint = new Waypoint({
         element: li.e[0],
         offset: '60%',
-        handler: function handler(direction) {
+        handler: function (direction) {
           if (!thisDocNav.disableWaypoints && direction == 'down') {
             console.log(direction, "bottom in view ", li.e[0]);
             thisDocNav.selectItem(li);
@@ -74,7 +76,7 @@ function DocNav(outputElement, headings) {
       li.e.docnavWaypoint = new Waypoint({
         element: li.e[0],
         offset: '20%',
-        handler: function handler(direction) {
+        handler: function (direction) {
           if (!thisDocNav.disableWaypoints && direction == 'up') {
             console.log(direction, "top in view ", li.e[0]);
             thisDocNav.selectItem(li);
@@ -99,9 +101,21 @@ DocNav.prototype.selectItem = function (li) {
 if (window.Vue) {
   Vue.component('docnav', {
     props: ['item', 'depth', 'selected', 'docNav'],
-    template: '<ul :class="\'docnav depth-\' + depth">\n    <li v-for="li in item.children"\n      :class="getClasses(li)"\n      >\n      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>\n      <docnav\n        :selected="selected"\n        :item="li"\n        :doc-nav="docNav"\n        :depth="parseInt(depth) + 1"\n        v-if="li.children.length>0"\n        />\n    </li></ul>',
+    template: `<ul :class="\'docnav depth-\' + depth">
+    <li v-for="li in item.children"
+      :class="getClasses(li)"
+      >
+      <a v-if="li.e" href @click="focus(li, $event)" >{{li.title}}</a>
+      <docnav
+        :selected="selected"
+        :item="li"
+        :doc-nav="docNav"
+        :depth="parseInt(depth) + 1"
+        v-if="li.children.length>0"
+        />
+    </li></ul>`,
     methods: {
-      focus: function focus(li, e) {
+      focus: function (li, e) {
         // console.log("focus", li, e);
         if (e) e.preventDefault();
         this.docNav.disableWaypoints = true;
@@ -115,7 +129,7 @@ if (window.Vue) {
           docNav.disableWaypoints = false;
         }, 300);
       },
-      getClasses: function getClasses(li) {
+      getClasses: function (li) {
         //console.log("getClasses selected:", this.selected, " this li: ", li);
         var c = {
           selected: li.e == this.selected[0].e
