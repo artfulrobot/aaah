@@ -148,7 +148,6 @@ Vue.component('docnav', {
 });
 }
 (function($){
-  console.log("dollar ", $);
 $(function(){
   var i = $('.field-name-body .field-item').find('h1, h2, h3, h4, h5').not('aside h1, aside h2');
   var o = $('<div/>');

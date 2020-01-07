@@ -173,7 +173,7 @@ thead tr:first-child {
     margin: 0 0 1rem;
     padding: 1rem 1rem 1rem 3rem; }
   #crm-notification-container div.ui-notify-message .notify-content {
-    padding: 0 1rem; }
+    padding: 0 1rem 1rem; }
 
 .crm-container div.ui-notify-message div.icon, .crm-status-icon {
   background: none;

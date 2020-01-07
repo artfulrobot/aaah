@@ -13,7 +13,7 @@
     $sidebar= render($page['sidebar']);
   ?>
 
-    <div id="main" class="<?php print $sidebar ? 'has-sidebar' : 'no-sidebar' ?><?php print $hideSidebar ?>">
+  <div id="main" class="<?php print $sidebar ? 'has-sidebar' : 'no-sidebar' ?><?php print $hideSidebar ?>">
 
     <div id="content" class="column" role="main">
       <header class="header" id="header" role="banner">
