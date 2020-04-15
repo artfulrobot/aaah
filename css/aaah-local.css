@@ -45,10 +45,13 @@ body.page-civicrm-contact-view #header__logo {
   #page {
     padding: 0 1rem; }
   #header {
+    display: -ms-grid;
     display: grid;
-    -webkit-box-align: end;
+    -webkit-align-items: flex-end;
+        -ms-flex-align: end;
             align-items: flex-end;
-    grid-template-columns: 14rem 1fr;
+    -ms-grid-columns: 14rem 1fr;
+        grid-template-columns: 14rem 1fr;
     grid-column-gap: 1rem; }
   #header__logo {
     margin: 0; } }
@@ -168,9 +171,11 @@ body.page-civicrm-mailing-unsubscribe .od-unsubscribe-successful #Unsubscribe {
   padding: 0 0.5rem; }
 
 .CRM_Profile_Form_Edit .crm-submit-buttons {
-  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
   display: flex;
-  justify-items: flex-start;
+  -ms-grid-column-align: flex-start;
+      justify-items: flex-start;
   padding-left: 0;
   padding-right: 0; }
   .CRM_Profile_Form_Edit .crm-submit-buttons input.crm-form-submit:not(.cancel) {
