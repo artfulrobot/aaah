@@ -9,6 +9,7 @@ scripts[] = js/docnav.js
 ;screenshot  = screenshot.png
 ;settings[garland_width] = fluid
 
+regions[hidden] = Hidden
 regions[header]         = Header
 regions[content]        = Content
 regions[sidebar]  = First sidebar
