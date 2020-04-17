@@ -5,7 +5,36 @@
 body {
   padding:0;
   margin:0;
+
+  &.front {
+    #page {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  }
+  &.page-user-login {
+    #page {
+      max-width: 30rem;
+      margin: 0 auto;
+    }
+    .tabs.primary {
+      border-bottom: none;
+      margin: 1rem 0;
+      li a {
+        border: none;
+        background: none;
+        padding-left: 0;
+      }
+    }
+    #user-login {
+      padding: 4rem;
+      border-radius: 8px;
+      background: white;
+    }
+  }
+
 }
+
 
 // Forms {{{
 input[type="text"], input[type="password"], textarea {
