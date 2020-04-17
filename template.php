@@ -5,7 +5,7 @@ function aaah_preprocess_page(&$variables) {
     // Allow subthemes to set this and for us to not override it (as this
     // function is called after a subtheme's).
     $variables['page']['content']['#attached']['css']['fonts'] = [
-      'data' => 'https://fonts.googleapis.com/css?family=Lato:400,400i,700&display=swap',
+      'data' => 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap',
       'type' => 'external',
     ];
   }
