@@ -134,22 +134,33 @@ body.front #page {
   margin: 0 auto;
 }
 
+body.page-user.not-logged-in #page,
 body.page-user-login #page {
   max-width: 30rem;
   margin: 0 auto;
 }
 
+body.page-user.not-logged-in #page-title,
+body.page-user-login #page-title {
+  text-align: center;
+}
+
+body.page-user.not-logged-in .tabs.primary,
 body.page-user-login .tabs.primary {
   border-bottom: none;
   margin: 1rem 0;
+  text-align: center;
 }
 
+body.page-user.not-logged-in .tabs.primary li a,
 body.page-user-login .tabs.primary li a {
   border: none;
   background: none;
-  padding-left: 0;
+  padding-left: 1rem;
+  padding-right: 1rem;
 }
 
+body.page-user.not-logged-in #user-login,
 body.page-user-login #user-login {
   padding: 4rem;
   border-radius: 8px;

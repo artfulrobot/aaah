@@ -12,18 +12,22 @@ body {
       margin: 0 auto;
     }
   }
+  &.page-user.not-logged-in,
   &.page-user-login {
     #page {
       max-width: 30rem;
       margin: 0 auto;
     }
+    #page-title { text-align: center; }
     .tabs.primary {
       border-bottom: none;
       margin: 1rem 0;
+      text-align:center;
       li a {
         border: none;
         background: none;
-        padding-left: 0;
+        padding-left: 1rem;
+        padding-right: 1rem;
       }
     }
     #user-login {
