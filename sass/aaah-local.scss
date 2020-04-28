@@ -7,6 +7,21 @@ $dark_blue_lightened: #408BC5; // From new site.
 $grey_4: #444;
 $grey_6: #888;
 
+// oD Fonts {{{
+@font-face {
+  font-family: 'Libre Baskerville';
+  src: local("Libre Baskerville"), url("https://cdn-prod.opendemocracy.net/assets/fonts/libre-baskerville/LibreBaskerville-Regular.ttf");
+  font-weight:400;
+  font-display:swap;
+}
+@font-face{
+  font-family:'Libre Baskerville';
+  src:local("Libre Baskerville"), url("https://cdn-prod.opendemocracy.net/assets/fonts/libre-baskerville/LibreBaskerville-Bold.ttf");
+  font-weight:700;
+  font-display:swap;
+}
+//}}}
+
 // General styles {{{
 body {
   background:white;

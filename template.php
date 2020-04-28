@@ -1,14 +1,15 @@
 <?php
 
 function aaah_preprocess_page(&$variables) {
-  if (!isset($variables['page']['content']['#attached']['css']['fonts'])) {
-    // Allow subthemes to set this and for us to not override it (as this
-    // function is called after a subtheme's).
-    $variables['page']['content']['#attached']['css']['fonts'] = [
-      'data' => 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap',
-      'type' => 'external',
-    ];
-  }
+  // Commented for oD:
+  // if (!isset($variables['page']['content']['#attached']['css']['fonts'])) {
+  //   // Allow subthemes to set this and for us to not override it (as this
+  //   // function is called after a subtheme's).
+  //   $variables['page']['content']['#attached']['css']['fonts'] = [
+  //     'data' => 'https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,300;0,400;0,700;1,400&display=swap',
+  //     'type' => 'external',
+  //   ];
+  // }
   $aaah_path = drupal_get_path('theme', 'aaah');
 
   $variables['page']['content']['#attached']['css']['theme'] = [
