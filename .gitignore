@@ -1,4 +1,5 @@
-.npm
 *.swp
 *.js.map
 *.css.map
+node_modules
+mix-manifest.json

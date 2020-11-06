@@ -1,13 +1,44 @@
 @import 'lib';
 @import 'content';
-@import 'civicrm';
-// Note: (no-)shoreditch follows this one, then aaah-local
 
 // Basic layout.
 body {
   padding:0;
   margin:0;
+
+  &.front {
+    #page {
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+  }
+  &.page-user.not-logged-in,
+  &.page-user-login {
+    #page {
+      max-width: 30rem;
+      margin: 0 auto;
+    }
+    #page-title { text-align: center; }
+    .tabs.primary {
+      border-bottom: none;
+      margin: 1rem 0;
+      text-align:center;
+      li a {
+        border: none;
+        background: none;
+        padding-left: 1rem;
+        padding-right: 1rem;
+      }
+    }
+    #user-login {
+      padding: 4rem;
+      border-radius: 8px;
+      background: white;
+    }
+  }
+
 }
+
 
 // Forms {{{
 input[type="text"], input[type="password"], textarea {
