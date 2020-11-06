@@ -5,7 +5,7 @@ core = 7.x
 stylesheets[all][] = css/page.css
 ;stylesheets[print][] = css/print.css
 ;scripts[] = js/aaah.js
-scripts[] = js/docnav.js
+; scripts[] = js/docnav.js
 ;screenshot  = screenshot.png
 ;settings[garland_width] = fluid
 
