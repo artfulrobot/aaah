@@ -1,0 +1,61 @@
+.konp-public {
+  background: url(https://keepournhspublic.com/wp-content/themes/mh-magazine-lite-child/img/128-174.jpg) repeat, #f7f7f7;
+  font-family: Roboto, "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+.konp-public #page {
+  margin: 25px auto;
+  max-width: 1080px;
+  background: white;
+}
+
+.konp-public .konp-logo-container {
+  background-color: #0967CB;
+  padding: 25px;
+}
+
+.konp-public .konp-logo-container img {
+  display: block;
+}
+
+.konp-public #content {
+  padding: 25px;
+}
+
+.konp-public .crm-section.membership_amount-section {
+  display: grid;
+  grid-template-columns: 19.2rem 1fr;
+}
+
+.konp-public .crm-section.membership_amount-section #allow_auto_renew {
+  grid-column: 1 / 3;
+  padding-top: 1.6rem;
+}
+
+.konp-public .crm-section.membership_amount-section input.crm-form-radio {
+  margin-right: 1rem;
+}
+
+.konp-public footer.mh-footer {
+  background: #222;
+  padding: 25px;
+  color: #aaa;
+  font-size: 1.4rem;
+}
+
+.konp-public .mh-widget-title {
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+  font-weight: bold;
+  padding-bottom: 5px;
+  text-transform: uppercase;
+  border-bottom: 3px solid #0967CB;
+  color: white;
+}
+
+.konp-public .mh-footer-widgets {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-gap: 2rem;
+}
+
