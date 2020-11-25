@@ -47,6 +47,16 @@ $konpOrange: #FAB800;
     }
   }
 
+  // Disable flex which is normally on .crm-section.
+  .crm-section.price_set-section {
+    display: block;
+  }
+
+  // Remove weirdo spacing.
+  .crm-section.is_recur-section > .content .crm-form-checkbox + label {
+    margin-right: 0;
+  }
+
   footer.mh-footer {
     background: #222;
     padding: 25px;
