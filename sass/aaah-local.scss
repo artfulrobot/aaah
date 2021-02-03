@@ -1,0 +1,245 @@
+// This is a place for your local stuff
+
+// This copied from p16/sass/_lib.scss on 3 feb 2021 {{{
+// Vertical ryhthm unit.
+$baseFont: 18rem / 16;
+$v: (1.4 * $baseFont);
+
+$colPurpleText: #662a73; // darker is WGAC2 AAA.
+//$colPurpleDark: #662a73;
+$colPurpleDark: #34153b;
+$colPurpleBright: #9823c8;
+
+$colNearBlackText: #222222;
+
+$colGreyFf: #2b2e2f;
+$colDarkGrey: #303030;
+$colDarkGreyAccent: #505050;
+$colSubtleTextOnDarkGrey: #ddd;
+
+$colWarmLightBg: #fcefe4;
+$colNeutralLightBg: #f4eef6;
+$colAmber: #ffa018;
+$colAmberLighter: #FFBE61;
+$colAmberDarker: #FF9804;
+
+$colNeutralBg: #e4dee6;
+
+$colEarth: #58452b;
+
+$colGreenDark: #315f1f;
+$colGreenBright: #46851f;
+$colGreenBg: #46851f; // this is a tad light for large bgs.
+$colGreenFg: #315f16;
+$colGreenLightBg: #c8dcbb;
+
+$colGrueBright: #1394bf;
+$colGrueDark: #435d66;
+$colGrueFg: #435d66;
+$colGrueFgAccent: #536d86;
+$colGrueLightBg: #bad5dc;
+
+$colRed: #dd3333;
+$colGreyedTextOnDark: #aaa;
+$colGreyedTextOnLight: #909090;
+$colGreyLine: #eee;
+
+$colShadeSubtle: rgba(0,0,0,0.1);
+$colShadeDeep: rgba(0,0,0,0.2);
+$colLightenSubtle: rgba(255, 255, 255, 0.1);
+$colLightenDeep:   rgba(255, 255, 255, 0.2);
+//}}}
+
+
+
+// This class is added in our drupal html--civicrm-public.tpl.php file.
+body.civicrm-public {
+
+  background: white;
+  color: $colNearBlackText;
+  font-family: "Source Sans Pro";
+  font-size: 1rem;
+
+  // Header {{{
+  #page>header {
+    background: $colDarkGrey;
+    color:white;
+    padding: 0.5rem 1rem;
+    svg {
+      fill: white;
+      color: white;
+    }
+  }
+  // }}}
+
+  
+  #footer // {{{
+  {
+    background-color: $colPurpleText;
+    color: white;
+    a:link, a:visited { color: white; text-decoration:none; }
+  }
+  .three-cols {
+    margin: 0 -2rem;
+    display:flex;
+    flex-wrap: wrap;
+  }
+
+  .three-cols__col {
+    flex: 1 0 33%;
+    min-width: 15rem;
+    padding:2rem;
+  }
+  //}}}
+
+  h1, h2, h3 {
+    font-family: Khand;
+    font-weight: bold;
+    color: $colPurpleText;
+  }
+
+  a:link, a:visited {
+    color: $colPurpleText;
+  }
+  a:hover, a:active {
+    color: $colPurpleDark;
+  }
+
+  .not-full-width,
+  #main {
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+
+
+  // Civi overrides.
+  #crm-container.crm-public .label, #crm-container.crm-public .price-field-amount {
+    font-size: 1rem;
+  }
+
+  .crm-inline-error.alert-danger {
+    padding: 0.25rem 1rem;
+    margin: 0 1rem;
+    background: $colAmberLighter;
+    color: black;
+  }
+
+  // From aah/src/civicrm.scss ish {{{
+a.crm-button>span,
+button.crm-button,
+#crm-main-content-wrapper button, // type 4
+input.crm-form-submit,
+input[type="button"],
+input[type="submit"] {
+  display:inline-block;
+  background: $colAmber;
+  padding:0.4rem 1.6rem;
+  border:none;
+  border-radius: 3px;
+  color:black;
+  font-family: Khand;
+  text-shadow: none;
+  box-shadow: none;
+  vertical-align: baseline;
+
+  &:hover {
+    background-color: $colAmberLighter;
+  }
+
+  &.btn-secondary {
+    background: white;
+  }
+  &[disabled] {
+    opacity:0.35;
+    pointer-events: none;
+  }
+}
+
+span.crm-button {
+  position: relative;
+  margin-right: 1.6rem; // space before next button in a list of buttons.
+  padding: 0; // apply padding to the button itself, not the container (which is not clickable)
+  display: inline-block;
+  background: $colAmber;
+  border: none;
+  font-size: 1.3rem;
+
+  i {
+    position: absolute;
+    pointer-events: none;
+    color: black;
+    line-height: 1;
+    left: 1.2rem;
+    // Center vertically
+    top: 50%;
+    transform: translateY(-0.5rem);
+  }
+
+  &.crm-i-button input[type="button"],
+  &.crm-i-button input[type="submit"],
+  &.crm-i-button input.crm-form-submit
+  {
+    padding:0.4rem 1.6rem 0.4rem 3.2rem;
+    font-size: 1.3rem;
+    box-shadow: none;
+  }
+}
+
+a.crm-button {
+  position: relative;
+  margin-right: 1.6rem; // space before next button in a list of buttons.
+  padding: 0; // apply padding to the button itself, not the container (which is not clickable)
+  display: inline-block;
+  &.crm-button:link,
+  &.crm-button:active,
+  &.crm-button:visited,
+  &.crm-button:hover
+  { text-decoration:none; }
+
+  // &>span  much of this is above.
+  &>span { padding-left: 3.6rem; }
+
+  i {
+    position: absolute;
+    pointer-events: none;
+    color: black;
+    line-height: 1;
+    left: 1.2rem;
+    // Center vertically
+    top: 50%;
+    transform: translateY(-0.65rem);
+  }
+}
+
+// The .buttons wrapper has a fixed height normall. Set overflow to conain the floats
+.crm-container .crm-submit-buttons, .crm-container .action-link { height: auto; overflow: hidden; }
+
+.crm-container table {
+  font-size: 1rem;
+}
+
+// help and status
+.crm-container .status,
+.crm-container .help,
+.crm-container #help {
+  border: none;
+  background-color: $colNeutralBg;
+  color: black;
+  padding: 1rem;
+  border-radius : none;
+  font-size: 1rem;
+}
+
+// Header in confirm page
+.crm-container .header-dark {
+  background-color: transparent;
+  padding: 0;
+  color: $colPurpleText;
+  font-family: Khand;
+  font-weight:bold;
+  font-size: 1.6rem;
+  margin-top: 1rem;
+}
+
+// }}}
+}
