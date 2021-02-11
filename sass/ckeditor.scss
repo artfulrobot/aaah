@@ -8,3 +8,45 @@
   min-width:50%; // just so we can see it if the image is deletd.
   min-height:4rem;
 }
+
+h1 {
+  border: dashed 1px #44aa00;
+  &::before {
+    border-left: solid 4px #44aa00;
+    background: #efd;
+    font-size: 0.825rem;
+    content: '👭👬 Accessibility: The big text following is a top-level heading. Use ONCE per page.';
+    display: block;
+  }
+}
+h2 {
+  border: dashed 1px #44aa00;
+  &::before {
+    border-left: solid 4px #44aa00;
+    background: #efd;
+    font-size: 0.825rem;
+    content: '👭👬 Accessibility: This is a sub-heading.';
+    display: block;
+  }
+}
+h3 {
+  border: dashed 1px #44aa00;
+  &::before {
+    border-left: solid 4px #44aa00;
+    background: #efd;
+    font-size: 0.825rem;
+    content: '👭👬 Accessibility: This is a sub-sub-heading.';
+    display: block;
+  }
+}
+
+.cke_combopanel.cke_combopanel__styles {
+  width: 300px !important;
+}
+.cke_panel_block {
+  h1, h2, h3, h4 {
+    font-size: 1rem;
+    &:before { content:none; }
+  }
+}
+

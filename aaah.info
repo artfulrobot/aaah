@@ -6,6 +6,8 @@ stylesheets[all][] = css/page.css
 ;stylesheets[print][] = css/print.css
 ;scripts[] = js/aaah.js
 ; scripts[] = js/docnav.js
+scripts[] = js/aaah.js
+scripts[] = js/vendor/arTables.js
 ;screenshot  = screenshot.png
 ;settings[garland_width] = fluid
 

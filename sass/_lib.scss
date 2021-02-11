@@ -1,3 +1,25 @@
+
+// DCN
+$colourBackground : #f2f5f7;
+$colourDCNBlue: #006ba3;
+$colourDCNBlueDark: #00477a;
+$colourLinks: $colourDCNBlue ;
+$colourLinksActive: $colourDCNBlueDark;
+$colourCompliment: #ea4f3a;
+// DCN old {{{
+$dcn_blue_light: #006ba3;
+$dcn_blue_dark: #00477A;
+$dcn_orange: #ec5f17;
+$dcn_blue_wash:         #ebf8ff;
+$dcn_blue_wash_lighter: #EDF6FB;
+$dcn_blue_wash_greyer:  #F9FDFF;
+$g3: #777;
+$g5: #c6c6c6;
+$g8: #f1f1f1; // This is the background colour.
+// }}}
+
+
+// Aaah (should be removed ) {{{
 $colourArtfulBrightBlue :#2c98ed;
 $colourArtfulDarkBlue :#02477d;
 $colourArtfulBrightBlueHigh :lighten($colourArtfulBrightBlue, 20%);
@@ -18,7 +40,7 @@ $colourTabsBg: #eae9e4;
 
 $colourWidgetSelectedBackground : lighten($colourArtfulBrightBlue, 25%);
 $colourWidgetCouldSelectBackground : lighten($colourArtfulBrightBlue, 30%);
-$colourBackground : #f3f2ed;
+
 $colourBackgroundShade : darken(#f3f2ed, 10%);
 $colourBlueGrey: mix($colourBackground, $colourArtfulBrightBlue, 65%);
 
@@ -28,4 +50,33 @@ $colourGreen2: mix($colourGreenStrongBg, $colourGreenHint, 50%);
 
 $colourAmberStrongBg: #eaa75c;
 $colourAmberHint: #ffedcc;
-// #e8c6a2
+// }}}
+
+$colours: (
+bk: black,
+g1: #222,
+g2: #444,
+g3: #666,
+g4: #aaa,
+g5: #bbb,
+g7: #e8e8e8,
+g8: #f0f0f0,
+g9: #f8f8f8,
+wt: white,
+primary: $colourDCNBlue,
+primaryShade: $colourDCNBlueDark,
+);
+
+// Breakpoints. Minimum width to qualify... (these are stolen from bootstrap)
+// $breakpoints_map: (
+//   s: 576px,
+//   m: 768px,
+//   l: 992px,
+//   w: 1200px,
+// );
+//
+// Box shadows
+//
+$box-shadows-list: (
+  unquote("0 0 1rem rgba(0,0,0,0.2)")
+);

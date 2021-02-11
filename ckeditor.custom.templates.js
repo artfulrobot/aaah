@@ -1,3 +1,5 @@
+// This does not seem to get loaded.
+console.warning("XXXX aaah/ckeditor.custom.templates.js loading");
 CKEDITOR.addTemplates( 'default',
   {
     imagesPath: CKEDITOR_BASEPATH + '../../themes/boson/ckeditor-tpl/' ,

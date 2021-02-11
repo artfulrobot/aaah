@@ -11,11 +11,12 @@ let mix = require('laravel-mix');
  |
  */
 
-mix.js('js-src/docnav.js', 'js/')
+mix.js('js-src/aaah.js', 'js/')
   .sass('sass/aaah-local.scss', 'css/')
   .sass('sass/ckeditor.scss', 'css/')
   .sass('sass/content.scss', 'css/')
   .sass('sass/page.scss', 'css/')
+  .options({ processCssUrls: false })
 ;
 
 // Full API
