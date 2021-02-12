@@ -236,6 +236,29 @@ ls-none {
   margin-right: auto;
 }
 
+.shouting {
+  font-weight: 300;
+  font-size: 1.8rem;
+}
+
+a.button {
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: #ea4f3a;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.button:link, a.button:visited {
+  color: white;
+}
+
+a.button:hover {
+  background-color: #da2e17;
+  text-decoration: none;
+}
+
 .field-collection-view {
   padding: 0;
   margin: 0;
@@ -335,13 +358,15 @@ i.dcn-icon.exclamation {
   height: auto;
 }
 
+.crm-container.crm-public .messages.status,
 div.messages {
   max-width: clamp(30ch, 70%, 64ch);
+  border-radius: 4px;
   margin: 1rem auto;
   background: white;
   border: solid 1px #006ba3;
   color: #00477a;
-  padding: 1rem;
+  padding: 1rem 2rem;
 }
 
 #header__menu-toggle {
@@ -522,6 +547,15 @@ body.is-mobile.menu--show #block-menu-menu-main-menu-2021 {
   display: flex;
   flex-direction: column;
   justify-content: center;
+}
+
+.paragraphs-item-pp-over-image .dcn-veil > * {
+  width: 100%;
+}
+
+.paragraphs-item-pp-over-image h1 {
+  font-size: 2rem;
+  font-size: clamp(2rem, calc(1rem + 5vw), 3rem);
 }
 
 .paragraphs-item-pp-t-i-side .field_text h2:first-child, .paragraphs-item-pp-t-i-side .field_text h3:first-child {
@@ -808,6 +842,14 @@ th {
   padding: 1rem;
 }
 
+#block-system-main > .content > .action-links {
+  max-width: 1200px;
+  padding: 0 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: 1.6rem;
+}
+
 .field-name-body {
   max-width: 1200px;
   padding: 0 0.5rem;
@@ -822,6 +864,58 @@ th {
   margin-left: auto;
   margin-right: auto;
   padding-bottom: 4rem;
+}
+
+.crm-container.crm-public {
+  max-width: 1200px;
+  padding: 0 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.crm-container.crm-public #help, .crm-container.crm-public .help {
+  background: white;
+  padding: 1rem 1.5rem;
+  font-size: 1rem;
+  color: #00477a;
+  border: none;
+  border-left: solid 4px #006ba3;
+  border-radius: 4px;
+}
+
+.crm-container.crm-public .crm-submit-buttons, .crm-container.crm-public .action-link {
+  height: auto;
+}
+
+.crm-container.crm-public span.crm-button {
+  float: none !important;
+  display: inline-block;
+  padding: 0;
+  border: none;
+  background: none transparent;
+  position: relative;
+}
+
+.crm-container.crm-public span.crm-button i.crm-i {
+  position: absolute;
+  top: 0.5rem;
+  left: 1rem;
+  font-size: 1rem;
+  line-height: 1.2;
+}
+
+.crm-container.crm-public span.crm-button input {
+  padding: 0.5rem 2rem 0.5rem 2.4rem !important;
+  border: none;
+  line-height: 1.2;
+  font-size: 1rem;
+  text-shadow: none;
+  background: #006ba3;
+  color: white;
+}
+
+.crm-container.crm-public span.crm-button input:active, .crm-container.crm-public span.crm-button input:hover {
+  background: #00477a;
 }
 
 #uc-cart-view-form td.qty {
