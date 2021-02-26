@@ -28,11 +28,27 @@ h1, h2 {
 }
 
 h1 {
-  font-size: 2.4rem;
+  font-size: 2rem;
 }
 
 h2 {
-  font-size: 2rem;
+  font-size: 1.75rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+@media screen and (min-width: 768px) {
+  h1 {
+    font-size: 2.4rem;
+  }
+  h2 {
+    font-size: 2rem;
+  }
+  h3 {
+    font-size: 2rem;
+  }
 }
 
 h3, h4, h5 {
@@ -124,6 +140,48 @@ div.image-container {
   width: 100%;
   height: auto;
   display: block;
+}
+
+p.rtecenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+blockquote {
+  font-weight: 300;
+  font-size: 1.375rem;
+  color: #00477a;
+  padding: 0;
+  width: 18rem;
+  width: clamp(18rem, 70%, 60ch);
+  margin-left: auto;
+  margin-right: auto;
+}
+
+blockquote::after {
+  display: block;
+  content: ' ';
+  border-bottom: solid 1px #ea4f3a;
+  width: 50%;
+  margin: 0 auto 1rem;
+}
+
+a.button {
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: #ea4f3a;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration: none;
+}
+
+a.button:link, a.button:visited {
+  color: white;
+}
+
+a.button:hover {
+  background-color: #da2e17;
+  text-decoration: none;
 }
 
 .image-wrapper {

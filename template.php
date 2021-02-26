@@ -24,8 +24,13 @@ function aaah_preprocess_page(&$variables) {
   $variables['hideSidebar'] = !empty($_COOKIE['hideSidebar']) ? ' sidebar-closed' : '';
 }
 function aaah_preprocess_node(&$variables) {
-  $variables['content']['#attached']['js']['https://unpkg.com/vue']  = ['type' => 'external'];
-  $variables['content']['#attached']['js'][drupal_get_path('theme', 'aaah') . '/js/vendor/waypoints/lib/noframework.waypoints.min.js'] = [];
+
+  // Why did we include Vue!!
+  //$variables['content']['#attached']['js']['https://unpkg.com/vue']  = ['type' => 'external'];
+
+  // When is this used?
+  // $variables['content']['#attached']['js'][drupal_get_path('theme', 'aaah') . '/js/vendor/waypoints/lib/noframework.waypoints.min.js'] = [];
+
   $variables['published'] = (isset($variables['node']->status) ? $variables['node']->status == 1 : TRUE);
 
   $node = $variables['node'];
@@ -33,6 +38,11 @@ function aaah_preprocess_node(&$variables) {
   // Add template suggestions based on node type.
   $variables['theme_hook_suggestions'][] = 'node__' . $node->type;
   $variables['theme_hook_suggestions'][] = 'node__' . $node->type . '_' . $variables['view_mode'];
+
+  if (!empty($variables['field_sections'])) {
+    // Hide body if we have sections
+    $variables["content"]["body"] = $variables["elements"]["body"] = $variables['body'] = [];
+  }
 
   /*
   switch ($variables['node']->type) {
@@ -124,6 +134,51 @@ function aaah_preprocess_entity(&$variables, $hook) {
       $variables['content_classes'] = '';
       $variables['sidebar_classes'] = '';
 
+
+    } // }}}
+    elseif ($pp->bundle == 'pp_general') { // {{{
+      $sectionStyle = $pp->field_section_style['und'][0]['value'] ?? NULL;
+      $imageHeight = ($pp->field_image_height['und'][0]['value'] ?? 'auto') ?: 'auto';
+      $alignment = $pp->field_alignment['und'][0]['value'] ?? NULL;
+      $layout = $pp->field_layout['und'][0]['value'] ?? NULL;
+
+      $image = $pp->field_image["und"][0] ?? [];
+      $variables['hasImage'] = !empty($image);
+
+      $text = $pp->field_text["und"][0]["safe_value"] ?? NULL;
+      $variables['hasText'] = !empty($text);
+
+      if ($pp->field_caption["und"][0]["safe_value"] ?? NULL && !empty($image)) {
+        $variables['classes_array'][] = 'has-caption' ;
+      }
+
+      // Get raw html for video
+      $video = ($pp->field_video['und'][0]['value'] ?? NULL);
+      $variables['video'] = $video;
+
+      $block = (bool) $pp->field_special['und'][0] ?? NULL;
+
+      $variables['classes_array'][] = $pp->field_space['und'][0]['value'] ?? 'space-space-top-bottom';
+
+      $variables['hasOther'] = (($image || $video || $block) ? 1: 0);
+      if ($variables['hasOther'] && $variables['hasText']) {
+        $variables['classes_array'][] = "ppgen-2-cols";
+      }
+
+      if ($layout) {
+        $variables['classes_array'][] = "layout-$layout";
+      }
+      if ($alignment) {
+        $variables['classes_array'][] = "align-$alignment";
+      }
+      if ($imageHeight) {
+        $variables['classes_array'][] = "img-height-$imageHeight";
+      }
+
+      $variables['classes_array'][] = $sectionStyle ? "ss-$sectionStyle" : 'ss-none';
+
+      // Choose a theme template.
+      //$variables["theme_hook_suggestions"][] = 'xxx';
 
     } // }}}
     elseif ($pp->bundle == 'image') { // {{{

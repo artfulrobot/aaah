@@ -18,12 +18,11 @@
               </div>
             <?php endif;?>
 
-            <?php if ($hasOther): ?>
-              <div class="ppgen_other">
-                <?php print render($content['field_raw']); ?>
-                <?php print render($content['field_block']); ?>
-              </div>
+            <?php if ($video): ?>
+              <div class="ppgen_video"><div class="ppgen_video_wrap"><?php print $video?></div></div>
             <?php endif;?>
+
+            <?php print render($content["field_special"]); ?>
 
             <?php if ($content['field_caption'][0]['#markup'] ?? ''): ?>
               <div class="ppgen_caption"><!-- flex auto -->

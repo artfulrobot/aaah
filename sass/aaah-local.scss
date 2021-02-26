@@ -196,25 +196,10 @@ ls-none { list-style: none; }
 } // }}}
 .shouting {
   font-weight: 300;
-  // At 320px wide, we want 1.75rem = 28px
-  font-size: 1.8rem;
+  font-size: 1.5rem;
 }
-// link buttons.
-a.button {
-  border: none;
-  padding: 0.5rem 2rem;
-  background-color: $colourCompliment;
-  border-radius: 4px;
-  text-align: center;
-  text-decoration:none;
-  &:link, &:visited {
-    color: white;
-  }
-
-  &:hover {
-    background-color: darken($colourCompliment, 10%);
-    text-decoration:none;
-  }
+@media screen and (min-width: 576px) {
+  .shouting { font-size: 1.8rem; }
 }
 // }}}
 // Reset ..field-collection-view {{{
@@ -228,9 +213,14 @@ a.button {
 
 // Hide the admin-menu on mobile, it just gets in the way.
 #admin-menu { display: none; }
+body.admin-menu.adminimal-menu::before {
+  display: none;
+}
 @media screen and (min-width: 576px) {
+  body.admin-menu.adminimal-menu::before {
+    display: block;
+  }
   #admin-menu { display: block; }
-  body.admin-menu { }
 }
 
 // Override
@@ -246,7 +236,11 @@ a.button {
 #main {
   min-height:70vh; // we don't want any white space after the footer.
 }
+
 // }}}
+// Component: iframe {{{
+iframe { border: none; }
+//}}}
 // Component: links {{{
 a:link { color: $colourCompliment; }
 a:visited { color: $colourCompliment; }
@@ -419,14 +413,15 @@ body.is-mobile {
           padding: 0.25em 0.75em;
           text-decoration:none;
 
-          border-bottom: solid 2px transparent;
+          //border-bottom: solid 2px transparent;
           &:hover {
-            border-bottom-color: map_get($colours, 'g7');
+            //border-bottom-color: map_get($colours, 'g7');
           }
         }
 
         &.active-trail>div>a {
-          border-bottom-color: map_get($colours, 'primary');
+          //border-bottom-color: map_get($colours, 'primary');
+          background-color: $colourBackground;
         }
       }
     }
@@ -496,25 +491,163 @@ body.is-mobile {
   }
 
 } //}}}
-// Component: Paragraph: pp-t-i-side {{{
-.paragraphs-item-pp-t-i-side {
-  .field_text {
-    h2:first-child, h3:first-child { margin-top: 0; }
+// Component: Paragraph: general {{{
+.paragraphs-item-pp-general {
+  // The other classes we accommodate at this level are:
+  // .image-height-cover    Makes the image cover the same size as the text col. (in 2col screens)
+  // .ss-wide-white, .ss-wide-blue   full width.
+  // .ss-white-box, .ss-blue-box   box.
+
+  &.space-top-bottom {
+    padding-top: 2rem;
+    padding-bottom: 2rem;
   }
-  &.has-caption {
-    img {
-      border-radius: 8px 8px 0 0 ;
+  // Absolutely no space looks bit weird.
+  &.space-none {
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+  }
+
+  &.ss-white_wide { background-color: white; }
+  &.ss-blue_wide {
+    background-color: $colourDCNBlueDark;
+    .ppgen_col_text {
+      &, h1, h2, h3, h4 { color: white; }
     }
   }
 
-  .field_caption {
-    border-radius: 0 0 8px 8px;
-    background: white;
-    p {
-      margin-bottom:0;
+  // The blue box has image right up to its corners.
+  &.ss-blue_box {
+    .layout {
+      background-color: $colourDCNBlueDark;
+      border-radius: 8px;
+    }
+    .ppgen_col_text {
+      // Mobile padding:
+      padding: 0.5rem;
+      &, h1, h2, h3, h4 { color: white; }
     }
   }
-}//}}}
+
+  &.ss-white_box {
+    .layout {
+      border-left: solid 4px $colourCompliment;
+      background-color: white;
+      border-radius: 0 8px 8px 0;
+    }
+    .ppgen_col_text {
+      // We need a bit more padding when we're in a box.
+      padding: 1rem 0 1rem 2rem;
+    }
+  }
+
+  .ppgen_col_text {
+    h2:first-child, h3:first-child { margin-top: 0; }
+  }
+
+  // For mobile, just size images full width.
+  .ppgen_image {
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px;
+    }
+  }
+
+  .ppgen_caption {
+    background-color: white;
+    border-radius: 0 0 8px 8px;
+    padding: 0.25rem 1rem;
+    font-size: 1rem;
+
+    p:last-child { margin-bottom: 0; }
+  }
+  &.has-caption {
+    .ppgen_image img {
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
+    // When there's a video, make a 16:9 aspect.
+    .ppgen_video {
+      padding-top: (100%*9/16);
+      position: relative;
+      max-width: 1024px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    .ppgen_video_wrap {
+      position: absolute;
+      top:0;
+      bottom:0;
+      left:0;
+      right:0;
+      overflow: hidden;
+      &>* { width: 100%; height:100%;}
+    }
+}
+@media screen and (min-width: 576px) {
+  .paragraphs-item-pp-general.ppgen-2-cols {
+    .layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      grid-gap: 2rem;
+      gap: 2rem;
+    }
+
+    // Swap l, r
+    &.layout-image_text {
+      .ppgen_col_text { grid-column: 2; grid-row: 1; }
+      .ppgen_col_other { grid-column: 1; grid-row: 1; }
+
+      &.ss-blue_box, &.ss-white_box {
+        .ppgen_col_text {
+          padding: 1rem 2rem 1rem 0;
+        }
+      }
+
+      &.ss-white_box {
+        .layout {
+          border-left: none;
+          border-right: solid 4px $colourCompliment;
+        }
+      }
+    }
+
+    // Blue box
+    &.ss-blue_box {
+      .ppgen_col_text {
+        // We need a bit more padding when we're in a box.
+        padding: 1rem 0 1rem 2rem;
+      }
+    }
+
+
+    // When the image is 'cover' the column needs to be a columnar flex
+    &.img-height-cover {
+
+      .ppgen_col_other {
+        display: flex;
+        flex-direction: column;
+      }
+
+      .ppgen_image {
+        flex: 1 0 200px;
+        img {
+          object-fit: cover;
+          width: 100%;
+          height: 100%;
+        }
+      }
+      .ppgen_caption {
+        flex: 0 0 auto;
+      }
+    }
+
+  }
+}
+//}}}
 // Component: Card A {{{
 .node-article.view-mode-card_a {
   &:hover {
@@ -724,6 +857,7 @@ th {
   //}}}
 }
 //}}}
+
 
 // Fix invisible Qty field on shopping cart {{{
 #uc-cart-view-form td.qty {

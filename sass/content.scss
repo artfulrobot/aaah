@@ -30,11 +30,14 @@ h1, h2 {
   font-family: Hind;
   font-weight: 700;
 }
-h1 {
-  font-size:2.4rem;
-}
-h2 {
-  font-size:2rem;
+// Heading sizes
+h1 { font-size:2rem; }
+h2 { font-size:1.75rem; }
+h3 { font-size:1.5rem; }
+@media screen and (min-width: 768px) {
+  h1 { font-size:2.4rem; }
+  h2 { font-size:2rem; }
+  h3 { font-size:2rem; }
 }
 
 h3, h4, h5 { max-width:65em; }
@@ -112,3 +115,45 @@ div.image-container {
   }
 }
 
+// Fix .rtecenter re max-width {{{
+p.rtecenter {
+  margin-left: auto;
+  margin-right: auto;
+}
+// }}}
+blockquote //{{{
+{
+  font-weight: 300;
+  font-size: (22rem/16);
+  color: $colourDCNBlueDark;
+  padding: 0;
+  width: 18rem;
+  width: clamp(18rem, 70%, 60ch);
+  margin-left: auto;
+  margin-right: auto;
+
+  &::after {
+    display: block;
+    content: ' ';
+    border-bottom: solid 1px $colourCompliment;
+    width: 50%;
+    margin: 0 auto 1rem;
+  }
+} // }}}
+// link buttons. {{{
+a.button {
+  border: none;
+  padding: 0.5rem 2rem;
+  background-color: $colourCompliment;
+  border-radius: 4px;
+  text-align: center;
+  text-decoration:none;
+  &:link, &:visited {
+    color: white;
+  }
+
+  &:hover {
+    background-color: darken($colourCompliment, 10%);
+    text-decoration:none;
+  }
+} // }}}
