@@ -2,6 +2,7 @@
 
 
 function aaah_preprocess_page(&$variables) {
+  global $user;
 
   // todo similar logic
   // $variables['suppress_page_title'] = isset($variables['node']);
@@ -21,7 +22,16 @@ function aaah_preprocess_page(&$variables) {
     'weight' => 1001,
   ];
 
-  $variables['hideSidebar'] = !empty($_COOKIE['hideSidebar']) ? ' sidebar-closed' : '';
+  // Provide login / user and logout links.
+  if ($user->uid > 0) {
+    // Logged in.
+    $variables['page']['loginout'] = '<a href="/user/logout" >Logout</a>';
+    $variables['page']['userlink'] = '<a href="/user" >' . htmlspecialchars($user->name) .  '</a>';
+  }
+  else {
+    $variables['page']['loginout'] = '<a href="/user" >Login</a>';
+  }
+
 }
 function aaah_preprocess_node(&$variables) {
 

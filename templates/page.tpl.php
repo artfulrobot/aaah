@@ -16,9 +16,11 @@
             <a href="/homepage-new"><img src="/sites/default/themes/aaah/images/dcn-logo.svg" alt="<?php print $site_name; ?>" class="db" id="header-logo" /></a>
         </div>
         <div class="fi-a" >
-          <a href="/cart" title="View your shopping cart">
+          <a class="cart" href="/cart" title="View your shopping cart">
             <i class="fa fa-shopping-cart"></i>
             Cart</a>
+          <?php print $userlink ?? ''; ?>
+          <?php print $loginout ?? ''; ?>
         </div>
       </div>
       <?php print render($page['header']['menu_menu-main-menu-2021']); ?>
