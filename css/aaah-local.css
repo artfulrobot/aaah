@@ -291,6 +291,31 @@ i.dcn-icon.exclamation {
   height: auto;
 }
 
+ul.top-links {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+}
+
+ul.top-links > li {
+  display: inline-block;
+}
+
+ul.top-links > li a {
+  display: inline-block;
+  padding: 0.25rem 1rem;
+  text-decoration: none;
+}
+
+ul.top-links > li a:link, ul.top-links > li a:visited {
+  color: #00477a;
+  color: #666;
+}
+
+ul.top-links > li a:hover, ul.top-links > li a:active {
+  color: #ea4f3a;
+}
+
 .crm-container.crm-public .messages.status,
 div.messages {
   max-width: clamp(30ch, 70%, 64ch);
@@ -890,6 +915,13 @@ th {
   padding: 1rem;
 }
 
+body.not-paragraphs-page #block-system-main {
+  max-width: 1200px;
+  padding: 0 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #block-system-main > .content > .action-links {
   max-width: 1200px;
   padding: 0 0.5rem;
@@ -964,6 +996,59 @@ th {
 
 .crm-container.crm-public span.crm-button input:active, .crm-container.crm-public span.crm-button input:hover {
   background: #00477a;
+}
+
+.view-id-personal_stories .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
+  margin-right: -1rem;
+}
+
+.view-id-personal_stories .view-content > .views-row {
+  flex: 1 0 23rem;
+  max-width: 30%;
+  padding: 1rem;
+}
+
+article.dcn-story {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+article.dcn-story h1, article.dcn-story h2, article.dcn-story h3 {
+  margin-top: 0;
+  font-size: 1.6rem;
+  flex: 0 0 auto;
+}
+
+article.dcn-story h1 a:link, article.dcn-story h1 a:visited, article.dcn-story h2 a:link, article.dcn-story h2 a:visited, article.dcn-story h3 a:link, article.dcn-story h3 a:visited {
+  text-decoration: none;
+  color: #00477a;
+}
+
+article.dcn-story .body {
+  flex: 1 0 auto;
+}
+
+article.dcn-story .body img {
+  max-width: 100%;
+  height: auto;
+}
+
+article.dcn-story .categories {
+  flex: 0 0 auto;
+}
+
+body.page-user #block-system-main {
+  max-width: 1200px;
+  padding: 0 0.5rem;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #uc-cart-view-form td.qty {

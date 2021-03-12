@@ -210,6 +210,28 @@ i.dcn-icon {
   width: clamp(10rem, 20vw, 15rem);
   height: auto;
 }
+ul.top-links {
+  text-align: right;
+  margin: 0;
+  padding: 0;
+  &>li {
+    display: inline-block;
+    a {
+      display: inline-block;
+      padding: 0.25rem 1rem;
+      text-decoration: none;
+      &:link, &:visited {
+        color: $colourDCNBlueDark;
+        color: #666;
+      }
+
+      &:hover, &:active {
+        color: $colourCompliment;
+      }
+    }
+  }
+}
+
 // }}}
 // Component: messages {{{
 .crm-container.crm-public .messages.status,
@@ -712,6 +734,11 @@ th {
 }
 // }}}
 // Pages: {{{
+body.not-paragraphs-page {
+  #block-system-main {
+    @include normal-content-width;
+  }
+}
 #block-system-main>.content>.action-links {
   @include normal-content-width;
   padding-left: 1.6rem; // for the bullet.
@@ -779,6 +806,53 @@ th {
     }
   }
   //}}}
+}
+//}}}
+// Pages: View personal storeis {{{
+.view-id-personal_stories .view-content {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  &>.views-row {
+    flex: 1 0 23rem;
+    max-width: 30%;
+    padding: 1rem;
+  }
+}
+article.dcn-story {
+  background-color: white;
+  border-radius: 8px;
+  padding: 2rem;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  h1, h2, h3 {
+    margin-top: 0;
+    font-size: 1.6rem;
+    a:link, a:visited { text-decoration: none;
+      color: $colourDCNBlueDark;
+    }
+    flex: 0 0 auto;
+  }
+
+  .body {
+    flex: 1 0 auto;
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .categories {
+    flex: 0 0 auto;
+  }
+
+}
+// }}}
+// Page: User {{{
+body.page-user #block-system-main {
+  @include normal-content-width;
 }
 //}}}
 

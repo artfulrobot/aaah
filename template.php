@@ -1,9 +1,6 @@
 <?php
-
-
 function aaah_preprocess_page(&$variables) {
   global $user;
-
   // todo similar logic
   // $variables['suppress_page_title'] = isset($variables['node']);
 
@@ -25,14 +22,32 @@ function aaah_preprocess_page(&$variables) {
   // Provide login / user and logout links.
   if ($user->uid > 0) {
     // Logged in.
-    $variables['page']['loginout'] = '<a href="/user/logout" >Logout</a>';
-    $variables['page']['userlink'] = '<a href="/user" >' . htmlspecialchars($user->name) .  '</a>';
+    $variables['page']['loginout'] = '<li><a href="/user/logout" ><i class="fa fa-sign-out"></i>
+      Logout</a></li>';
+    $variables['page']['userlink'] = '<li><a href="/user" ><i class="fa fa-user"></i> ' . htmlspecialchars($user->name) .  '</a></li>';
   }
   else {
-    $variables['page']['loginout'] = '<a href="/user" >Login</a>';
+    $variables['page']['loginout'] = '<li><a href="/user" ><i class="fa fa-user"></i> Login</a></li>';
   }
 
+  // None of this bubbles up to html
+  // $variables['x1'] = 1;
+  // $variables['#x2'] = 1;
+  // $variables['page']['x3'] = 1;
+  // $variables['page']['#x4'] = 1;
 }
+/**
+ * This is a wrapper so comes after page
+ */
+function aaah_preprocess_html(&$variables, $hook) {
+  if (!empty($GLOBAL['thisPageUsesParagraphs'])) {
+    $variables["classes_array"][] = 'paragraphs-page';
+  }
+  else {
+    $variables["classes_array"][] = 'non-paragraphs-page';
+  }
+}
+
 function aaah_preprocess_node(&$variables) {
 
   // Why did we include Vue!!
@@ -52,6 +67,8 @@ function aaah_preprocess_node(&$variables) {
   if (!empty($variables['field_sections'])) {
     // Hide body if we have sections
     $variables["content"]["body"] = $variables["elements"]["body"] = $variables['body'] = [];
+    // This is a horrid hack to pass info to preprocess_html
+    $GLOBAL['thisPageUsesParagraphs'] = 1;
   }
 
   /*

@@ -15,13 +15,13 @@
             <!--@todo reset this link.-->
             <a href="/homepage-new"><img src="/sites/default/themes/aaah/images/dcn-logo.svg" alt="<?php print $site_name; ?>" class="db" id="header-logo" /></a>
         </div>
-        <div class="fi-a" >
-          <a class="cart" href="/cart" title="View your shopping cart">
+        <ul class="fi-a top-links" role="navigation" >
+          <li><a class="cart" href="/cart" title="View your shopping cart">
             <i class="fa fa-shopping-cart"></i>
-            Cart</a>
-          <?php print $userlink ?? ''; ?>
-          <?php print $loginout ?? ''; ?>
-        </div>
+            Basket</a></li>
+          <?php print $variables["page"]["userlink"] ?? ''; ?>
+          <?php print $variables["page"]["loginout"] ?? ''; ?>
+        </ul>
       </div>
       <?php print render($page['header']['menu_menu-main-menu-2021']); ?>
     </div><?php /* end of header content */ ?>
