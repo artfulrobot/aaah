@@ -12,9 +12,14 @@
     <div class="normal-content-width" id="header__content">
       <div class="df fjc-sb fai-top">
         <div class="fi-a pr4">
-            <a href="/"><img src="/sites/default/themes/aaah/images/dcn-logo.svg" alt="<?php print $site_name; ?>" class="db" id="header-logo" /></a>
+            <!--@todo reset this link.-->
+            <a href="/homepage-new"><img src="/sites/default/themes/aaah/images/dcn-logo.svg" alt="<?php print $site_name; ?>" class="db" id="header-logo" /></a>
         </div>
-        <div class="fi-a" ><?php /* top links go here.*/ ?></div>
+        <div class="fi-a" >
+          <a href="/cart" title="View your shopping cart">
+            <i class="fa fa-shopping-cart"></i>
+            Cart</a>
+        </div>
       </div>
       <?php print render($page['header']['menu_menu-main-menu-2021']); ?>
     </div><?php /* end of header content */ ?>

@@ -98,44 +98,6 @@ function aaah_preprocess_entity(&$variables, $hook) {
 
 
     }//}}}
-    elseif ($pp->bundle == 'pp_t_i_side') { // {{{
-
-
-      $styles = egtheme_get_list_items($pp, 'field_pptistyle');
-      $_ = $styles;
-
-            if (!empty($content['field_caption'][0]['#markup']))
-
-      $variables['image_layout_class'] = '';
-      $variables['image_vertical_alignment'] = '';
-      if (isset($variables['content']['field_image'][0])) {
-        $variables['content']['field_image'][0]['#item']['attributes']['class'] = 'w100 h-auto db';
-        if (isset($styles['cover'])) {
-          // object fit is a nightmare.
-          $variables['content']['field_image'][0]['#item']['attributes']['class'] = 'w100 h100 db fit-cover';
-          $variables['image_layout_class'] = 'fi-ags';
-          $variables['image_vertial_alignment'] = 'ov-h';
-        }
-        elseif (isset($styles['centred'])) {
-          $variables['image_layout_class'] = 'fi-0';
-          $variables['image_vertial_alignment'] = 'fjc-centre';
-        }
-      }
-      $variables['text_wrapper_classes'] = '';
-      $variables['image_wrapper_classes'] = '';
-      if (isset($styles['img-right'])) {
-        $variables['text_wrapper_classes'] = 'fo-1-m';
-        $variables['image_wrapper_classes'] = 'fo-2-m';
-      }
-      if (!empty($variables['content']['field_caption'][0])) {
-        $variables['classes_array'][] = 'has-caption';
-      }
-      $variables['classes_array'] = array_merge($variables['classes_array'], array_intersect(['pv4'], $styles));
-      $variables['content_classes'] = '';
-      $variables['sidebar_classes'] = '';
-
-
-    } // }}}
     elseif ($pp->bundle == 'pp_general') { // {{{
       $sectionStyle = $pp->field_section_style['und'][0]['value'] ?? NULL;
       $imageHeight = ($pp->field_image_height['und'][0]['value'] ?? 'auto') ?: 'auto';

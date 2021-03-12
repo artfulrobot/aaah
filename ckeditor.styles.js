@@ -9,6 +9,7 @@ if(typeof(CKEDITOR) !== 'undefined') {
     [
       { name : 'Paragraph'		, element : 'p' },
       { name : 'Visually big'	, element : 'p', attributes: { 'class': 'shouting' } },
+      { name : 'Smallprint'	  , element : 'p', attributes: { 'class': 'smallprint' } },
       { name : 'Heading 1'		, element : 'h1' },
       { name : 'Heading 2'		, element : 'h2' },
       { name : 'Heading 3'		, element : 'h3' },
