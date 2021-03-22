@@ -54,13 +54,13 @@ label {
 }
 // }}}
 // Sidebar layout. {{{
-$sidebar_width  : 20rem;
+$sidebar_width  : 26rem;
 $sidebar_gutter : 2rem;
 
 #sidebar-toggle { display:none; }
 aside.sidebar {
   // Allow for menu bar at top.
-  padding:3rem 1rem 0;
+  padding:5rem 1rem 0;
 
   // Colour the sidebar.
   background-color: $colourDarkGrey;
@@ -87,8 +87,8 @@ aside.sidebar {
   #main.sidebar-closed {
 
     #sidebar-toggle {
-      transform:translate(1.5rem, 0rem) rotate(-90deg);
-      width:9rem;
+      transform:translate((1.5rem*1.6), 0rem) rotate(-90deg);
+      width:(9rem*1.6);
     }
 
     #content {
@@ -104,7 +104,7 @@ aside.sidebar {
     bottom:0;
     left:0;
     width: $sidebar_width;
-    height:1.5rem;
+    height:(1.5rem*1.6);
     line-height:1;
     background-color: $colourDarkGrey;
     padding:0 0.5rem;
