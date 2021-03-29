@@ -11,8 +11,14 @@
   padding:0;
 }
 @mixin normal-content-width {
-  max-width: 1200px;
-  padding: 0 0.5rem;
+  max-width: 1328px; // 1200px + 64px ×2 padding
+  // Old browsers
+  padding: 0 1rem;
+  // Better browsers
+  padding: 0 4vw;
+  // Modern browsers
+  padding: 0 clamp(0.5rem, 4vw, 4rem);
+
   margin-left: auto;
   margin-right: auto;
 }
@@ -130,7 +136,9 @@
 }
 // }}}
 // Global {{{
-
+body{
+  line-height: 1.4;
+}
 // Hide the admin-menu on mobile, it just gets in the way.
 #admin-menu { display: none; }
 body.admin-menu.adminimal-menu::before {
@@ -417,7 +425,9 @@ body.is-mobile {
   // Use the veil for positioning too.
   .dcn-veil {
     min-height: 22rem;
-    padding: 2rem;
+    // Padding goes vertically to show image
+    // We don't need it horizontally because of normal-content-width
+    padding: 2rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -475,16 +485,16 @@ body.is-mobile {
     }
   }
 
-  &.ss-white_box {
-    .layout {
-      border-left: solid 4px $colourCompliment;
-      background-color: white;
-      border-radius: 0 8px 8px 0;
-    }
+  &.ss-white_box,
+  &.ss-white_box_blue_line {
     .ppgen_col_text {
-      // We need a bit more padding when we're in a box.
-      padding: 1rem 0 1rem 2rem;
+      // Mobile padding:
+      padding: 0.5rem;
     }
+    .layout {
+      background-color: white;
+    }
+
   }
 
   .ppgen_col_text {
@@ -504,7 +514,8 @@ body.is-mobile {
   .ppgen_caption {
     background-color: white;
     border-radius: 0 0 8px 8px;
-    padding: 0.25rem 1rem;
+    // mobile
+    padding: 0.25rem 0.5rem;
     font-size: 1rem;
 
     p:last-child { margin-bottom: 0; }
@@ -541,22 +552,39 @@ body.is-mobile {
       grid-gap: 2rem;
       gap: 2rem;
     }
+    .ppgen_caption {
+      padding: 0.25rem 1rem;
+    }
+
+    &.ss-white_box_blue_line {
+      .layout {
+        border-right: solid 4px $colourDCNBlueMedium;
+        border-radius: 0 8px 8px 0;
+      }
+    }
+
+    .ppgen_col_text {
+      // By default the text comes after the other content.
+      // We need a bit more padding when we're in a box.
+      padding: 1rem 0 1rem 2rem;
+    }
+
 
     // Swap l, r
-    &.layout-image_text {
-      .ppgen_col_text { grid-column: 2; grid-row: 1; }
-      .ppgen_col_other { grid-column: 1; grid-row: 1; }
+    &.layout-text_image {
+      .ppgen_col_text { grid-column: 1; grid-row: 1; }
+      .ppgen_col_other { grid-column: 2; grid-row: 1; }
 
-      &.ss-blue_box, &.ss-white_box {
+      &.ss-blue_box, &.ss-white_box, &.ss-white_box_blue_line {
         .ppgen_col_text {
-          padding: 1rem 2rem 1rem 0;
+          padding: 1rem 0 1rem 2rem;
         }
       }
 
-      &.ss-white_box {
+      &.ss-white_box_blue_line {
         .layout {
-          border-left: none;
-          border-right: solid 4px $colourCompliment;
+          border-right: none;
+          border-left: solid 4px $colourDCNBlueMedium;
         }
       }
     }
@@ -605,6 +633,25 @@ body.is-mobile {
   }
   footer {
     border-top: solid 1px map_get($colours, 'g7');
+  }
+}
+// }}}
+// Component: child pages menu {{{
+#block-menu-block-14 {
+
+  background: rgba(0, 0, 0, 0.015);
+  padding: 2rem;
+  border-radius: 8px;
+
+  h2 { margin: 0; }
+  ul {
+    padding-left: 1rem;
+    li {
+      padding-left: 0.5rem;
+    }
+    li::marker {
+      content: '‣';
+    }
   }
 }
 // }}}
@@ -812,40 +859,60 @@ body.not-paragraphs-page {
 .view-id-personal_stories .view-content {
   display: flex;
   flex-wrap: wrap;
+  justify-content: center;
   margin-left: -1rem;
   margin-right: -1rem;
   &>.views-row {
     flex: 1 0 23rem;
-    max-width: 30%;
+    max-width: 34rem;
     padding: 1rem;
   }
 }
 article.dcn-story {
+  $dcnStoryPadding:1.5rem;
   background-color: white;
   border-radius: 8px;
-  padding: 2rem;
+  padding: 0;
   height: 100%;
   display: flex;
   flex-direction: column;
 
+  div.dcn-story__image {
+    flex: 0 0 auto;
+    border-radius: 8px;
+    img {
+      width: 100%;
+      height: auto;
+      display: block;
+      border-radius: 8px 8px 0 0;
+    }
+  }
+
   h1, h2, h3 {
     margin-top: 0;
-    font-size: 1.6rem;
+    font-size: 1.5rem;
     a:link, a:visited { text-decoration: none;
       color: $colourDCNBlueDark;
     }
     flex: 0 0 auto;
+    padding: 1rem $dcnStoryPadding;
+    margin: 0;
   }
 
   .body {
     flex: 1 0 auto;
+    padding: 0 $dcnStoryPadding;
     img {
       max-width: 100%;
       height: auto;
     }
   }
-  .categories {
+  .footer {
     flex: 0 0 auto;
+    padding: 0.5rem $dcnStoryPadding 1rem;
+    border-radius: 0 0 8px 8px;
+    font-size: 1rem;
+    color: $g3;
   }
 
 }
@@ -854,6 +921,18 @@ article.dcn-story {
 body.page-user #block-system-main {
   @include normal-content-width;
 }
+// Specificity to override Members' menu below
+body.aaah-theme #block-menu-block-13 {
+  @include normal-content-width;
+  ul.menu {
+    margin: 0; padding: 0;
+    li {
+      list-style: none;
+      display: inline-block;
+    }
+  }
+}
+
 //}}}
 
 

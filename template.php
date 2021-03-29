@@ -40,6 +40,7 @@ function aaah_preprocess_page(&$variables) {
  * This is a wrapper so comes after page
  */
 function aaah_preprocess_html(&$variables, $hook) {
+  $variables["classes_array"][] = 'aaah-theme';
   if (!empty($GLOBAL['thisPageUsesParagraphs'])) {
     $variables["classes_array"][] = 'paragraphs-page';
   }
@@ -132,6 +133,7 @@ function aaah_preprocess_entity(&$variables, $hook) {
       $layout = $pp->field_layout['und'][0]['value'] ?? NULL;
 
       $image = $pp->field_image["und"][0] ?? [];
+      $variables['imageLink'] = htmlspecialchars($pp->field_image_link["und"][0]['value'] ?? '');
       $variables['hasImage'] = !empty($image);
 
       $text = $pp->field_text["und"][0]["safe_value"] ?? NULL;

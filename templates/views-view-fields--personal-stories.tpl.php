@@ -26,10 +26,12 @@
 ?>
 <article class="dcn-story"
 >
-  <!-- image -->
+  <?php print $fields['field_image']->content; ?>
+
   <?php print $fields['title']->content; ?>
   <div class="body"><?php print $fields["body"]->content; ?></div>
-  <div class="categories"><?php print $fields["field_personal_story_categories"]->content; ?></div>
+
+  <div class="footer"><?php print $fields['field_author']->content; ?></div>
 </article>
 
 

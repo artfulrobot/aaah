@@ -184,7 +184,7 @@ body strong, body b {
   font-weight: 600;
 }
 
-h1, h2 {
+h1, h2, h3 {
   font-weight: 700;
   color: #00477a;
   font-family: Hind;
@@ -207,7 +207,7 @@ h3 {
     font-size: 2.4rem;
   }
   h2 {
-    font-size: 2rem;
+    font-size: 2.2rem;
   }
   h3 {
     font-size: 2rem;
