@@ -489,6 +489,28 @@ body.is-mobile.menu--show #block-menu-menu-main-menu-2021 {
   }
 }
 
+nav.dcn-prev-next-nav {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+}
+
+nav.dcn-prev-next-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin: 0;
+  padding: 0;
+}
+
+nav.dcn-prev-next-nav ul li {
+  flex: 0 0 auto;
+  min-width: 14%;
+  line-height: 3rem;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
 .white-box {
   background-color: white;
   margin: 0 auto;

@@ -408,6 +408,29 @@ body.is-mobile {
   }
 }
 //}}}
+// Component: nav previous/next {{{
+nav.dcn-prev-next-nav {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+
+    margin: 0;
+    padding: 0;
+
+    li {
+      flex: 0 0 auto;
+      min-width: 14%; // don't know why this works..
+      line-height: 3rem; 
+      list-style: none;
+      margin: 0;
+      padding: 0;
+    }
+  }
+}
+// }}}
 // Component: white-box {{{
 .white-box {
   background-color: white;
