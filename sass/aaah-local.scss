@@ -660,7 +660,7 @@ nav.dcn-prev-next-nav {
 }
 // }}}
 // Component: child pages menu {{{
-#block-menu-block-14 {
+#block-dcn-custom-dcn-child-pages {
 
   background: rgba(0, 0, 0, 0.015);
   padding: 2rem;
@@ -945,13 +945,23 @@ body.page-user #block-system-main {
   @include normal-content-width;
 }
 // Specificity to override Members' menu below
-body.aaah-theme #block-menu-block-13 {
+body.aaah-theme #block-block-64 {
   @include normal-content-width;
-  ul.menu {
+  ul.my-account-menu {
     margin: 0; padding: 0;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+
     li {
       list-style: none;
-      display: inline-block;
+      padding: 0.5rem 1rem;
+      flex: 0 0 auto;
+      a {
+        white-space: nowrap;
+        display: block;
+      }
     }
   }
 }

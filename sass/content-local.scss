@@ -138,6 +138,13 @@ a.button {
     background-color: darken($colourCompliment, 10%);
     text-decoration:none;
   }
+
+  &.secondary {
+    background-color: $colourDCNBlueMedium;
+    &:hover {
+      background-color: $colourDCNBlue;
+    }
+  }
 } // }}}
 
 // Shouting and smallprint text classes {{{
