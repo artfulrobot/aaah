@@ -8,7 +8,7 @@
 
             <?php if ($hasImage): ?>
               <?php if ($imageLink): ?>
-                <a class="ppgen_image" href="<?php print $imageLink;?>">
+              <a class="ppgen_image" href="<?php print $imageLink;?>" <?php print $imageLinkTarget; ?>>
                   <?php print render($content['field_image'][0]); ?>
                 </a>
               <?php else: ?>

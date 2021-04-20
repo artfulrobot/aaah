@@ -26,6 +26,8 @@ Drupal.behaviors.aaah = {
     });
     // The class is on the <body> originally to stop mobile rendering being a mess.
     $('body').removeClass('is-mobile');
+    this.topLinks = document.querySelector('ul.top-links');
+    this.menuBlock = document.querySelector('#block-menu-menu-main-menu-2021>div.content');
     this.windowResized();
   },
   windowResized: function() {
@@ -34,6 +36,8 @@ Drupal.behaviors.aaah = {
       if (!$body.hasClass('is-mobile')) {
         // Switch mobile view.
         $body.addClass('is-mobile');
+        // Move the top links into the menu thing.
+        this.menuBlock.insertAdjacentElement('afterbegin', this.topLinks);
         $('#site-header').append(this.$menu_button);
 
       }
@@ -42,6 +46,8 @@ Drupal.behaviors.aaah = {
       if ($body.hasClass('is-mobile')) {
         // No (longer) mobile.
         $body.removeClass('is-mobile', 'show-menu');
+        // Put the top links back.
+        document.querySelector('.header-logo-div').insertAdjacentElement('afterend', this.topLinks);
         this.$menu_button.detach();
       }
     }

@@ -258,8 +258,8 @@ div.messages {
 #header__menu-toggle {
   position:absolute;
   z-index: 1;
-  top:0.5rem;
-  right:0.5rem;
+  top: 1rem;
+  right: 1rem;
   border-radius: 2rem;
   padding: 0.25em 0.75em;
   font-size: (14rem/16);
@@ -279,6 +279,7 @@ div.messages {
 }
 
 body.is-mobile {
+  .slicknav_menu { display:none; }
   &.menu--show {
     position:fixed;
     overflow: hidden;
@@ -286,6 +287,8 @@ body.is-mobile {
     #header__menu-toggle {
       background-color: $colourDCNBlueDark;
       color: white;
+      // Keep the menu toggle on top.
+      z-index: 2;
     }
   }
 
@@ -296,7 +299,7 @@ body.is-mobile {
     position:fixed;
     z-index: 2;
     width:100%;
-    top: 4rem;
+    top: 4.4rem;
     left:0;
     bottom:0;
     background: white;
@@ -341,13 +344,21 @@ body.is-mobile {
     transform: none;
   }
 }
-// Desktop menus.
-@media screen and (min-width: 576px) {
+
+// iPad+ gives horizontal menus.
+@media screen and (min-width: 768px) {
+  .top-links {
+    // We need to shrink the font to fit the words.
+    font-size: 0.8rem;
+  }
   #block-menu-menu-main-menu-2021 {
     margin-top: 1rem;
+    // We need to shrink the font to fit the words.
+    font-size: 0.8rem;
 
+    // depth 1 is the top level
     .depth-1 {
-      margin:0;
+      margin:0 -0.5em;
       padding:0;
       display: flex;
 
@@ -360,17 +371,12 @@ body.is-mobile {
         &>div>a {
           display: block;
           text-align: center;
-          padding: 0.25em 0.75em;
+          padding: 0.25em 0.25em;
+          margin: 0 0.5em;
           text-decoration:none;
-
-          //border-bottom: solid 2px transparent;
-          &:hover {
-            //border-bottom-color: map_get($colours, 'g7');
-          }
         }
 
         &.active-trail>div>a {
-          //border-bottom-color: map_get($colours, 'primary');
           background-color: $colourBackground;
         }
       }
@@ -380,7 +386,7 @@ body.is-mobile {
     .depth-2 {
       position:absolute;
       z-index: 1;
-      margin: 0;
+      margin: 0 0 0 0.5em;
       padding: 0;
       background: $colourBackground;
       border-left: solid 2px $colourDCNBlue;
@@ -389,6 +395,12 @@ body.is-mobile {
       overflow:hidden;
       opacity:0;
       transition: opacity cubic-bezier(0.77, 0, 0.175, 1) $d, max-height $d $d;
+
+      width: 25ch;
+    }
+    // The ul for the 5th item has less space to the right of it.
+    .depth-1 li:nth-child(5) .depth-2 {
+      width: 20ch;
     }
 
     .depth-1>li:hover .depth-2 {
@@ -403,8 +415,20 @@ body.is-mobile {
       list-style: none;
       margin:0.5rem 0;
       padding:0;
-      a { display: block; padding: 0.25rem 1rem; }
+      a {
+        display: block; padding: 0.25rem 1rem;
+        &.active-trail, &.active {
+          font-weight: bold;
+        }
+      }
     }
+    .depth-3 { display: none; }
+  }
+}
+@media screen and (min-width: 1024px) {
+  .top-links,
+  #block-menu-menu-main-menu-2021 {
+    font-size: 1rem;
   }
 }
 //}}}
@@ -803,6 +827,396 @@ th {
   padding: 1rem;
 }
 // }}}
+// Forum formatting {{{
+#forum,
+body.node-type-forum #block-system-main>.content {
+  @include normal-content-width;
+}
+@include breakpoint_mobile_only {
+  body.page-forum {
+    .tabs--primary.nav-tabs {
+      display:none;
+    }
+  }
+}
+@include breakpoint_ipad {
+  body.page-forum {
+    .tabs--primary.nav-tabs {
+      display:block;
+      margin-bottom: 2rem;
+    }
+  }
+}
+
+// The Main forum index https://dcn.artfulrobot.uk/forum {{{
+
+// Forum headers
+.forum-table-superheader {
+  background: $dcn_blue_light;
+  color:white;
+  margin-bottom: 1rem;
+  @include white_links;
+}
+article.forum-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  margin-bottom: 2rem;
+  border:solid 1px #eee;
+
+  .forum-post-title,
+  .forum-post-by {
+    padding:0 0.5rem 0 0;
+  }
+  .forum-post-date {
+    padding:0;
+  }
+  .forum-post-by { display:none; }
+}
+@include breakpoint_mobile_only {
+  article.forum-row {
+    .forum-post-by { display:none; }
+  }
+}
+// header
+.forum-details {
+  grid-row: 1;
+  grid-column: 1 / span 2;
+  padding:0.5rem 1rem 0.5rem;
+  h1 {
+    margin:0;
+    font-size: 2.3rem;
+  }
+}
+.forum-name-icons-wrapper {
+  display:flex;
+  align-items: center;
+  .forum-name {
+    flex: 1 1 auto;
+  }
+  .forum-list-icon {
+    flex: 0 0 auto;
+  }
+}
+.forum-number-topics {
+  background: #eee;
+  padding: 1rem;
+  grid-row: 2;
+  grid-column: 1;
+}
+.forum-number-posts {
+  background: #eee;
+  padding: 1rem;
+  grid-row: 2;
+  grid-column: 2;
+  text-align:right;
+}
+article.forum-row  {
+  .forum-last-reply {
+    background: #eee;
+    padding: 0 1rem 1rem;
+    grid-row: 3;
+    grid-column: 1 / span 2;
+    display: flex;
+    &>.forum-post-title {
+      flex: 1 1 auto;
+      padding-right:2rem;
+    }
+    &>.forum-post-by {
+      flex: 0 0 auto;
+      padding-right:1rem;
+    }
+    &>.forum-post-date {
+      flex: 0 0 auto;
+      text-align:right;
+    }
+  }
+}
+//}}}
+// A Forum index (topic index), e.g. https://dcn.artfulrobot.uk/forums/general-discussion {{{
+.forum-table-topics {
+}
+article.forum-topic {
+  margin-bottom: 2rem;
+  border:solid 1px #eee;
+
+  .forum-topic-title {
+    font-size: 2.3rem;
+  }
+
+  .forum-topic-latest {
+    background: #f0f0f0;
+    padding:0.5rem 1rem;
+  }
+  .forum-topic-author {
+  }
+  .forum-topic-date {
+  }
+}
+.forum-topic-title-meta {
+  padding: 0.5rem 1rem;
+}
+@include breakpoint_ipad {
+  .forum-topic-title-meta {
+    display:flex;
+    padding: 0.5rem 1rem;
+
+    .forum-topic-title {
+      flex: 1 1 auto;
+    }
+    .forum-topic-meta {
+      flex: 0 0 26rem;
+    }
+  }
+}
+@include breakpoint_mobile_only {
+  .views-field-topic-icon { display:none; }
+}
+// }}}
+// A forum post (may be the node (topic/first post) or a post (comment) e.g. https://dcn.artfulrobot.uk/forum/seeking-siblings {{{
+div.forum-post {
+  margin:2rem -2rem;
+  padding: 0 2rem;
+  margin:1px -2rem 0;
+  padding: 1rem 2rem;
+  background: $g8;
+
+  // Highlight office posts.
+  &.posted-by-3 .forum-post-content {
+    color: $dcn_blue_dark;
+  }
+
+  display: grid;
+  //grid-template-columns: 20rem 1fr;
+  grid-gap: 0;
+}
+.forum-post-info {
+  padding:1rem;
+
+  display:grid;
+  grid-template-columns:50% 50%;
+  grid-gap: 2rem;
+
+  .author-pane {
+    display: inline-block;
+  }
+
+  .forum-posted-on {
+    float:none;
+    font-size: 1.4rem; // bootstrap sets rem=10px
+    padding:0;
+    color: $g3;
+  }
+  .forum-posted-number {
+  }
+}
+.forum-post-info__author {
+  grid-column:1;
+}
+.forum-post-info__when {
+  grid-column:2;
+}
+.forum-post-info__author,
+.forum-post-info__when {
+  display:flex;
+  align-items: top;
+  &>.dcn-icon {
+    flex:0 0 auto;
+  }
+  &>span {
+    flex:1 1 auto;
+    padding-left: 1rem;
+  }
+  margin-bottom: 1rem;
+}
+.forum-post-wrapper {
+  //grid-column:2; grid-row:1;
+  position:relative;
+}
+.forum-post-panel-main {
+  float:none;
+  margin:0;
+  padding:1.5rem 2rem;
+  height:100%;
+  position:relative;
+  z-index:1;
+  min-height: 10rem;
+  display:flex;
+  flex-direction: column;
+
+  background: white;
+  box-shadow: -2px 2px 5px rgba(0,0,0, 0.2);
+
+  .forum-decorative-arrow {
+    &:before,
+    &:after {
+      position:absolute;
+      content:'';
+      border-bottom:20px solid white;
+      border-left:20px solid transparent;
+      border-top:20px solid transparent;
+      border-right:20px solid transparent;
+      width:0;
+      height:0;
+      left:20px;
+      left: calc(50% - 30px);
+      top: -40px;
+    }
+    &:before {
+      border-bottom:20px solid rgba(0,0,0,0.2);
+      left: calc(50% - 32px);
+      top: -40px;
+    }
+  }
+  .forum-post-content {
+    flex:1 0 auto;
+    font-size:1.6rem; // 16px
+    padding:0;
+  }
+  ul.links {
+    flex:0 0 auto;
+    margin:0;
+    text-align: right;
+    li {
+      float:none;
+      display:inline-block;
+    }
+  }
+}
+
+.forum-post-panel-sub {
+  float:none;
+  width:auto;
+
+  .author-pane {
+    margin:0 0 1rem;
+  }
+}
+.forum-post-panel-main {
+}
+.forum-post-footer {
+  height:auto;
+  display:flex;
+
+  .author-pane {
+    flex: 0 0 auto;
+    a { line-height: 2em; }
+  }
+  .forum-post-links {
+    flex: 1 1 auto;
+  }
+}
+// Format the top post in a topic {{{
+// .forum-topic is added to the wrapper around the top post.
+.forum-topic .forum-post-panel-main {
+  border:solid 1px $dcn_blue_light;
+
+  .forum-decorative-arrow {
+    &:before {
+      border-bottom-color: $dcn_blue_light;
+    }
+  }
+}
+// }}}
+@include breakpoint_ipad {
+
+  div.forum-post {
+    grid-template-columns: 20rem 1fr;
+  }
+  .forum-post-info {
+    grid-column:1;
+    grid-row:1;
+
+    // Disable block layout
+    display:block;
+  }
+  .forum-post-wrapper {
+    grid-column:2; grid-row:1;
+  }
+  .forum-post-info__when .date { display:block; }
+
+  .forum-post-panel-main {
+    .forum-decorative-arrow {
+      &:before,
+      &:after {
+        position:absolute;
+        content:'';
+        border-left:0 none;
+        border-right:20px solid white;
+        border-top:20px solid transparent;
+        border-bottom:20px solid transparent;
+        width:0;
+        height:0;
+        left:-20px;
+        top: 20px;
+        top: calc(50% - 30px);
+      }
+      &:before {
+        left:-20px;
+        top:22px;
+        top: calc(50% - 28px);
+        border-right-color: rgba(0,0,0,0.2);
+      }
+    }
+  }
+  .forum-topic .forum-post-panel-main {
+    .forum-decorative-arrow {
+      &:before {
+        border-right-color: $dcn_blue_light;
+        border-bottom-color: transparent;
+      }
+    }
+  }
+}
+// }}}
+.forum-comment-pager {
+  background: $g8;
+  margin:0 -2rem;
+  padding: 2rem;
+}
+// Forum comment form {{{
+#forum-comment-form-wrapper {
+  margin: 0 -2rem;
+  padding: 2rem;
+  background: $dcn_blue_light;
+  color:white;
+  a.username { color:white; }
+
+  #edit-author--2 {
+    margin-top: 2rem;
+    font-size:16px;
+  }
+  label {
+    font-size:16px;
+  }
+
+  button {
+    background: white;
+    color: $dcn_blue_dark;
+
+    border-radius:3px;
+    text-transform: uppercase;
+    display: block;
+    margin:1rem 0 1rem auto;
+    border:none;
+    padding:1rem 2rem;
+
+    &:active {
+      background: $dcn_blue_dark;
+      color:white;
+    }
+  }
+
+
+  .form-item-subject,
+  .filter-wrapper, .wysiwyg-toggle-wrapper,
+  .form-item-notify-type
+  {
+    display:none;
+  }
+}
+// }}}
+
+// }}}
 // Pages: {{{
 body.not-paragraphs-page {
   #block-system-main {
@@ -967,6 +1381,11 @@ body.aaah-theme #block-block-64 {
 }
 
 //}}}
+// Page: Contact us form {{{
+#webform-client-form-9 {
+  @include normal-content-width;
+}
+// }}}
 
 
 // Fix invisible Qty field on shopping cart {{{

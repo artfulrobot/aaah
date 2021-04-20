@@ -11,7 +11,7 @@
   <header id="site-header" role="banner">
     <div class="normal-content-width" id="header__content">
       <div class="df fjc-sb fai-top">
-        <div class="fi-a pr4">
+        <div class="fi-a pr4 header-logo-div">
             <!--@todo reset this link.-->
             <a href="/homepage-new"><img src="/sites/default/themes/aaah/images/dcn-logo.svg" alt="<?php print $site_name; ?>" class="db" id="header-logo" /></a>
         </div>
@@ -31,7 +31,7 @@
     $sidebar= render($page['sidebar']);
   ?>
 
-  <div id="main" class="<?php print $sidebar ? 'has-sidebar' : 'no-sidebar' ?><?php print $hideSidebar ?>">
+  <div id="main" class="<?php print $sidebar ? 'has-sidebar' : 'no-sidebar'; ?><?php print $hideSidebar ?? ''; ?>">
 
     <div id="content" class="column" role="main">
 

@@ -131,9 +131,12 @@ function aaah_preprocess_entity(&$variables, $hook) {
       $imageHeight = ($pp->field_image_height['und'][0]['value'] ?? 'auto') ?: 'auto';
       $alignment = $pp->field_alignment['und'][0]['value'] ?? NULL;
       $layout = $pp->field_layout['und'][0]['value'] ?? NULL;
-
       $image = $pp->field_image["und"][0] ?? [];
       $variables['imageLink'] = htmlspecialchars($pp->field_image_link["und"][0]['value'] ?? '');
+      $variables['imageLinkTarget'] = ($pp->field_image_link_opens_new_tab['und'][0]['value'] ?? FALSE)
+        ? 'target="_blank"'
+        : '';
+
       $variables['hasImage'] = !empty($image);
 
       $text = $pp->field_text["und"][0]["safe_value"] ?? NULL;
@@ -147,7 +150,7 @@ function aaah_preprocess_entity(&$variables, $hook) {
       $video = ($pp->field_video['und'][0]['value'] ?? NULL);
       $variables['video'] = $video;
 
-      $block = (bool) $pp->field_special['und'][0] ?? NULL;
+      $block = (bool) ($pp->field_special['und'][0] ?? NULL);
 
       $variables['classes_array'][] = $pp->field_space['und'][0]['value'] ?? 'space-space-top-bottom';
 
