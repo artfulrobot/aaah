@@ -7,6 +7,8 @@ $colourDCNBlueMedium: #4894bb;
 $colourLinks: $colourDCNBlue ;
 $colourLinksActive: $colourDCNBlueDark;
 $colourCompliment: #ea4f3a;
+// This is a bodge to get back from bootstrap's 10px rem
+$rem: 1.6rem;
 // DCN old {{{
 $dcn_blue_light: #006ba3;
 $dcn_blue_dark: #00477A;

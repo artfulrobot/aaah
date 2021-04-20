@@ -1,3 +1,4 @@
+// This CSS is loaded after page.
 @import 'lib';
 
 // Mixins {{{
@@ -13,11 +14,11 @@
 @mixin normal-content-width {
   max-width: 1328px; // 1200px + 64px ×2 padding
   // Old browsers
-  padding: 0 1rem;
+  padding: 0 1*$rem;
   // Better browsers
   padding: 0 4vw;
   // Modern browsers
-  padding: 0 clamp(0.5rem, 4vw, 4rem);
+  padding: 0 clamp(0.5*$rem, 4vw, 4*$rem);
 
   margin-left: auto;
   margin-right: auto;
@@ -77,21 +78,21 @@
 }
 // }}}
 // Padding and margins {{{
-// .pr1 { padding-right:0.5rem; };
-// .pr2 { padding-right:1rem; };
-// .pr3 { padding-right:2rem; };
+// .pr1 { padding-right:0.5*$rem; };
+// .pr2 { padding-right:1*$rem; };
+// .pr3 { padding-right:2*$rem; };
 .p0 { padding: 0; }
-.ph2 { padding: 1rem; }
-.ph3 { padding: 2rem; }
-.pr4 { padding-right:3rem; }
-.pv4 { padding-top: 3rem; padding-bottom: 3rem; }
+.ph2 { padding: 1*$rem; }
+.ph3 { padding: 2*$rem; }
+.pr4 { padding-right:3*$rem; }
+.pv4 { padding-top: 3*$rem; padding-bottom: 3*$rem; }
 .m0 { padding: 0; }
-.ml1 { margin-left: 0.5rem; }
-.mh3 { margin-left: 2rem;  margin-right: 2rem; }
-.mh-3 { margin-left: -2rem; margin-right: -2rem; }
+.ml1 { margin-left: 0.5*$rem; }
+.mh3 { margin-left: 2*$rem;  margin-right: 2*$rem; }
+.mh-3 { margin-left: -2*$rem; margin-right: -2*$rem; }
 @media screen and (min-width: 576px) {
   .pt0-m { padding-top:0; }
-  .ph3-m { padding: 2rem; }
+  .ph3-m { padding: 2*$rem; }
 }
 // }}}
 // Widths, heights {{{
@@ -159,7 +160,7 @@ body.admin-menu.adminimal-menu::before {
 }
 
 #page {
-  border-top: 0.5rem solid $colourDCNBlue;
+  border-top: 0.5*$rem solid $colourDCNBlue;
 }
 #main {
   min-height:70vh; // we don't want any white space after the footer.
@@ -170,7 +171,7 @@ body.admin-menu.adminimal-menu::before {
 iframe { border: none; }
 //}}}
 // Component: links {{{
-a:link { color: $colourCompliment; }
+a { color: $colourCompliment; }
 a:visited { color: $colourCompliment; }
 a:hover { color: $colourDCNBlue; }
 a:active { color: $colourDCNBlue; }
@@ -192,30 +193,30 @@ i.dcn-icon {
   &.exclamation { background-position: -48px 0; }
 }
 .dcn-icon-message {
-  margin:1rem 0;
+  margin:1*$rem 0;
   display:grid;
   grid-template-columns: auto 1fr;
   background-color: white;
 
   .dcn-icon-message__icon {
     grid-column:1;
-    padding:1rem;
+    padding:1*$rem;
   }
   .dcn-icon-message__text {
     grid-column:2;
-    padding:1rem;
+    padding:1*$rem;
   }
 }
 //}}}
 // Component: header {{{
 #site-header {
   position: relative;
-  padding: 1rem 0.5rem;
+  padding: 1*$rem 0.5*$rem;
   background: white;
 }
 #header-logo {
-  width: 10rem;
-  width: clamp(10rem, 20vw, 15rem);
+  width: 10*$rem;
+  width: clamp(10*$rem, 20vw, 15*$rem);
   height: auto;
 }
 ul.top-links {
@@ -226,7 +227,7 @@ ul.top-links {
     display: inline-block;
     a {
       display: inline-block;
-      padding: 0.25rem 1rem;
+      padding: 0.25*$rem 1*$rem;
       text-decoration: none;
       &:link, &:visited {
         color: $colourDCNBlueDark;
@@ -246,11 +247,11 @@ ul.top-links {
 div.messages {
   max-width: clamp(30ch, 70%, 64ch);
   border-radius: 4px;
-  margin: 1rem auto;
+  margin: 1*$rem auto;
   background: white;
   border: solid 1px $colourDCNBlue;
   color: $colourDCNBlueDark;
-  padding: 1rem 2rem;
+  padding: 1*$rem 2*$rem;
 }
 //}}}
 // Component: menu {{{
@@ -258,11 +259,11 @@ div.messages {
 #header__menu-toggle {
   position:absolute;
   z-index: 1;
-  top: 1rem;
-  right: 1rem;
-  border-radius: 2rem;
+  top: 1*$rem;
+  right: 1*$rem;
+  border-radius: 2*$rem;
   padding: 0.25em 0.75em;
-  font-size: (14rem/16);
+  font-size: (14*$rem/16);
   text-transform:uppercase;
   border:solid 1px map_get($colours, 'g8');
   cursor:pointer;
@@ -299,27 +300,27 @@ body.is-mobile {
     position:fixed;
     z-index: 2;
     width:100%;
-    top: 4.4rem;
+    top: 4.4*$rem;
     left:0;
     bottom:0;
     background: white;
     overflow: auto;
-    padding: 0.5rem;
+    padding: 0.5*$rem;
 
 
     ul.depth-1 {
       margin: 0;
-      padding: 0.5rem;
+      padding: 0.5*$rem;
 
       li { list-style:none; padding:0; }
 
       a {
         display: block;
-        padding: 0.5rem;
+        padding: 0.5*$rem;
       }
 
       &>*+* {
-        margin-top: 0.5rem;
+        margin-top: 0.5*$rem;
       }
       &>li>div>a {
         background: white;
@@ -335,11 +336,11 @@ body.is-mobile {
 
     }
     ul.depth-2 {
-      padding: 0.5rem;
+      padding: 0.5*$rem;
       margin: 0;
     }
   }
-  // Allow 2rem for top menu.
+  // Allow 2*$rem for top menu.
   &.menu--show #block-menu-menu-main-menu-2021 {
     transform: none;
   }
@@ -349,12 +350,12 @@ body.is-mobile {
 @media screen and (min-width: 768px) {
   .top-links {
     // We need to shrink the font to fit the words.
-    font-size: 0.8rem;
+    font-size: 0.8*$rem;
   }
   #block-menu-menu-main-menu-2021 {
-    margin-top: 1rem;
+    margin-top: 1*$rem;
     // We need to shrink the font to fit the words.
-    font-size: 0.8rem;
+    font-size: 0.8*$rem;
 
     // depth 1 is the top level
     .depth-1 {
@@ -413,10 +414,10 @@ body.is-mobile {
 
     .depth-2 li {
       list-style: none;
-      margin:0.5rem 0;
+      margin:0.5*$rem 0;
       padding:0;
       a {
-        display: block; padding: 0.25rem 1rem;
+        display: block; padding: 0.25*$rem 1*$rem;
         &.active-trail, &.active {
           font-weight: bold;
         }
@@ -428,14 +429,14 @@ body.is-mobile {
 @media screen and (min-width: 1024px) {
   .top-links,
   #block-menu-menu-main-menu-2021 {
-    font-size: 1rem;
+    font-size: 1*$rem;
   }
 }
 //}}}
 // Component: nav previous/next {{{
 nav.dcn-prev-next-nav {
-  margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-top: 1*$rem;
+  margin-bottom: 1*$rem;
   ul {
     display: flex;
     flex-wrap: wrap;
@@ -447,7 +448,7 @@ nav.dcn-prev-next-nav {
     li {
       flex: 0 0 auto;
       min-width: 14%; // don't know why this works..
-      line-height: 3rem; 
+      line-height: 3*$rem; 
       list-style: none;
       margin: 0;
       padding: 0;
@@ -459,7 +460,7 @@ nav.dcn-prev-next-nav {
 .white-box {
   background-color: white;
   margin:0 auto;
-  width: 40rem;
+  width: 40*$rem;
   max-width: 90%;
   max-width: 90vw;
 }
@@ -471,10 +472,10 @@ nav.dcn-prev-next-nav {
 
   // Use the veil for positioning too.
   .dcn-veil {
-    min-height: 22rem;
+    min-height: 22*$rem;
     // Padding goes vertically to show image
     // We don't need it horizontally because of normal-content-width
-    padding: 2rem 0;
+    padding: 2*$rem 0;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -485,8 +486,8 @@ nav.dcn-prev-next-nav {
 
   // Bigger h1.
   h1 {
-    font-size: 2rem;
-    font-size: clamp(2rem, calc(1rem + 5vw), 3rem);
+    font-size: 2*$rem;
+    font-size: clamp(2*$rem, calc(1*$rem + 5vw), 3*$rem);
   }
 
 } //}}}
@@ -502,13 +503,13 @@ nav.dcn-prev-next-nav {
   // .ss-white-box, .ss-blue-box   box.
 
   &.space-top-bottom {
-    padding-top: 2rem;
-    padding-bottom: 2rem;
+    padding-top: 2*$rem;
+    padding-bottom: 2*$rem;
   }
   // Absolutely no space looks bit weird.
   &.space-none {
-    padding-top: 0.5rem;
-    padding-bottom: 0.5rem;
+    padding-top: 0.5*$rem;
+    padding-bottom: 0.5*$rem;
   }
 
   &.ss-white_wide { background-color: white; }
@@ -527,7 +528,7 @@ nav.dcn-prev-next-nav {
     }
     .ppgen_col_text {
       // Mobile padding:
-      padding: 0.5rem;
+      padding: 0.5*$rem;
       &, h1, h2, h3, h4 { color: white; }
     }
   }
@@ -536,7 +537,7 @@ nav.dcn-prev-next-nav {
   &.ss-white_box_blue_line {
     .ppgen_col_text {
       // Mobile padding:
-      padding: 0.5rem;
+      padding: 0.5*$rem;
     }
     .layout {
       background-color: white;
@@ -562,8 +563,8 @@ nav.dcn-prev-next-nav {
     background-color: white;
     border-radius: 0 0 8px 8px;
     // mobile
-    padding: 0.25rem 0.5rem;
-    font-size: 1rem;
+    padding: 0.25*$rem 0.5*$rem;
+    font-size: 1*$rem;
 
     p:last-child { margin-bottom: 0; }
   }
@@ -596,11 +597,11 @@ nav.dcn-prev-next-nav {
     .layout {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      grid-gap: 2rem;
-      gap: 2rem;
+      grid-gap: 2*$rem;
+      gap: 2*$rem;
     }
     .ppgen_caption {
-      padding: 0.25rem 1rem;
+      padding: 0.25*$rem 1*$rem;
     }
 
     &.ss-white_box_blue_line {
@@ -613,7 +614,7 @@ nav.dcn-prev-next-nav {
     .ppgen_col_text {
       // By default the text comes after the other content.
       // We need a bit more padding when we're in a box.
-      padding: 1rem 0 1rem 2rem;
+      padding: 1*$rem 0 1*$rem 2*$rem;
     }
 
 
@@ -624,7 +625,7 @@ nav.dcn-prev-next-nav {
 
       &.ss-blue_box, &.ss-white_box, &.ss-white_box_blue_line {
         .ppgen_col_text {
-          padding: 1rem 0 1rem 2rem;
+          padding: 1*$rem 0 1*$rem 2*$rem;
         }
       }
 
@@ -640,7 +641,7 @@ nav.dcn-prev-next-nav {
     &.ss-blue_box {
       .ppgen_col_text {
         // We need a bit more padding when we're in a box.
-        padding: 1rem 0 1rem 2rem;
+        padding: 1*$rem 0 1*$rem 2*$rem;
       }
     }
 
@@ -687,14 +688,14 @@ nav.dcn-prev-next-nav {
 #block-dcn-custom-dcn-child-pages {
 
   background: rgba(0, 0, 0, 0.015);
-  padding: 2rem;
+  padding: 2*$rem;
   border-radius: 8px;
 
   h2 { margin: 0; }
   ul {
-    padding-left: 1rem;
+    padding-left: 1*$rem;
     li {
-      padding-left: 0.5rem;
+      padding-left: 0.5*$rem;
     }
     li::marker {
       content: '‣';
@@ -707,14 +708,14 @@ nav.dcn-prev-next-nav {
   border-top: solid 4px $colourDCNBlue;
   background: $colourDCNBlueDark;
   color: white;
-  padding-top: 2rem;
+  padding-top: 2*$rem;
 
   a:link, a:visited { color: $colourBackground; text-decoration: none; }
   a:hover, a:active { text-decoration:underline; }
 
   #block-menu-menu-footer-menu {
     ul.menu {
-      margin: 1rem 0;
+      margin: 1*$rem 0;
       padding: 0;
       display: flex;
       flex-wrap: wrap;
@@ -722,7 +723,7 @@ nav.dcn-prev-next-nav {
 
       &>li {
         margin: 0;
-        padding: 0 1rem;
+        padding: 0 1*$rem;
         list-style: none;
       }
 
@@ -732,9 +733,9 @@ nav.dcn-prev-next-nav {
     text-align: center;
   }
   .copyright {
-    font-size: 1rem;
+    font-size: 1*$rem;
     text-align: center;
-    padding: 2rem 0;
+    padding: 2*$rem 0;
   }
 
 
@@ -766,7 +767,7 @@ table {
   border-collapse: collapse;
 }
 td, th {
-  padding:0.5rem 0.75rem;
+  padding:0.5*$rem 0.75*$rem;
   border:solid 1px $colourBackground;
   background: white;
   vertical-align: top;
@@ -790,28 +791,28 @@ th {
   tr:nth-child(even) { background: $dcn_blue_wash_lighter; }
   tr:nth-child(odd) { background: $dcn_blue_wash_greyer; }
 }
-.arr-table { margin-bottom: 2rem; }
-.arr-tr { padding-bottom: 1rem; padding: 0.5rem 1rem; border-bottom: solid 1px #d0d0d0; }
+.arr-table { margin-bottom: 2*$rem; }
+.arr-tr { padding-bottom: 1*$rem; padding: 0.5*$rem 1*$rem; border-bottom: solid 1px #d0d0d0; }
 .arr-tr.even { background: $dcn_blue_wash_lighter; }
 .arr-tr.odd { background: $dcn_blue_wash; }
 .arr-th { font-size: 0.8em; opacity: 0.8; }
-.arr-td { margin-bottom: 0.5rem; }
+.arr-td { margin-bottom: 0.5*$rem; }
 .arr-td>*:first-child { margin-top: 0; }
 
 .arr-filters {
   display:flex;
   flex-wrap: wrap;
-  margin: 1rem 0;
-  padding: 1rem 0;
+  margin: 1*$rem 0;
+  padding: 1*$rem 0;
   background: #f8f8f8;
   border: solid 1px #f0f0f0;
   border-radius: 3px;
 }
 .arr-filter {
   flex: 0 0 auto;
-  padding: 0 1rem;
-  margin-bottom: 1rem;
-  label { padding-right: 0.5rem; }
+  padding: 0 1*$rem;
+  margin-bottom: 1*$rem;
+  label { padding-right: 0.5*$rem; }
 }
 
 
@@ -824,7 +825,7 @@ th {
 }
 .videos-three__item {
   flex: 1 0 100px;
-  padding: 1rem;
+  padding: 1*$rem;
 }
 // }}}
 // Forum formatting {{{
@@ -843,7 +844,7 @@ body.node-type-forum #block-system-main>.content {
   body.page-forum {
     .tabs--primary.nav-tabs {
       display:block;
-      margin-bottom: 2rem;
+      margin-bottom: 2*$rem;
     }
   }
 }
@@ -854,18 +855,18 @@ body.node-type-forum #block-system-main>.content {
 .forum-table-superheader {
   background: $dcn_blue_light;
   color:white;
-  margin-bottom: 1rem;
+  margin-bottom: 1*$rem;
   @include white_links;
 }
 article.forum-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 2rem;
+  margin-bottom: 2*$rem;
   border:solid 1px #eee;
 
   .forum-post-title,
   .forum-post-by {
-    padding:0 0.5rem 0 0;
+    padding:0 0.5*$rem 0 0;
   }
   .forum-post-date {
     padding:0;
@@ -881,10 +882,10 @@ article.forum-row {
 .forum-details {
   grid-row: 1;
   grid-column: 1 / span 2;
-  padding:0.5rem 1rem 0.5rem;
+  padding:0.5*$rem 1*$rem 0.5*$rem;
   h1 {
     margin:0;
-    font-size: 2.3rem;
+    font-size: 2.3*$rem;
   }
 }
 .forum-name-icons-wrapper {
@@ -899,13 +900,13 @@ article.forum-row {
 }
 .forum-number-topics {
   background: #eee;
-  padding: 1rem;
+  padding: 1*$rem;
   grid-row: 2;
   grid-column: 1;
 }
 .forum-number-posts {
   background: #eee;
-  padding: 1rem;
+  padding: 1*$rem;
   grid-row: 2;
   grid-column: 2;
   text-align:right;
@@ -913,17 +914,17 @@ article.forum-row {
 article.forum-row  {
   .forum-last-reply {
     background: #eee;
-    padding: 0 1rem 1rem;
+    padding: 0 1*$rem 1*$rem;
     grid-row: 3;
     grid-column: 1 / span 2;
     display: flex;
     &>.forum-post-title {
       flex: 1 1 auto;
-      padding-right:2rem;
+      padding-right:2*$rem;
     }
     &>.forum-post-by {
       flex: 0 0 auto;
-      padding-right:1rem;
+      padding-right:1*$rem;
     }
     &>.forum-post-date {
       flex: 0 0 auto;
@@ -936,16 +937,16 @@ article.forum-row  {
 .forum-table-topics {
 }
 article.forum-topic {
-  margin-bottom: 2rem;
+  margin-bottom: 2*$rem;
   border:solid 1px #eee;
 
   .forum-topic-title {
-    font-size: 2.3rem;
+    font-size: 2.3*$rem;
   }
 
   .forum-topic-latest {
     background: #f0f0f0;
-    padding:0.5rem 1rem;
+    padding:0.5*$rem 1*$rem;
   }
   .forum-topic-author {
   }
@@ -953,18 +954,18 @@ article.forum-topic {
   }
 }
 .forum-topic-title-meta {
-  padding: 0.5rem 1rem;
+  padding: 0.5*$rem 1*$rem;
 }
 @include breakpoint_ipad {
   .forum-topic-title-meta {
     display:flex;
-    padding: 0.5rem 1rem;
+    padding: 0.5*$rem 1*$rem;
 
     .forum-topic-title {
       flex: 1 1 auto;
     }
     .forum-topic-meta {
-      flex: 0 0 26rem;
+      flex: 0 0 26*$rem;
     }
   }
 }
@@ -974,10 +975,10 @@ article.forum-topic {
 // }}}
 // A forum post (may be the node (topic/first post) or a post (comment) e.g. https://dcn.artfulrobot.uk/forum/seeking-siblings {{{
 div.forum-post {
-  margin:2rem -2rem;
-  padding: 0 2rem;
-  margin:1px -2rem 0;
-  padding: 1rem 2rem;
+  margin:2*$rem -2*$rem;
+  padding: 0 2*$rem;
+  margin:1px -2*$rem 0;
+  padding: 1*$rem 2*$rem;
   background: $g8;
 
   // Highlight office posts.
@@ -986,15 +987,15 @@ div.forum-post {
   }
 
   display: grid;
-  //grid-template-columns: 20rem 1fr;
+  //grid-template-columns: 20*$rem 1fr;
   grid-gap: 0;
 }
 .forum-post-info {
-  padding:1rem;
+  padding:1*$rem;
 
   display:grid;
   grid-template-columns:50% 50%;
-  grid-gap: 2rem;
+  grid-gap: 2*$rem;
 
   .author-pane {
     display: inline-block;
@@ -1002,7 +1003,7 @@ div.forum-post {
 
   .forum-posted-on {
     float:none;
-    font-size: 1.4rem; // bootstrap sets rem=10px
+    font-size: 1.4*$rem; // bootstrap sets *$rem=10px
     padding:0;
     color: $g3;
   }
@@ -1024,9 +1025,9 @@ div.forum-post {
   }
   &>span {
     flex:1 1 auto;
-    padding-left: 1rem;
+    padding-left: 1*$rem;
   }
-  margin-bottom: 1rem;
+  margin-bottom: 1*$rem;
 }
 .forum-post-wrapper {
   //grid-column:2; grid-row:1;
@@ -1035,11 +1036,11 @@ div.forum-post {
 .forum-post-panel-main {
   float:none;
   margin:0;
-  padding:1.5rem 2rem;
+  padding:1.5*$rem 2*$rem;
   height:100%;
   position:relative;
   z-index:1;
-  min-height: 10rem;
+  min-height: 10*$rem;
   display:flex;
   flex-direction: column;
 
@@ -1069,7 +1070,7 @@ div.forum-post {
   }
   .forum-post-content {
     flex:1 0 auto;
-    font-size:1.6rem; // 16px
+    font-size:1.6*$rem; // 16px
     padding:0;
   }
   ul.links {
@@ -1088,7 +1089,7 @@ div.forum-post {
   width:auto;
 
   .author-pane {
-    margin:0 0 1rem;
+    margin:0 0 1*$rem;
   }
 }
 .forum-post-panel-main {
@@ -1120,7 +1121,7 @@ div.forum-post {
 @include breakpoint_ipad {
 
   div.forum-post {
-    grid-template-columns: 20rem 1fr;
+    grid-template-columns: 20*$rem 1fr;
   }
   .forum-post-info {
     grid-column:1;
@@ -1170,19 +1171,19 @@ div.forum-post {
 // }}}
 .forum-comment-pager {
   background: $g8;
-  margin:0 -2rem;
-  padding: 2rem;
+  margin:0 -2*$rem;
+  padding: 2*$rem;
 }
 // Forum comment form {{{
 #forum-comment-form-wrapper {
-  margin: 0 -2rem;
-  padding: 2rem;
+  margin: 0 -2*$rem;
+  padding: 2*$rem;
   background: $dcn_blue_light;
   color:white;
   a.username { color:white; }
 
   #edit-author--2 {
-    margin-top: 2rem;
+    margin-top: 2*$rem;
     font-size:16px;
   }
   label {
@@ -1196,9 +1197,9 @@ div.forum-post {
     border-radius:3px;
     text-transform: uppercase;
     display: block;
-    margin:1rem 0 1rem auto;
+    margin:1*$rem 0 1*$rem auto;
     border:none;
-    padding:1rem 2rem;
+    padding:1*$rem 2*$rem;
 
     &:active {
       background: $dcn_blue_dark;
@@ -1225,19 +1226,19 @@ body.not-paragraphs-page {
 }
 #block-system-main>.content>.action-links {
   @include normal-content-width;
-  padding-left: 1.6rem; // for the bullet.
+  padding-left: 1.6*$rem; // for the bullet.
 }
 // }}}
 // Pages: Node: body field {{{
 .field-name-body {
   @include normal-content-width;
-  padding-bottom: 4rem;
+  padding-bottom: 4*$rem;
 }
 // }}}
 // Pages: Views {{{
 #block-system-main>.content>.view {
   @include normal-content-width;
-  padding-bottom: 4rem;
+  padding-bottom: 4*$rem;
 }
 // }}}
 // Pages: CiviCRM public {{{
@@ -1246,8 +1247,8 @@ body.not-paragraphs-page {
 
   #help, .help {
     background: white;
-    padding: 1rem 1.5rem;
-    font-size: 1rem;
+    padding: 1*$rem 1.5*$rem;
+    font-size: 1*$rem;
     color: $colourDCNBlueDark;
     border: none;
     border-left: solid 4px $colourDCNBlue;
@@ -1270,17 +1271,17 @@ body.not-paragraphs-page {
 
     i.crm-i {
       position: absolute;
-      top: 0.5rem;
-      left: 1rem;
-      font-size: 1rem;
+      top: 0.5*$rem;
+      left: 1*$rem;
+      font-size: 1*$rem;
       line-height: 1.2;
     }
 
     input {
-      padding: 0.5rem 2rem 0.5rem 2.4rem !important;
+      padding: 0.5*$rem 2*$rem 0.5*$rem 2.4*$rem !important;
       border:none;
       line-height: 1.2;
-      font-size: 1rem;
+      font-size: 1*$rem;
       text-shadow: none;
       background: $colourDCNBlue;
       color: white;
@@ -1297,16 +1298,16 @@ body.not-paragraphs-page {
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  margin-left: -1rem;
-  margin-right: -1rem;
+  margin-left: -1*$rem;
+  margin-right: -1*$rem;
   &>.views-row {
-    flex: 1 0 23rem;
-    max-width: 34rem;
-    padding: 1rem;
+    flex: 1 0 23*$rem;
+    max-width: 34*$rem;
+    padding: 1*$rem;
   }
 }
 article.dcn-story {
-  $dcnStoryPadding:1.5rem;
+  $dcnStoryPadding:1.5*$rem;
   background-color: white;
   border-radius: 8px;
   padding: 0;
@@ -1327,12 +1328,12 @@ article.dcn-story {
 
   h1, h2, h3 {
     margin-top: 0;
-    font-size: 1.5rem;
+    font-size: 1.5*$rem;
     a:link, a:visited { text-decoration: none;
       color: $colourDCNBlueDark;
     }
     flex: 0 0 auto;
-    padding: 1rem $dcnStoryPadding;
+    padding: 1*$rem $dcnStoryPadding;
     margin: 0;
   }
 
@@ -1346,9 +1347,9 @@ article.dcn-story {
   }
   .footer {
     flex: 0 0 auto;
-    padding: 0.5rem $dcnStoryPadding 1rem;
+    padding: 0.5*$rem $dcnStoryPadding 1*$rem;
     border-radius: 0 0 8px 8px;
-    font-size: 1rem;
+    font-size: 1*$rem;
     color: $g3;
   }
 
@@ -1370,7 +1371,7 @@ body.aaah-theme #block-block-64 {
 
     li {
       list-style: none;
-      padding: 0.5rem 1rem;
+      padding: 0.5*$rem 1*$rem;
       flex: 0 0 auto;
       a {
         white-space: nowrap;
@@ -1390,7 +1391,7 @@ body.aaah-theme #block-block-64 {
 
 // Fix invisible Qty field on shopping cart {{{
 #uc-cart-view-form td.qty {
-  min-width:7rem;
+  min-width:7*$rem;
 }
 // }}}
 // Improve layout for some CiviCRM forms {{{
@@ -1420,7 +1421,7 @@ body.aaah-theme #block-block-64 {
   body.page-forum {
     .tabs--primary.nav-tabs {
       display:block;
-      margin-bottom: 2rem;
+      margin-bottom: 2*$rem;
     }
   }
 }
@@ -1431,18 +1432,18 @@ body.aaah-theme #block-block-64 {
 .forum-table-superheader {
   background: $dcn_blue_light;
   color:white;
-  margin-bottom: 1rem;
+  margin-bottom: 1*$rem;
   @include white_links;
 }
 article.forum-row {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  margin-bottom: 2rem;
+  margin-bottom: 2*$rem;
   border:solid 1px #eee;
 
   .forum-post-title,
   .forum-post-by {
-    padding:0 0.5rem 0 0;
+    padding:0 0.5*$rem 0 0;
   }
   .forum-post-date {
     padding:0;
@@ -1458,10 +1459,10 @@ article.forum-row {
 .forum-details {
   grid-row: 1;
   grid-column: 1 / span 2;
-  padding:0.5rem 1rem 0.5rem;
+  padding:0.5*$rem 1*$rem 0.5*$rem;
   h1 {
     margin:0;
-    font-size: 2.3rem;
+    font-size: 2.3*$rem;
   }
 }
 .forum-name-icons-wrapper {
@@ -1476,13 +1477,13 @@ article.forum-row {
 }
 .forum-number-topics {
   background: #eee;
-  padding: 1rem;
+  padding: 1*$rem;
   grid-row: 2;
   grid-column: 1;
 }
 .forum-number-posts {
   background: #eee;
-  padding: 1rem;
+  padding: 1*$rem;
   grid-row: 2;
   grid-column: 2;
   text-align:right;
@@ -1490,17 +1491,17 @@ article.forum-row {
 article.forum-row  {
   .forum-last-reply {
     background: #eee;
-    padding: 0 1rem 1rem;
+    padding: 0 1*$rem 1*$rem;
     grid-row: 3;
     grid-column: 1 / span 2;
     display: flex;
     &>.forum-post-title {
       flex: 1 1 auto;
-      padding-right:2rem;
+      padding-right:2*$rem;
     }
     &>.forum-post-by {
       flex: 0 0 auto;
-      padding-right:1rem;
+      padding-right:1*$rem;
     }
     &>.forum-post-date {
       flex: 0 0 auto;
@@ -1513,16 +1514,16 @@ article.forum-row  {
 .forum-table-topics {
 }
 article.forum-topic {
-  margin-bottom: 2rem;
+  margin-bottom: 2*$rem;
   border:solid 1px #eee;
 
   .forum-topic-title {
-    font-size: 2.3rem;
+    font-size: 2.3*$rem;
   }
 
   .forum-topic-latest {
     background: #f0f0f0;
-    padding:0.5rem 1rem;
+    padding:0.5*$rem 1*$rem;
   }
   .forum-topic-author {
   }
@@ -1530,18 +1531,18 @@ article.forum-topic {
   }
 }
 .forum-topic-title-meta {
-  padding: 0.5rem 1rem;
+  padding: 0.5*$rem 1*$rem;
 }
 @include breakpoint_ipad {
   .forum-topic-title-meta {
     display:flex;
-    padding: 0.5rem 1rem;
+    padding: 0.5*$rem 1*$rem;
 
     .forum-topic-title {
       flex: 1 1 auto;
     }
     .forum-topic-meta {
-      flex: 0 0 26rem;
+      flex: 0 0 26*$rem;
     }
   }
 }
@@ -1551,10 +1552,10 @@ article.forum-topic {
 // }}}
 // A forum post (may be the node (topic/first post) or a post (comment) e.g. https://dcn.artfulrobot.uk/forum/seeking-siblings {{{
 div.forum-post {
-  margin:2rem -2rem;
-  padding: 0 2rem;
-  margin:1px -2rem 0;
-  padding: 1rem 2rem;
+  margin:2*$rem -2*$rem;
+  padding: 0 2*$rem;
+  margin:1px -2*$rem 0;
+  padding: 1*$rem 2*$rem;
   background: $g8;
 
   // Highlight office posts.
@@ -1563,15 +1564,15 @@ div.forum-post {
   }
 
   display: grid;
-  //grid-template-columns: 20rem 1fr;
+  //grid-template-columns: 20*$rem 1fr;
   grid-gap: 0;
 }
 .forum-post-info {
-  padding:1rem;
+  padding:1*$rem;
 
   display:grid;
   grid-template-columns:50% 50%;
-  grid-gap: 2rem;
+  grid-gap: 2*$rem;
 
   .author-pane {
     display: inline-block;
@@ -1579,7 +1580,7 @@ div.forum-post {
 
   .forum-posted-on {
     float:none;
-    font-size: 1.4rem; // bootstrap sets rem=10px
+    font-size: 1.4*$rem; // bootstrap sets *$rem=10px
     padding:0;
     color: $g3;
   }
@@ -1601,9 +1602,9 @@ div.forum-post {
   }
   &>span {
     flex:1 1 auto;
-    padding-left: 1rem;
+    padding-left: 1*$rem;
   }
-  margin-bottom: 1rem;
+  margin-bottom: 1*$rem;
 }
 .forum-post-wrapper {
   //grid-column:2; grid-row:1;
@@ -1612,11 +1613,11 @@ div.forum-post {
 .forum-post-panel-main {
   float:none;
   margin:0;
-  padding:1.5rem 2rem;
+  padding:1.5*$rem 2*$rem;
   height:100%;
   position:relative;
   z-index:1;
-  min-height: 10rem;
+  min-height: 10*$rem;
   display:flex;
   flex-direction: column;
 
@@ -1646,7 +1647,7 @@ div.forum-post {
   }
   .forum-post-content {
     flex:1 0 auto;
-    font-size:1.6rem; // 16px
+    font-size:1.6*$rem; // 16px
     padding:0;
   }
   ul.links {
@@ -1665,7 +1666,7 @@ div.forum-post {
   width:auto;
 
   .author-pane {
-    margin:0 0 1rem;
+    margin:0 0 1*$rem;
   }
 }
 .forum-post-panel-main {
@@ -1697,7 +1698,7 @@ div.forum-post {
 @include breakpoint_ipad {
 
   div.forum-post {
-    grid-template-columns: 20rem 1fr;
+    grid-template-columns: 20*$rem 1fr;
   }
   .forum-post-info {
     grid-column:1;
@@ -1747,19 +1748,19 @@ div.forum-post {
 // }}}
 .forum-comment-pager {
   background: $g8;
-  margin:0 -2rem;
-  padding: 2rem;
+  margin:0 -2*$rem;
+  padding: 2*$rem;
 }
 // Forum comment form {{{
 #forum-comment-form-wrapper {
-  margin: 0 -2rem;
-  padding: 2rem;
+  margin: 0 -2*$rem;
+  padding: 2*$rem;
   background: $dcn_blue_light;
   color:white;
   a.username { color:white; }
 
   #edit-author--2 {
-    margin-top: 2rem;
+    margin-top: 2*$rem;
     font-size:16px;
   }
   label {
@@ -1773,9 +1774,9 @@ div.forum-post {
     border-radius:3px;
     text-transform: uppercase;
     display: block;
-    margin:1rem 0 1rem auto;
+    margin:1*$rem 0 1*$rem auto;
     border:none;
-    padding:1rem 2rem;
+    padding:1*$rem 2*$rem;
 
     &:active {
       background: $dcn_blue_dark;
@@ -1799,19 +1800,19 @@ div.forum-post {
   display: flex;
   align-items: flex-start;
   flex-wrap:wrap;
-  margin: 1.5rem 0;
+  margin: 1.5*$rem 0;
   background: white;
   box-shadow: -2px 2px 5px rgba(0,0,0, 0.2);
 
   .views-field-field-author {
     color: $g3;
-    margin-bottom: 1rem;
+    margin-bottom: 1*$rem;
   }
 
 }
 .library-item__image {
   flex: 0 1 100%;
-  padding:1rem;
+  padding:1*$rem;
   a { display: block; }
   img {
     display: block;
@@ -1822,14 +1823,14 @@ div.forum-post {
 }
 .library-item__text {
   flex: 1 0 200px;
-  padding:1rem 1rem;
+  padding:1*$rem 1*$rem;
   h1 {
     margin-top:0;
-    font-size: (18rem/10);
+    font-size: (18*$rem/10);
   }
 }
 .library-item__meta {
-  padding:1rem 1rem;
+  padding:1*$rem 1*$rem;
   flex: 0 0 auto;
 }
 @media screen and (min-width: 768px) {
@@ -1846,20 +1847,20 @@ div.forum-post {
   }
   .library-item__text {
     h1 {
-      font-size: (22rem/10);
+      font-size: (22*$rem/10);
     }
   }
 }
 #views-exposed-form-library-listings-page {
   background-color:  $dcn_blue_wash;
   border-radius:3px;
-  padding: 1rem;
+  padding: 1*$rem;
   .views-exposed-widgets {
     display: flex;
     flex-wrap: wrap;
     .views-exposed-widget {
       flex: 1 0 auto;
-      padding:0 0.5rem;
+      padding:0 0.5*$rem;
       input, button { width: 100%;}
     }
   }
@@ -1868,10 +1869,10 @@ div.forum-post {
 // Members' menu {{{
 #block-menu-block-13 {
   background-color: #f5f5f5;
-  padding: 1rem;
+  padding: 1*$rem;
   h2.block-title {
-    padding: 0 1rem;
-    margin:0 0 1rem;
+    padding: 0 1*$rem;
+    margin:0 0 1*$rem;
     text-align: center;
   }
   ul.menu.nav {

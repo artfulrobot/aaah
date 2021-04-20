@@ -1,7 +1,13 @@
+// This CSS is loaded first.
 @import 'lib';
 @import 'content';
 
 // Basic layout.
+html {
+  // Yuk. Bootstrap 3 is in use by CiviCRM So because we have public Civi
+  // pages, it's easier to make the whole site follow this same rule.
+  font-size: 10px;
+}
 body {
   padding:0;
   margin:0;
@@ -15,23 +21,23 @@ body {
   &.page-user.not-logged-in,
   &.page-user-login {
     #page {
-      max-width: 30rem;
+      max-width: 30*$rem;
       margin: 0 auto;
     }
     #page-title { text-align: center; }
     .tabs.primary {
       border-bottom: none;
-      margin: 1rem 0;
+      margin: 1*$rem 0;
       text-align:center;
       li a {
         border: none;
         background: none;
-        padding-left: 1rem;
-        padding-right: 1rem;
+        padding-left: 1*$rem;
+        padding-right: 1*$rem;
       }
     }
     #user-login {
-      padding: 4rem;
+      padding: 4*$rem;
       border-radius: 8px;
       background: white;
     }
@@ -47,20 +53,20 @@ input[type="text"], input[type="password"], textarea {
   color:$colourText;
   border-radius: 3px;
   width:100%;
-  padding:0.5rem;
+  padding:0.5*$rem;
 }
 label {
   font-weight: normal;
 }
 // }}}
 // Sidebar layout. {{{
-$sidebar_width  : 20rem;
-$sidebar_gutter : 2rem;
+$sidebar_width  : 20*$rem;
+$sidebar_gutter : 2*$rem;
 
 #sidebar-toggle { display:none; }
 aside.sidebar {
   // Allow for menu bar at top.
-  padding:3rem 1rem 0;
+  padding:3*$rem 1*$rem 0;
 
   // Colour the sidebar.
   background-color: $colourDarkGrey;
@@ -87,8 +93,8 @@ aside.sidebar {
   #main.sidebar-closed {
 
     #sidebar-toggle {
-      transform:translate(1.5rem, 0rem) rotate(-90deg);
-      width:9rem;
+      transform:translate(1.5*$rem, 0*$rem) rotate(-90deg);
+      width:9*$rem;
     }
 
     #content {
@@ -104,10 +110,10 @@ aside.sidebar {
     bottom:0;
     left:0;
     width: $sidebar_width;
-    height:1.5rem;
+    height:1.5*$rem;
     line-height:1;
     background-color: $colourDarkGrey;
-    padding:0 0.5rem;
+    padding:0 0.5*$rem;
     color: rgba(255, 255, 255, 0.6);
     transition: all 0.2s;
     transform-origin: bottom left;
@@ -144,7 +150,7 @@ aside.sidebar {
   ul.menu {
     padding:0;
     // escape the padding of the sidebar.
-    margin:0 -1rem;
+    margin:0 -1*$rem;
 
     // We need to overcome specificity of drupal system's ul.menu li
     li {
@@ -157,7 +163,7 @@ aside.sidebar {
   }
   li>a {
     display:block;
-    padding:0.5rem 1rem;
+    padding:0.5*$rem 1*$rem;
     text-decoration: none;
     color: white;
     &.active-trail {
@@ -179,7 +185,7 @@ body.adminimal-menu #content ul.tabs.primary {
 // DocNav {{{
 .docnav__fakeanchor {
   position:absolute;
-  margin-top:-3rem;
+  margin-top:-3*$rem;
 }
 .docnav-wrapper {
   ul.docnav {
@@ -195,7 +201,7 @@ body.adminimal-menu #content ul.tabs.primary {
     }
     &.selected>a{
       font-weight: bold;
-      // transform:translateX(1rem);
+      // transform:translateX(1*$rem);
     }
   }
   // By default, sub-lists are not shown.
@@ -210,7 +216,7 @@ body.adminimal-menu #content ul.tabs.primary {
 
   a {
     display:block;
-    padding:0.5rem 1rem;
+    padding:0.5*$rem 1*$rem;
     transition: all 0.3s;
   }
   // Colours.
@@ -231,7 +237,7 @@ body.adminimal-menu #content ul.tabs.primary {
   }
   @each $i in 0 1 2 3 4 5 6 {
     li.depth-#{$i} a {
-      padding-left: (1rem + 1rem * $i);
+      padding-left: (1*$rem + 1*$rem * $i);
     }
   }
 }
