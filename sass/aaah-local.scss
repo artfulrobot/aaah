@@ -487,7 +487,8 @@ nav.dcn-prev-next-nav {
   // Bigger h1.
   h1 {
     font-size: 2*$rem;
-    font-size: clamp(2*$rem, calc(1*$rem + 5vw), 3*$rem);
+    // for some reason $rem did not work here.
+    font-size: clamp(2*$rem, calc(1.6rem + 5vw), 3*$rem);
   }
 
 } //}}}
