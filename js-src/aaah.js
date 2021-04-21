@@ -28,6 +28,7 @@ Drupal.behaviors.aaah = {
     $('body').removeClass('is-mobile');
     this.topLinks = document.querySelector('ul.top-links');
     this.menuBlock = document.querySelector('#block-menu-menu-main-menu-2021>div.content');
+    this.headerLogoDiv = document.querySelector('.header-logo-div');
     this.windowResized();
   },
   windowResized: function() {
@@ -36,8 +37,11 @@ Drupal.behaviors.aaah = {
       if (!$body.hasClass('is-mobile')) {
         // Switch mobile view.
         $body.addClass('is-mobile');
-        // Move the top links into the menu thing.
-        this.menuBlock.insertAdjacentElement('afterbegin', this.topLinks);
+        // This code will get run on pages without the header.
+        if (this.topLinks && this.menuBlock) {
+          // Move the top links into the menu thing.
+          this.menuBlock.insertAdjacentElement('afterbegin', this.topLinks);
+        }
         $('#site-header').append(this.$menu_button);
 
       }
@@ -46,8 +50,11 @@ Drupal.behaviors.aaah = {
       if ($body.hasClass('is-mobile')) {
         // No (longer) mobile.
         $body.removeClass('is-mobile', 'show-menu');
-        // Put the top links back.
-        document.querySelector('.header-logo-div').insertAdjacentElement('afterend', this.topLinks);
+        // This code will get run on pages without the header.
+        if (this.topLinks && this.headerLogoDiv) {
+          // Put the top links back.
+          this.headerLogoDiv.insertAdjacentElement('afterend', this.topLinks);
+        }
         this.$menu_button.detach();
       }
     }
