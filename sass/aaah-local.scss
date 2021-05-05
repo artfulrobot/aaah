@@ -219,6 +219,10 @@ i.dcn-icon {
   width: clamp(10*$rem, 20vw, 15*$rem);
   height: auto;
 }
+// Override for a smaller header on CiviCRM pages. Really just so we have the logout link, I think, and a way to get back to the site easily.
+.page-civicrm #header-logo {
+  width: 14rem;
+}
 ul.top-links {
   text-align: right;
   margin: 0;
@@ -884,9 +888,12 @@ article.forum-row {
   grid-row: 1;
   grid-column: 1 / span 2;
   padding:0.5*$rem 1*$rem 0.5*$rem;
+  background: white;
   h1 {
     margin:0;
-    font-size: 2.3*$rem;
+    font-size: 2*$rem;
+    font-family: "Work Sans",Arial,Helvetica,sans-serif;
+    font-weight: 300;
   }
 }
 .forum-name-icons-wrapper {
@@ -940,14 +947,15 @@ article.forum-row  {
 article.forum-topic {
   margin-bottom: 2*$rem;
   border:solid 1px #eee;
+  background: white;
+  border-radius: 8px;
 
   .forum-topic-title {
-    font-size: 2.3*$rem;
+    font-size: 2*$rem;
+    font-weight: 300;
   }
 
   .forum-topic-latest {
-    background: #f0f0f0;
-    padding:0.5*$rem 1*$rem;
   }
   .forum-topic-author {
   }
@@ -1388,8 +1396,38 @@ body.aaah-theme #block-block-64 {
   @include normal-content-width;
 }
 // }}}
+// Page: Bookshop catalogue {{{
+@media screen and (max-width: 767px) {
+  .view-id-uc_catalog_terms>div>table {
+    td {
+      display: block;
+      border: none;
+    }
+  }
+}
 
 
+// }}}
+
+// Page: member forms
+.crm-contribution-main-form-block {
+  input[type="text"], textarea {
+    // needed to counteract size=X html attr.
+    width: 100%;
+  }
+}
+.crm-section.membership_amount-section {
+  &>.label {
+    float:none;
+    width: auto;
+    text-align: left;
+  }
+  .membership_amount-content {
+    margin-left: 0;
+  }
+}
+
+// Old custom stuff
 // Fix invisible Qty field on shopping cart {{{
 #uc-cart-view-form td.qty {
   min-width:7*$rem;
@@ -1519,11 +1557,11 @@ article.forum-topic {
   border:solid 1px #eee;
 
   .forum-topic-title {
-    font-size: 2.3*$rem;
+    font-size: 2*$rem;
   }
 
   .forum-topic-latest {
-    background: #f0f0f0;
+    border-top: solid 1px  $colourLightLine;
     padding:0.5*$rem 1*$rem;
   }
   .forum-topic-author {
@@ -1562,6 +1600,13 @@ div.forum-post {
   // Highlight office posts.
   &.posted-by-3 .forum-post-content {
     color: $dcn_blue_dark;
+  }
+
+  .field-name-body {
+    // Override global body field styles
+    margin-left:0;
+    margin-right:0;
+    padding: 0;
   }
 
   display: grid;
@@ -1648,7 +1693,7 @@ div.forum-post {
   }
   .forum-post-content {
     flex:1 0 auto;
-    font-size:1.6*$rem; // 16px
+    font-size:$rem; // 16px
     padding:0;
   }
   ul.links {
@@ -1669,8 +1714,6 @@ div.forum-post {
   .author-pane {
     margin:0 0 1*$rem;
   }
-}
-.forum-post-panel-main {
 }
 .forum-post-footer {
   height:auto;

@@ -1,12 +1,13 @@
 
 // DCN
-$colourBackground : #f2f5f7;
-$colourDCNBlue: #006ba3;
-$colourDCNBlueDark: #00477a;
+$colourBackground :   #f2f5f7;
+$colourLightLine:     #dbf0fb;
 $colourDCNBlueMedium: #4894bb;
+$colourDCNBlue:       #006ba3;
+$colourDCNBlueDark:   #00477a;
+$colourCompliment:    #ea4f3a;
 $colourLinks: $colourDCNBlue ;
 $colourLinksActive: $colourDCNBlueDark;
-$colourCompliment: #ea4f3a;
 // This is a bodge to get back from bootstrap's 10px rem
 $rem: 1.6rem;
 // DCN old {{{

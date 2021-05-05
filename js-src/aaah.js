@@ -10,8 +10,17 @@ Drupal.behaviors.aaah = {
       $(window).on('resize', this.windowResized.bind(this));
       this.menuBoot();
       this.cardABoot();
+      this.bookshopBoot();
     }
 
+  },
+  bookshopBoot() {
+    /* Can't use ARResponsiveTable here because the table has no header row.
+    const catalogViewTable = document.querySelector('.view-id-uc_catalog_terms>div>table');
+    if (catalogViewTable && ARResponsiveTable) {
+      new ARResponsiveTable(catalogViewTable);
+    }
+    */
   },
   cardABoot: function() {
     this.$context.find('article.card-a').on('click', function(e) {

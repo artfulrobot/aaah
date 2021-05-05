@@ -8,23 +8,10 @@
  */
 ?>
 <div id="page">
-  <header id="site-header" role="banner">
-    <div class="normal-content-width" id="header__content">
-      <div class="df fjc-sb fai-top">
-        <div class="fi-a pr4 header-logo-div">
-            <a href="/"><img src="/sites/default/themes/aaah/images/dcn-logo.svg" alt="<?php print $site_name; ?>" class="db" id="header-logo" /></a>
-        </div>
-        <ul class="fi-a top-links" role="navigation" >
-          <li><a class="cart" href="/cart" title="View your shopping cart">
-            <i class="fa fa-shopping-cart"></i>
-            Basket</a></li>
-          <?php print $variables["page"]["userlink"] ?? ''; ?>
-          <?php print $variables["page"]["loginout"] ?? ''; ?>
-        </ul>
-      </div>
-      <?php print render($page['header']['menu_menu-main-menu-2021']); ?>
-    </div><?php /* end of header content */ ?>
-  </header>
+<?php
+  // hide the menu, do not render the header.
+  hide($page['header']['menu_menu-main-menu-2021']);
+?>
 
   <?php // Render the sidebars to see if there's anything in them.
     $sidebar= render($page['sidebar']);
@@ -42,7 +29,9 @@
           <?php if (empty($suppress_title)): ?>
             <h1 class="page__title title" id="page-title"><?php print $title; ?></h1>
           <?php endif; ?>
-        <?php unset($page['header']['#theme_wrappers']); print render($page['header']); ?>
+        <?php
+        // I'm not sure why we need to do this...
+        unset($page['header']['#theme_wrappers']); print render($page['header']); ?>
       </header>
       <?php endif; ?>
 
