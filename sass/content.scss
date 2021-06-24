@@ -1,5 +1,11 @@
 // text etc.
 @import 'lib';
+
+// urgent HACK for mailings screen which was hiding the delete/pause button.
+.crm-container span.btn-slide {
+  text-indent: 0 !important;
+}
+
 // Default to border-box sizing.
 html {
   box-sizing: border-box;
