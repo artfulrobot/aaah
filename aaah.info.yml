@@ -1,0 +1,13 @@
+name: Aaah
+type: theme
+description: 'A minimal Drupal 9 theme to complement the Aah CiviCRM theme'
+core_version_requirement: ^9
+libraries:
+  - aaah/global-styling
+  - aaah/global-scripts
+base theme: stable9
+regions:
+  header: Header
+  content: Content
+  sidebar: 'Sidebar if you must'
+  footer: Footer
