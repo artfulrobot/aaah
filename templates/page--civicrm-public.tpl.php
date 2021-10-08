@@ -60,7 +60,7 @@
 
         <div class="three-cols__col">
           <ul class="footer__contact">
-            <li><a class="phone" href="tel:+447398075882">+44 (0)7398 075 882</a></li>
+            <li><a class="phone" href="tel:+447923994651">+44 (0)7923 994651</a></li>
             <li><a href="https://peopleandplanet.org/contact" class="email">Email</a></li>
             <li><a class="facebook" href="https://www.facebook.com/peopleandplanet">Facebook</a></li>
             <li><a class="twitter" href="https://twitter.com/peopleandplanet">Twitter</a></li>
@@ -70,8 +70,10 @@
 
         <div class="three-cols__col">
           <p>People &amp; Planet<br>
-            20 Wilkins Road<br>
-            Oxford, OX4 2HX</p>
+            3 The Old Estate High Street,<br/>
+            East Hendred, Wantage,<br>
+            Oxfordshire, OX12 8JY</p>
+
         </div>
 
       </div>
