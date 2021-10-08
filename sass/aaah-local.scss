@@ -53,12 +53,13 @@ $colLightenDeep:   rgba(255, 255, 255, 0.2);
 
 
 // This class is added in our drupal html--civicrm-public.tpl.php file.
+// Note: on CiviCRM pages using Aah we now have to contend with stupid bootstrap3 font sizing where 1rem = 10px
 body.civicrm-public {
 
   background: white;
   color: $colNearBlackText;
   font-family: "Source Sans Pro";
-  font-size: 1rem;
+  font-size: 1rem*1.6;
 
   // Header {{{
   #page>header {
@@ -97,6 +98,9 @@ body.civicrm-public {
     font-weight: bold;
     color: $colPurpleText;
   }
+  h1 {
+    font-size: 2.4rem*1.6;
+  }
 
   a:link, a:visited {
     color: $colPurpleText;
@@ -111,11 +115,22 @@ body.civicrm-public {
     margin: 0 auto;
   }
 
+  // bootstrap.css override
+  button { font-size: 1.2rem*1.6; }
 
   // Civi overrides.
   #crm-container.crm-public .label, #crm-container.crm-public .price-field-amount {
-    font-size: 1rem;
+    font-size: 1.6rem;
   }
+  // Labels for radios
+  .crm-form-checkbox + .description, .crm-form-checkbox + label, .crm-form-radio + .description, .crm-form-radio + label {
+    // Override bootstrap.css which sets it inline
+    display: block;
+  }
+  .crm-section>.label {
+    padding:0;
+  }
+  fieldset.crm-profile legend { left:0 }
 
   .crm-inline-error.alert-danger {
     padding: 0.25rem 1rem;
@@ -162,7 +177,7 @@ span.crm-button {
   display: inline-block;
   background: $colAmber;
   border: none;
-  font-size: 1.3rem;
+  font-size: 1.3rem*1.6;
 
   i {
     position: absolute;
@@ -180,7 +195,7 @@ span.crm-button {
   &.crm-i-button input.crm-form-submit
   {
     padding:0.4rem 1.6rem 0.4rem 3.2rem;
-    font-size: 1.3rem;
+    font-size: 1.3rem*1.6;
     box-shadow: none;
   }
 }
@@ -215,7 +230,7 @@ a.crm-button {
 .crm-container .crm-submit-buttons, .crm-container .action-link { height: auto; overflow: hidden; }
 
 .crm-container table {
-  font-size: 1rem;
+  font-size: 1rem*1.6;
 }
 
 // help and status
@@ -227,7 +242,7 @@ a.crm-button {
   color: black;
   padding: 1rem;
   border-radius : none;
-  font-size: 1rem;
+  font-size: 1rem*1.6;
 }
 
 // Header in confirm page
@@ -237,9 +252,63 @@ a.crm-button {
   color: $colPurpleText;
   font-family: Khand;
   font-weight:bold;
-  font-size: 1.6rem;
+  font-size: 1.6rem*1.6;
   margin-top: 1rem;
 }
 
 // }}}
+
+  // Another button. (register now on events info page)
+  //.crm-container .ui-button,
+  //.crm-container .ui-dialog-buttonset .ui-button,
+  .crm-register-button,
+  .crm-container a.button,
+  .crm-container a.button:link,
+  .crm-container a.button:visited {
+    background: $colAmber;
+    color: black;
+    font-family: Khand;
+    font-weight: bold;
+  }
+  .crm-container a.button:hover {
+    background: $colAmber;
+  }
+
+  // Event info
+  .crm-group.participant_info-group .crm-public-form-item,
+  .crm-section.event_date_time-section,
+  .crm-section.event_fees-section {
+    &>.label {
+      text-align: left;
+    }
+  }
+
+  // Ignore compressed layout on fee table
+  .event_info-group table,
+  table.form-layout-compressed.fee_block-table {
+    max-width: 40rem;
+    margin-top: 0;
+    td, th { font-size: 1.6rem; }
+    td:first-child, th:first-child { padding-left: 0; }
+  }
+  .intro_text-section,
+  .event_description-section {
+    img {
+      max-width: 100%;
+      height: auto;
+    }
+  }
+  .event_summary-section {
+    font-size: 2rem;
+  }
+  .intro_text-section,
+  .event-info {
+    p {
+      // So that images can be big.
+      max-width: none;
+    }
+  }
+  .intro_text-section {
+    font-size: 2rem;
+  }
 }

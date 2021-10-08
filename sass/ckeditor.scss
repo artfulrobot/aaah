@@ -8,3 +8,13 @@
   min-width:50%; // just so we can see it if the image is deletd.
   min-height:4rem;
 }
+.cke_editable img {
+  max-width: 100%;
+  height: auto;
+}
+table.cke_dialog {
+  width: auto;
+  td, th {
+    padding: 0 0.5rem;
+  }
+}
