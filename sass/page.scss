@@ -15,7 +15,8 @@ body {
   &.page-user.not-logged-in,
   &.page-user-login {
     #page {
-      max-width: 30rem;
+      // Disabled this for the feast:
+      //max-width: 30rem;
       margin: 0 auto;
     }
     #page-title { text-align: center; }
