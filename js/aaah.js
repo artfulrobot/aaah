@@ -110,8 +110,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 		// undefined = chunk not loaded, null = chunk preloaded/prefetched
 /******/ 		// [resolve, reject, Promise] = chunk loading, 0 = chunk loaded
 /******/ 		var installedChunks = {
-/******/ 			"/aaah": 0,
-/******/ 			"aaah": 0
+/******/ 			"/js/aaah": 0,
+/******/ 			"css/aaah": 0
 /******/ 		};
 /******/ 		
 /******/ 		// no chunk on demand loading
@@ -161,8 +161,8 @@ __webpack_require__.r(__webpack_exports__);
 /******/ 	// startup
 /******/ 	// Load entry module and return exports
 /******/ 	// This entry module depends on other loaded chunks and execution need to be delayed
-/******/ 	__webpack_require__.O(undefined, ["aaah"], () => (__webpack_require__("./src/aaah.js")))
-/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["aaah"], () => (__webpack_require__("./src/aaah.scss")))
+/******/ 	__webpack_require__.O(undefined, ["css/aaah"], () => (__webpack_require__("./src/aaah.js")))
+/******/ 	var __webpack_exports__ = __webpack_require__.O(undefined, ["css/aaah"], () => (__webpack_require__("./src/aaah.scss")))
 /******/ 	__webpack_exports__ = __webpack_require__.O(__webpack_exports__);
 /******/ 	
 /******/ })()

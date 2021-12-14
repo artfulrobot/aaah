@@ -4,9 +4,9 @@ let mix = require('laravel-mix');
 //require('laravel-mix-svelte');
 
 mix
-  .setPublicPath('dist')
-  .js('src/aaah.js', 'dist')
-  .sass('src/aaah.scss', 'dist')
+  //.setPublicPath('dist')
+  .js('src/aaah.js', 'js')
+  .sass('src/aaah.scss', 'css')
 ;
 if (0) mix
   .svelte({
