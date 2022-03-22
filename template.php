@@ -1,8 +1,8 @@
 <?php
 function aaah_preprocess_page(&$variables) {
   global $user;
-  // todo similar logic
-  // $variables['suppress_page_title'] = isset($variables['node']);
+
+  $variables['suppress_title'] = isset($variables['node']) && $variables['node']->type === 'lawyer_supporters';
 
   if (!isset($variables['page']['content']['#attached']['css']['fonts'])) {
     // Allow subthemes to set this and for us to not override it (as this
