@@ -39,6 +39,20 @@
     @content
   }
 }
+@mixin redButton {
+	border: none;
+	padding: 0.8rem 3.2rem;
+	background-color: #ea4f3a;
+	border-radius: 4px;
+	text-align: center;
+	text-decoration: none;
+  font-size: 2rem;
+  color: white;
+
+  &:hover {
+    background-color: darken(#ea4f3a, 10%);
+  }
+}
 // }}}
 // Utility {{{
 .vh { @include visually-hidden; }
@@ -854,6 +868,13 @@ body.node-type-forum #block-system-main>.content {
   }
 }
 
+// The block that introduces the forum {{{
+#block-forum-new,
+#block-block-21 {
+  @include normal-content-width;
+}
+
+// }}}
 // The Main forum index https://dcn.artfulrobot.uk/forum {{{
 
 // Forum headers
@@ -1244,6 +1265,37 @@ body.not-paragraphs-page {
   padding-bottom: 4*$rem;
 }
 // }}}
+// Pages: Node: Product nodes {{{
+.node-product .field-name-body {
+  margin:0;
+  padding: 0 0 2*$rem;
+}
+.dcn-product {
+  display: flex;
+  flex-wrap: wrap;
+  margin-left: -1rem;
+  margin-right: -1rem;
+  padding-bottom: 4*$rem;
+
+}
+.dcn-product__main,
+.dcn-product__side {
+  padding: 0 1rem;
+}
+.dcn-product__main {
+  flex: 1 0 24ch;
+  .form-type-uc-quantity input[type="text"] {
+    width: 4em;
+  }
+}
+.dcn-product__side {
+  flex: 0 0 240px;
+}
+
+.node-add-to-cart.form-submit {
+  @include redButton;
+}
+// }}}
 // Pages: Views {{{
 #block-system-main>.content>.view {
   @include normal-content-width;
@@ -1397,6 +1449,7 @@ body.aaah-theme #block-block-64 {
 }
 // }}}
 // Page: Bookshop catalogue {{{
+// e.g. https://www.dcnetwork.org/catalog/all-books-and-films
 @media screen and (max-width: 767px) {
   .view-id-uc_catalog_terms>div>table {
     td {
@@ -1406,10 +1459,97 @@ body.aaah-theme #block-block-64 {
   }
 }
 
+.dcn-shop-catalog-grid {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap:wrap;
+  &>div {
+    // Min px
+    flex: 1 0 260px;
+    margin: 0 0 2rem;
+    // 2rem between them.
+    padding: 0 1rem;
+  }
+}
+// These are article elements inside the grid.
+.dcn-shop-card {
+  background: white;
+  border-radius: 12px;
+  padding: 1.6rem;
+  height: 100%; // fill the flex container
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  // the image
+  &>.field-content {
+    flex: 0 0 auto;
+    padding: 0 0 80% 0;
+    position: relative;
+    width: 100%;
+    a {
+      display:block;
+      position: absolute;
+      top: 0;
+      left:0;
+      right:0;
+      bottom:0;
+    }
+    img {
+      object-fit: contain;
+      width: 100%;
+      height: 100%;
+    }
+  }
+
+  h1 {
+    // This is allowed to stretch.
+    flex: 1 0 auto;
+    font-size: 1.6rem;
+    margin: 0 0 1rem;
+    padding-top: 1rem;
+    width: 100%;
+    //font-weight: normal;
+    //font-family: "Work Sans",Arial,Helvetica,sans-serif;
+
+    a {
+      text-decoration: none;
+      &:link, &:visited { color: $colourDCNBlueDark; }
+      &:hover, &:active {
+        text-decoration: underline;
+        color: $colourCompliment;
+      }
+    }
+  }
+  .price-buy {
+    flex: 0 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+  }
+  .price {
+    flex: 0 0 auto;
+    padding-right: 2rem;
+  }
+  .buy {
+    flex: 0 0 auto;
+    .form-actions {
+      margin: 0;
+    }
+    input[type="submit"] {
+      @include redButton;
+      padding-left: 1rem;
+      padding-right: 1rem;
+    }
+  }
+}
+
 
 // }}}
 
-// Page: member forms
+// Page: member forms {{{
 .crm-contribution-main-form-block {
   input[type="text"], textarea {
     // needed to counteract size=X html attr.
@@ -1425,7 +1565,7 @@ body.aaah-theme #block-block-64 {
   .membership_amount-content {
     margin-left: 0;
   }
-}
+} // }}}
 
 // Old custom stuff
 // Fix invisible Qty field on shopping cart {{{

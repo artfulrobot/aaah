@@ -14,10 +14,7 @@ body {
 
   &.page-user.not-logged-in,
   &.page-user-login {
-    #page {
-      max-width: 30*$rem;
-      margin: 0 auto;
-    }
+
     #page-title { text-align: center; }
     .tabs.primary {
       border-bottom: none;
@@ -34,6 +31,8 @@ body {
       padding: 4*$rem;
       border-radius: 8px;
       background: white;
+      max-width: 30*$rem;
+      margin: 0 auto;
     }
   }
 
