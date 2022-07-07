@@ -1,13 +1,11 @@
-# Minimal base theme
+# Give Up GitHub
 
-This theme is primarily for use with CiviCRM + Aah theme.
+This project has given up GitHub.  ([See Software Freedom Conservancy's *Give Up  GitHub* site for details](https://GiveUpGitHub.org).)
 
-## Build
+You can now find this project at [Codeberg](https://codeberg.org/artfulrobot/aaah) instead.
 
-This now uses Laravel Mix 6.
+Any use of this project's code by GitHub Copilot, past or present, is done without our permission.  We do not consent to GitHub's use of this project's code in Copilot.
 
-I suspect you install with `npm i` and it seems you now bulid with:
+Join us; you can [give up GitHub](https://GiveUpGitHub.org) too!
 
-    npx mix build # one-off dev build
-    npx mix watch # live dev builds
-    npx mix build -p # production
+![Logo of the GiveUpGitHub campaign](https://sfconservancy.org/img/GiveUpGitHub.png)
