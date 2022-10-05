@@ -1,4 +1,4 @@
-// Laravel mix v5. npx mix
+// Laravel mix v6. npx mix
 let mix = require('laravel-mix');
 mix
  // .js('js-src/docnav.js', 'js/')
@@ -6,5 +6,6 @@ mix
   .sass('sass/ckeditor.scss', 'css/')
   .sass('sass/content.scss', 'css/')
   .sass('sass/page.scss', 'css/')
+  .vue({version: 2});
 ;
 

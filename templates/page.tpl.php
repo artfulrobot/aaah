@@ -18,7 +18,7 @@
     <div id="content" class="column" role="main">
       <?php /* oD replaced header {{{ */ ?>
       <header class="header" id="header" role="banner">
-        <a href="https://www.opendemocracy.net"><img id="header__logo" src="/sites/all/themes/aaah/images/oD_logo.svg" alt="openDemocracy" /></a>
+        <a class="header__logo_link" href="https://www.opendemocracy.net"><img id="header__logo" src="/sites/all/themes/aaah/images/oD_logo.svg" alt="openDemocracy" /></a>
         <div id="header__title">
           <?php print render($title_prefix); ?>
           <?php if (empty($suppress_title)): ?>
