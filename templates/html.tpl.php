@@ -22,15 +22,22 @@
   <?php /* oD {{{ */ ?>
   <link href="https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-379949-2"></script>
+  <!-- Global site tag (gtag.js) - Google Analytics: 2022-10-05: replaced this with the property ID for the GA4 one instead -->
+  <!-- <script async src="https://www.googletagmanager.com/gtag/js?id=UA-379949-2"></script> -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-DH7BMJY3YN"></script>
 
   <script>
     window.dataLayer = window.dataLayer || [];
     function gtag(){dataLayer.push(arguments);}
     gtag('js', new Date());
 
-    gtag('config', 'UA-379949-2', { 'optimize_id': 'GTM-KW33TL8'});
+    // 2022-10-05: removed the old UA property:
+    // gtag('config', 'UA-379949-2', { 'optimize_id': 'GTM-KW33TL8'});
+
+    // This 2nd one is the GA4 property. Added here 2022-07-08 Rich.
+    gtag('config', 'G-DH7BMJY3YN');
+
+    console.log("v5");
   </script>
 
   <?php /* this next chunk added 21 Jan 2021 on Matt's request */ ?>
